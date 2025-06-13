@@ -234,6 +234,59 @@ const Contact = () => {
                   ))}
                 </div>
               </div>
+
+              <div className="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 gradient-border">
+                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
+                  Hire me
+                </h3>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href="https://www.linkedin.com/in/muneeb-nawaz-a6272419b/"
+                    target="_blank"
+                    rel="noopener"
+                    className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:scale-110"
+                    aria-label="LinkedIn"
+                  >
+                    <Linkedin className="w-6 h-6" />
+                  </a>
+                  <a
+                    href="https://www.fiverr.com/s/xXVE74B"
+                    target="_blank"
+                    rel="noopener"
+                    className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors hover:scale-105"
+                    aria-label="Fiverr"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 48 48"
+                      fill="currentColor"
+                      stroke="currentColor"
+                      strokeWidth="1.5"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M30.7087,4.5H23.2355c-5.4473,0-10.1982,4.2944-9.88,12.0757H7.9886v7.2454h5.7247V43.5H22.211V23.8211h8.8555V43.5h8.9449V16.5758H22.7478V14.6973a2.8052,2.8052,0,0,1,2.8484-2.9518h5.1125Z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.upwork.com/freelancers/~01113fcaa500ee9108?mp_source=share"
+                    target="_blank"
+                    rel="noopener"
+                    className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors hover:scale-105"
+                    aria-label="Upwork"
+                  >
+                    <svg
+                      width="24"
+                      height="24"
+                      viewBox="0 0 32 32"
+                      fill="currentColor"
+                    >
+                      <path d="M24.75 17.542c-1.469 0-2.849-0.62-4.099-1.635l0.302-1.432 0.010-0.057c0.276-1.521 1.13-4.078 3.786-4.078 1.99 0 3.604 1.615 3.604 3.604 0 1.984-1.615 3.599-3.604 3.599zM24.75 6.693c-3.385 0-6.016 2.198-7.083 5.818-1.625-2.443-2.865-5.38-3.583-7.854h-3.646v9.484c-0.005 1.875-1.521 3.391-3.396 3.396-1.875-0.005-3.391-1.526-3.396-3.396v-9.484h-3.646v9.484c0 3.885 3.161 7.068 7.042 7.068 3.885 0 7.042-3.182 7.042-7.068v-1.589c0.708 1.474 1.578 2.974 2.635 4.297l-2.234 10.495h3.729l1.62-7.615c1.417 0.906 3.047 1.479 4.917 1.479 4 0 7.25-3.271 7.25-7.266 0-4-3.25-7.25-7.25-7.25z" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </motion.div>
 
             <div className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 gradient-border">
