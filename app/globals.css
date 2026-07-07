@@ -191,11 +191,18 @@ h3,
   content: "";
   position: absolute;
   z-index: -1;
-  inset: -1px;
+  inset: 0;
   border-radius: inherit;
+  /* Masked to a real 1px ring. Without the mask a negative-z pseudo paints on
+     top of the element background and floods the whole surface with gradient on
+     hover, which drowned the card text and the contact form. */
+  padding: 1.5px;
   background: linear-gradient(to right, #9333ea, #3b82f6);
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .gradient-border:hover::before {
@@ -208,7 +215,7 @@ h3,
 }
 
 .card-3d:hover {
-  transform: translateY(-10px) rotateX(5deg);
+  transform: scale(1.03);
   box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 

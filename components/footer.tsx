@@ -107,46 +107,22 @@ const Footer = () => {
               Quick Links
             </h3>
             <ul className="space-y-2">
-              <li>
-                <Link
-                  href="#home"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  Home
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#about"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#skills"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  Skills
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#web-projects"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  Web Projects
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="#mobile-projects"
-                  className="text-gray-400 hover:text-purple-400 transition-colors"
-                >
-                  Mobile Projects
-                </Link>
-              </li>
+              {[
+                { name: "About", href: "#about" },
+                { name: "Experience", href: "#experience" },
+                { name: "Tech Stack", href: "#tech-stack" },
+                { name: "Services", href: "#services" },
+                { name: "Projects", href: "#web-projects" },
+              ].map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-gray-400 hover:text-purple-400 transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 

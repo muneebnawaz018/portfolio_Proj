@@ -197,7 +197,7 @@ const About = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 text-center group hover:-translate-y-2 gradient-border"
+                className="bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 text-center group hover:scale-[1.03] gradient-border"
               >
                 <div className="flex justify-center mb-4">
                   <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full group-hover:bg-purple-200 dark:group-hover:bg-purple-800/40 transition-colors">

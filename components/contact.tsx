@@ -187,7 +187,7 @@ const Contact = () => {
                   href={info.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 gradient-border hover:-translate-y-2"
+                  className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 gradient-border hover:scale-[1.03]"
                 >
                   <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full">
                     {info.icon}

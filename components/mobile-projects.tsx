@@ -217,7 +217,7 @@ const MobileProjects = () => {
                 key={project.id}
                 variants={itemVariants}
                 whileHover={{
-                  y: -10,
+                  scale: 1.03,
                   transition: { duration: 0.3 },
                 }}
                 onMouseMove={(e) => {
