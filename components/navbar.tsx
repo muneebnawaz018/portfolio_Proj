@@ -27,7 +27,6 @@ const Navbar = () => {
         "home",
         "about",
         "experience",
-        "skills",
         "tech-stack",
         "services",
         "web-projects",
@@ -64,7 +63,6 @@ const Navbar = () => {
     { name: "Home", href: "#home", sections: ["home"] },
     { name: "About", href: "#about", sections: ["about"] },
     { name: "Experience", href: "#experience", sections: ["experience"] },
-    { name: "Skills", href: "#skills", sections: ["skills"] },
     { name: "Tech Stack", href: "#tech-stack", sections: ["tech-stack"] },
     { name: "Services", href: "#services", sections: ["services"] },
     {

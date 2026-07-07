@@ -52,6 +52,23 @@ const TechStack = () => {
       ],
     },
     {
+      name: "Mobile",
+      technologies: [
+        "React Native",
+        "Expo",
+        "Cross-Platform (iOS & Android)",
+        "Native Modules & Bridges",
+        "Deep Linking / Universal Links",
+        "Offline-First Architecture",
+        "App Performance Optimization",
+        "Push Notifications & Real-time",
+        "OTA Updates / CodePush",
+        "Mobile Security",
+        "Apple / Google Wallet",
+        "App Store & Play Deployment (Fastlane)",
+      ],
+    },
+    {
       name: "Backend",
       technologies: [
         "Node.js",
@@ -74,6 +91,23 @@ const TechStack = () => {
       ],
     },
     {
+      name: "Databases & Data",
+      technologies: [
+        "PostgreSQL",
+        "MySQL",
+        "MongoDB",
+        "DynamoDB",
+        "Redis",
+        "Firebase",
+        "Supabase",
+        "Elasticsearch / OpenSearch",
+        "Data Warehousing (Snowflake / BigQuery / Redshift)",
+        "Sharding & Replication",
+        "Indexing & Query Optimization",
+        "Mongoose / Prisma / SQLAlchemy",
+      ],
+    },
+    {
       name: "AI & Machine Learning",
       technologies: [
         "GPT / LLMs",
@@ -93,40 +127,6 @@ const TechStack = () => {
       ],
     },
     {
-      name: "Mobile",
-      technologies: [
-        "React Native",
-        "Expo",
-        "Cross-Platform (iOS & Android)",
-        "Native Modules & Bridges",
-        "Deep Linking / Universal Links",
-        "Offline-First Architecture",
-        "App Performance Optimization",
-        "Push Notifications & Real-time",
-        "OTA Updates / CodePush",
-        "Mobile Security",
-        "Apple / Google Wallet",
-        "App Store & Play Deployment (Fastlane)",
-      ],
-    },
-    {
-      name: "Databases & Data",
-      technologies: [
-        "PostgreSQL",
-        "MySQL",
-        "MongoDB",
-        "DynamoDB",
-        "Redis",
-        "Firebase",
-        "Supabase",
-        "Elasticsearch / OpenSearch",
-        "Data Warehousing (Snowflake / BigQuery / Redshift)",
-        "Sharding & Replication",
-        "Indexing & Query Optimization",
-        "Mongoose / Prisma / SQLAlchemy",
-      ],
-    },
-    {
       name: "DevOps & Cloud",
       technologies: [
         "AWS",
@@ -141,13 +141,22 @@ const TechStack = () => {
       ],
     },
     {
-      name: "Security & Quality",
+      name: "Security & Compliance",
       technologies: [
         "Auth (JWT / OAuth2 / OIDC)",
         "RBAC / ABAC / PBAC (Cedar)",
-        "OWASP / Encryption / SSL",
+        "OWASP / Encryption / TLS",
+        "Security Headers / CSP",
+      ],
+    },
+    {
+      name: "Testing & Quality",
+      technologies: [
         "Testing (Unit / Integration / E2E)",
         "Jest / Cypress / Playwright",
+        "Code Quality (ESLint / SonarQube)",
+        "Dead Code & Dependency Analysis",
+        "Bundle Size Analysis",
         "Monitoring (Sentry / Datadog / Grafana)",
         "Core Web Vitals / Lighthouse",
       ],

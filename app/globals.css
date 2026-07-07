@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Smooth in-page scrolling for nav anchor clicks. scroll-padding-top keeps the
+   target heading clear of the fixed navbar (h-20 = 5rem on desktop). */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 255, 255, 255;

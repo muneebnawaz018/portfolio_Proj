@@ -2,7 +2,6 @@ import Navbar from "@/components/navbar"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import Experience from "@/components/experience"
-import Skills from "@/components/skills"
 import TechStack from "@/components/tech-stack"
 import WebProjects from "@/components/web-projects"
 import MobileProjects from "@/components/mobile-projects"
@@ -31,8 +30,6 @@ export default function Home() {
         <About />
         <SectionConnector />
         <Experience />
-        <SectionConnector />
-        <Skills />
         <SectionConnector />
         <TechStack />
         <SectionConnector />

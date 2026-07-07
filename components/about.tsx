@@ -131,60 +131,25 @@ const About = () => {
 
               <motion.div
                 variants={itemVariants}
-                className="grid grid-cols-2 gap-4 mt-8"
+                className="grid grid-cols-2 gap-x-4 gap-y-2 mt-8"
               >
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                {[
+                  "Web Development",
+                  "Mobile Apps",
+                  "Backend & APIs",
+                  "Databases & Data",
+                  "AI Engineering",
+                  "Cloud & DevOps",
+                  "Security & Compliance",
+                  "Solution Architecture",
+                ].map((item) => (
+                  <div key={item} className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 shrink-0 text-purple-600 dark:text-purple-400" />
                     <span className="text-gray-700 dark:text-gray-300">
-                      Web Development
+                      {item}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      Mobile Development
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      System Architecture
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      AI Integration
-                    </span>
-                  </div>
-                </div>
-                <div className="space-y-2">
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      Backend Development
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      Database Design
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      Cloud Infrastructure
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
-                    <span className="text-gray-700 dark:text-gray-300">
-                      API Development
-                    </span>
-                  </div>
-                </div>
+                ))}
               </motion.div>
             </motion.div>
           </div>
