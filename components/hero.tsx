@@ -185,7 +185,7 @@ const Hero = () => {
           >
             <div
               ref={tiltRef}
-              className="relative w-64 h-64 md:w-80 md:h-80 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full p-1 shadow-xl animate-pulse-glow"
+              className="group relative w-64 h-64 md:w-80 md:h-80 bg-gradient-to-r from-purple-600 to-blue-500 rounded-full p-1 shadow-xl animate-pulse-glow"
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             >
@@ -217,7 +217,7 @@ const Hero = () => {
                     src="https://res.cloudinary.com/dpwy3mjiz/image/upload/v1723016725/Profile_Pic_cafjay.png"
                     alt="Muneeb Nawaz"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                     priority
                   />
                 )}
