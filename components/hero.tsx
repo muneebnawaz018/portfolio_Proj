@@ -60,7 +60,7 @@ const Hero = () => {
     },
     {
       icon: <Mail className="w-5 h-5" />,
-      href: "mailto:muneebnawaz2018@gmail.com",
+      href: "mailto:muneeb.fusion@gmail.com",
       label: "Email",
     },
   ];

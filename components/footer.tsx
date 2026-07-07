@@ -58,7 +58,7 @@ const Footer = () => {
                 <LinkedinIcon size={24} />
               </Link>
               <Link
-                href="mailto:muneebnawaz2018@gmail.com"
+                href="mailto:muneeb.fusion@gmail.com"
                 className="text-gray-400 hover:text-purple-400 transition-colors"
               >
                 <Mail size={24} />
@@ -134,10 +134,10 @@ const Footer = () => {
               <li className="text-gray-400">
                 <span className="block">Email:</span>
                 <a
-                  href="mailto:muneebnawaz2018@gmail.com"
+                  href="mailto:muneeb.fusion@gmail.com"
                   className="hover:text-purple-400 transition-colors"
                 >
-                  muneebnawaz2018@gmail.com
+                  muneeb.fusion@gmail.com
                 </a>
               </li>
               <li className="text-gray-400">

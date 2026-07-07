@@ -123,8 +123,8 @@ const Contact = () => {
     {
       icon: <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />,
       title: "Email",
-      value: "muneebnawaz2018@gmail.com",
-      link: "mailto:muneebnawaz2018@gmail.com",
+      value: "muneeb.fusion@gmail.com",
+      link: "mailto:muneeb.fusion@gmail.com",
     },
     {
       icon: <Phone className="w-6 h-6 text-purple-600 dark:text-purple-400" />,

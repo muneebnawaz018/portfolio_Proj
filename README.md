@@ -193,7 +193,7 @@ This portfolio is built using modern web technologies:
 
 Feel free to connect or collaborate!
 
-- **Email**: [muneebnawaz2018@gmail.com](mailto:muneebnawaz2018@gmail.com)
+- **Email**: [muneeb.fusion@gmail.com](mailto:muneeb.fusion@gmail.com)
 - **LinkedIn**: [linkedin.com/in/muneeb-nawaz-a6272419b](https://www.linkedin.com/in/muneeb-nawaz-a6272419b/)
 - **GitHub**: [github.com/muneebnawaz018](https://github.com/muneebnawaz018)
 

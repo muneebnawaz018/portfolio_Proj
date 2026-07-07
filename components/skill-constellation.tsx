@@ -1,11 +1,6 @@
 "use client";
 
-import {
-  useLayoutEffect,
-  useRef,
-  useState,
-  type ReactNode,
-} from "react";
+import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
 import { motion } from "framer-motion";
 
 interface SkillConstellationProps {
@@ -54,7 +49,7 @@ const SkillConstellation = ({
       const cRect = c.getBoundingClientRect();
       const hRect = h.getBoundingClientRect();
       const hx = hRect.left + hRect.width / 2 - cRect.left;
-      const hy = hRect.top + hRect.height / 2 - cRect.top;
+      const hy = hRect.bottom - cRect.top;
       const next = pillRefs.current.flatMap((p) => {
         if (!p) return [];
         const r = p.getBoundingClientRect();
@@ -151,9 +146,7 @@ const SkillConstellation = ({
             onMouseLeave={() => setHovered(null)}
             initial={{ opacity: 0, scale: 0.8 }}
             animate={
-              inView
-                ? { opacity: 1, scale: 1 }
-                : { opacity: 0, scale: 0.8 }
+              inView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }
             }
             transition={{
               duration: 0.4,
