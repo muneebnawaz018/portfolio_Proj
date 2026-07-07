@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Code, Smartphone, Globe, Server, Database, Cloud, Cpu, Lock } from "lucide-react"
+import { Code, Smartphone, Globe, Server, Database, Cloud, Cpu, Lock, Bot } from "lucide-react"
 
 const Services = () => {
   const [ref, inView] = useInView({
@@ -35,6 +35,12 @@ const Services = () => {
       title: "Web Application Development",
       description:
         "Architecting and developing scalable, high-performance web applications using modern frameworks and microservices architecture. Implementing responsive designs with progressive enhancement for optimal user experience across all devices.",
+    },
+    {
+      icon: <Bot className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
+      title: "AI Integration & Solutions",
+      description:
+        "Designing and integrating GPT-based features, RAG systems, conversational AI, and intelligent automation into production applications. Building AI agents and chatbots, and embedding AI modules into existing systems to power real business workflows.",
     },
     {
       icon: <Smartphone className="w-10 h-10 text-purple-600 dark:text-purple-400" />,

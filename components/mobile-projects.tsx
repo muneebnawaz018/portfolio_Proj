@@ -220,7 +220,12 @@ const MobileProjects = () => {
                   y: -10,
                   transition: { duration: 0.3 },
                 }}
-                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group gradient-border card-3d"
+                onMouseMove={(e) => {
+                  const rect = e.currentTarget.getBoundingClientRect()
+                  e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`)
+                  e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`)
+                }}
+                className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group gradient-border card-3d spotlight-card"
               >
                 <div className="relative h-48 sm:h-56 md:h-64 overflow-hidden">
                   <Image

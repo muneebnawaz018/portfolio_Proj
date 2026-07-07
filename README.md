@@ -20,7 +20,7 @@ A modern, responsive portfolio website showcasing skills and projects as a Full 
 Before running this project, make sure you have the following installed on your system:
 
 - **Node.js**: Version 22 or higher (required)
-- **pnpm**: Package manager (npm didn't work properly for this project)
+- **npm**: Ships with Node.js, so no separate install needed
 
 ### Installing Node.js v22
 
@@ -32,14 +32,6 @@ If you don't have Node.js v22, you can install it using:
   nvm install 22
   nvm use 22
   ```
-
-### Installing pnpm
-
-If you don't have pnpm installed:
-
-```bash
-npm install -g pnpm
-```
 
 ---
 
@@ -55,13 +47,13 @@ cd portfolio_Proj
 ### 2. Install dependencies
 
 ```bash
-pnpm install
+npm install
 ```
 
 ### 3. Run the development server
 
 ```bash
-pnpm dev
+npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to see the result.
@@ -70,9 +62,9 @@ Open [http://localhost:3000](http://localhost:3000) in your browser to see the r
 
 ## 📜 Available Scripts
 
-This project includes several scripts that you can run with pnpm:
+This project includes several scripts that you can run with npm:
 
-### `pnpm dev`
+### `npm run dev`
 
 Starts the development server on [http://localhost:3000](http://localhost:3000)
 
@@ -80,7 +72,7 @@ Starts the development server on [http://localhost:3000](http://localhost:3000)
 - Automatic compilation of TypeScript and CSS
 - Best for development and testing
 
-### `pnpm build`
+### `npm run build`
 
 Creates an optimized production build
 
@@ -89,15 +81,15 @@ Creates an optimized production build
 - Generates static files in `.next` folder
 - Required before deployment
 
-### `pnpm start`
+### `npm start`
 
 Starts the production server
 
-- Serves the optimized build created by `pnpm build`
-- Must run `pnpm build` first
+- Serves the optimized build created by `npm run build`
+- Must run `npm run build` first
 - Used for production deployment
 
-### `pnpm lint`
+### `npm run lint`
 
 Runs ESLint to check code quality
 
@@ -116,13 +108,11 @@ portfolio_Proj/
 │   ├── layout.tsx         # Root layout component
 │   └── page.tsx           # Home page
 ├── components/            # Reusable React components
-│   ├── ui/               # UI components (shadcn/ui)
 │   ├── hero.tsx          # Hero section
 │   ├── about.tsx         # About section
-│   ├── projects.tsx      # Projects showcase
+│   ├── web-projects.tsx  # Web projects showcase
+│   ├── mobile-projects.tsx # Mobile projects showcase
 │   └── ...               # Other components
-├── hooks/                # Custom React hooks
-├── lib/                  # Utility functions
 ├── public/               # Static assets
 ├── styles/               # Additional styles
 └── package.json          # Project dependencies and scripts
@@ -152,19 +142,19 @@ This portfolio is built using modern web technologies:
 
 1. Push your code to GitHub
 2. Connect your repository to Netlify
-3. Set build command: `pnpm build`
+3. Set build command: `npm run build`
 4. Set publish directory: `.next`
 5. Deploy!
 
 ### Using Vercel
 
-1. Install Vercel CLI: `pnpm add -g vercel`
+1. Install Vercel CLI: `npm install -g vercel`
 2. Run: `vercel`
 3. Follow the prompts
 
 ### Manual Deployment
 
-1. Build the project: `pnpm build`
+1. Build the project: `npm run build`
 2. Upload the `.next` folder to your hosting provider
 3. Ensure Node.js v22+ is available on the server
 
@@ -175,7 +165,7 @@ This portfolio is built using modern web technologies:
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
 3. Make your changes
-4. Run linting: `pnpm lint`
+4. Run linting: `npm run lint`
 5. Commit your changes: `git commit -m 'Add some feature'`
 6. Push to the branch: `git push origin feature-name`
 7. Submit a pull request
@@ -186,21 +176,17 @@ This portfolio is built using modern web technologies:
 
 ### Common Issues
 
-**Issue**: `pnpm install` fails
+**Issue**: `npm install` fails
 
-- **Solution**: Make sure you're using Node.js v22+ and have pnpm installed globally
-
-**Issue**: `npm install` doesn't work
-
-- **Solution**: This project requires pnpm. Use `pnpm install` instead
+- **Solution**: Make sure you're using Node.js v22+, then delete `node_modules` and `package-lock.json` and run `npm install` again.
 
 **Issue**: Build fails with TypeScript errors
 
-- **Solution**: Run `pnpm lint` to check for type errors and fix them
+- **Solution**: Run `npm run lint` to check for type errors and fix them
 
 **Issue**: Styles not loading properly
 
-- **Solution**: Make sure Tailwind CSS is properly configured and run `pnpm dev` again
+- **Solution**: Make sure Tailwind CSS is properly configured and run `npm run dev` again
 
 ---
 

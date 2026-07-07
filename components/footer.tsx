@@ -2,14 +2,8 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import {
-  Github,
-  Linkedin,
-  Twitter,
-  Mail,
-  Briefcase,
-  Users,
-} from "lucide-react";
+import { Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -41,18 +35,19 @@ const Footer = () => {
               Muneeb Nawaz
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
-              Full Stack Developer specializing in MERN stack and React Native
-              development with 6+ years of experience building innovative web
-              and mobile solutions.
+              Sr. Full Stack Developer and Solution Architect with 6+ years of
+              experience. I build scalable web and mobile products with the MERN
+              stack and React Native, and AI systems with LLMs, RAG, and
+              intelligent agents.
             </p>
             <div className="flex space-x-4">
               <Link
-                href="https://github.com/MnbNwz"
+                href="https://github.com/muneebnawaz018"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-purple-400 transition-colors"
               >
-                <Github size={24} />
+                <GithubIcon size={24} />
               </Link>
               <Link
                 href="https://www.linkedin.com/in/muneeb-nawaz-a6272419b/"
@@ -60,15 +55,7 @@ const Footer = () => {
                 rel="noopener noreferrer"
                 className="text-gray-400 hover:text-purple-400 transition-colors"
               >
-                <Linkedin size={24} />
-              </Link>
-              <Link
-                href="https://twitter.com/muneeb-nawaz"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-400 hover:text-purple-400 transition-colors"
-              >
-                <Twitter size={24} />
+                <LinkedinIcon size={24} />
               </Link>
               <Link
                 href="mailto:muneebnawaz2018@gmail.com"

@@ -5,15 +5,8 @@ import type React from "react";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import {
-  Mail,
-  Phone,
-  MapPin,
-  Send,
-  Github,
-  Linkedin,
-  Twitter,
-} from "lucide-react";
+import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import emailjs from "@emailjs/browser";
 
 const Contact = () => {
@@ -149,19 +142,14 @@ const Contact = () => {
 
   const socialLinks = [
     {
-      icon: <Github className="w-6 h-6" />,
+      icon: <GithubIcon className="w-6 h-6" />,
       name: "GitHub",
-      link: "https://github.com/MnbNwz",
+      link: "https://github.com/muneebnawaz018",
     },
     {
-      icon: <Linkedin className="w-6 h-6" />,
+      icon: <LinkedinIcon className="w-6 h-6" />,
       name: "LinkedIn",
       link: "https://www.linkedin.com/in/muneeb-nawaz-a6272419b/",
-    },
-    {
-      icon: <Twitter className="w-6 h-6" />,
-      name: "Twitter",
-      link: "https://twitter.com/muneeb-nawaz",
     },
   ];
 
@@ -247,7 +235,7 @@ const Contact = () => {
                     className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:scale-110"
                     aria-label="LinkedIn"
                   >
-                    <Linkedin className="w-6 h-6" />
+                    <LinkedinIcon className="w-6 h-6" />
                   </a>
                   <a
                     href="https://www.fiverr.com/s/xXVE74B"
@@ -361,7 +349,7 @@ const Contact = () => {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-full hover:opacity-90 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 animate-pulse-glow hover:scale-105"
+                    className="w-full md:w-auto px-8 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-full ring-1 ring-white/20 hover:brightness-110 hover:shadow-lg hover:shadow-purple-500/40 transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 animate-pulse-glow hover:scale-105"
                   >
                     {isSubmitting ? (
                       <>

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
+import SkillConstellation from "@/components/skill-constellation";
 
 const TechStack = () => {
   const [ref, inView] = useInView({
@@ -37,15 +38,17 @@ const TechStack = () => {
         "Vue.js",
         "Angular",
         "TypeScript",
-        "JavaScript",
-        "HTML5 & CSS3",
+        "Redux / Pinia / NgRx",
+        "TanStack Query",
         "Tailwind CSS",
-        "UI Libraries",
-        "CSS Libraries",
-        "SASS",
-        "Context API",
-        "State Management Libraries",
-        "Styled Components",
+        "Design Systems (Storybook)",
+        "SSR / SSG",
+        "PWA / Service Workers",
+        "Micro-frontends",
+        "Vite / Webpack / Module Federation",
+        "Web Performance",
+        "Accessibility (WCAG / ARIA)",
+        "i18n / Localization",
       ],
     },
     {
@@ -54,42 +57,73 @@ const TechStack = () => {
         "Node.js",
         "Express.js",
         "NestJS",
+        "Fastify",
         "Django",
+        "FastAPI",
         "Flask",
-        "ASP.NET",
-        "RESTful APIs",
-        "GraphQL",
-        "JWT",
-        "OAuth 2.0",
-        "Passport.js",
-        "Firebase Auth",
+        "REST / GraphQL / gRPC / tRPC",
+        "WebSockets / Socket.io",
+        "Microservices & Modular Monolith",
+        "Domain-Driven Design (DDD)",
+        "Event-Driven Architecture",
+        "Kafka / RabbitMQ / Celery",
+        "Caching & CDN",
+        "Distributed Systems & Scalability",
+        "Serverless (AWS Lambda)",
+        "i18n / Localization",
+      ],
+    },
+    {
+      name: "AI & Machine Learning",
+      technologies: [
+        "GPT / LLMs",
+        "Multi-model (OpenAI / Anthropic / Gemini)",
+        "LangChain",
+        "Vercel AI SDK / LlamaIndex",
+        "RAG",
+        "Embeddings & Semantic Search",
+        "Vector Databases",
+        "Conversational AI & Agents",
+        "Function / Tool Calling",
+        "MCP (Model Context Protocol)",
+        "Prompt Engineering",
+        "Structured Outputs",
+        "Streaming Responses",
+        "LLM Observability (LangSmith / Langfuse)",
       ],
     },
     {
       name: "Mobile",
       technologies: [
         "React Native",
-        "Flutter",
         "Expo",
-        "Android Studio",
-        "Xcode",
-        "Navigation",
-        "App Store Deployment",
-        "Google Play Deployment",
-        "Fastlane",
+        "Cross-Platform (iOS & Android)",
+        "Native Modules & Bridges",
+        "Deep Linking / Universal Links",
+        "Offline-First Architecture",
+        "App Performance Optimization",
+        "Push Notifications & Real-time",
+        "OTA Updates / CodePush",
+        "Mobile Security",
+        "Apple / Google Wallet",
+        "App Store & Play Deployment (Fastlane)",
       ],
     },
     {
-      name: "Database",
+      name: "Databases & Data",
       technologies: [
-        "MongoDB",
         "PostgreSQL",
         "MySQL",
-        "SQLite",
+        "MongoDB",
+        "DynamoDB",
         "Redis",
         "Firebase",
-        "DynamoDB",
         "Supabase",
+        "Elasticsearch / OpenSearch",
+        "Data Warehousing (Snowflake / BigQuery / Redshift)",
+        "Sharding & Replication",
+        "Indexing & Query Optimization",
+        "Mongoose / Prisma / SQLAlchemy",
       ],
     },
     {
@@ -97,33 +131,25 @@ const TechStack = () => {
       technologies: [
         "AWS",
         "Google Cloud",
-        "Vercel",
-        "Netlify",
         "Docker",
         "Kubernetes",
-        "CI/CD",
-        "GitHub Actions",
-        "Jenkins",
+        "GitOps (ArgoCD / Helm)",
+        "Terraform",
+        "GitHub Actions / Jenkins",
+        "NGINX",
+        "Vercel / Netlify",
       ],
     },
     {
-      name: "Tools & Others",
+      name: "Security & Quality",
       technologies: [
-        "Git",
-        "GitHub",
-        "GitLab",
-        "Jira",
-        "Figma",
-        "Adobe XD",
-        "Postman",
-        "Swagger",
-        "GraphQL",
-        "REST API",
-        "WebSockets",
-        "Socket.io",
-        "MQTT",
-        "JWT",
-        "OAuth",
+        "Auth (JWT / OAuth2 / OIDC)",
+        "RBAC / ABAC / PBAC (Cedar)",
+        "OWASP / Encryption / SSL",
+        "Testing (Unit / Integration / E2E)",
+        "Jest / Cypress / Playwright",
+        "Monitoring (Sentry / Datadog / Grafana)",
+        "Core Web Vitals / Lighthouse",
       ],
     },
   ];
@@ -157,37 +183,15 @@ const TechStack = () => {
             </p>
           </motion.div>
 
-          <motion.div variants={containerVariants} className="space-y-10">
+          <motion.div variants={containerVariants} className="space-y-6">
             {techCategories.map((category, index) => (
-              <motion.div
+              <SkillConstellation
                 key={index}
-                variants={itemVariants}
-                className="space-y-4"
-              >
-                <h3 className="text-xl font-semibold text-gray-900 dark:text-white inline-block relative animated-underline">
-                  {category.name}
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {category.technologies.map((tech, techIndex) => (
-                    <motion.div
-                      key={techIndex}
-                      initial={{ opacity: 0, scale: 0.8 }}
-                      animate={
-                        inView
-                          ? { opacity: 1, scale: 1 }
-                          : { opacity: 0, scale: 0.8 }
-                      }
-                      transition={{
-                        duration: 0.4,
-                        delay: techIndex * 0.05 + index * 0.1,
-                      }}
-                      className="px-4 py-2 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-100 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-purple-400 transition-colors hover:-translate-y-1 hover:shadow-md"
-                    >
-                      {tech}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
+                name={category.name}
+                technologies={category.technologies}
+                index={index}
+                inView={inView}
+              />
             ))}
           </motion.div>
         </motion.div>

@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { CheckCircle, Calendar, Users } from "lucide-react";
+import CountUp from "@/components/count-up";
 
 const About = () => {
   const [ref, inView] = useInView({
@@ -32,21 +33,24 @@ const About = () => {
 
   const stats = [
     {
-      value: "6+",
+      end: 6,
+      suffix: "+",
       label: "Years Experience",
       icon: (
         <Calendar className="w-5 h-5 text-purple-600 dark:text-purple-400" />
       ),
     },
     {
-      value: "50+",
+      end: 50,
+      suffix: "+",
       label: "Projects Completed",
       icon: (
         <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
       ),
     },
     {
-      value: "20+",
+      end: 20,
+      suffix: "+",
       label: "Happy Clients",
       icon: <Users className="w-5 h-5 text-purple-600 dark:text-purple-400" />,
     },
@@ -76,8 +80,8 @@ const About = () => {
               About <span className="gradient-text">Me</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              A passionate Full Stack Developer with expertise in building
-              exceptional digital experiences
+              A Sr. Full Stack Developer & Solution Architect building scalable,
+              secure, AI-powered web and mobile products
             </p>
           </motion.div>
 
@@ -98,29 +102,31 @@ const About = () => {
                 variants={itemVariants}
                 className="text-2xl font-bold text-gray-900 dark:text-white"
               >
-                Full Stack Developer & Mobile App Developer
+                Sr. Full Stack Developer & Solution Architect
               </motion.h3>
 
               <motion.p
                 variants={itemVariants}
                 className="text-gray-600 dark:text-gray-400"
               >
-                I'm Muneeb Nawaz, a passionate Full Stack Developer with over 6
-                years of experience specializing in MERN stack and React Native
-                development. I have a strong foundation in building scalable web
-                and mobile applications that deliver exceptional user
-                experiences.
+                I'm Muneeb Nawaz, a Sr. Full Stack Developer and Solution
+                Architect with over 6 years of experience. I help startups and
+                growing businesses build scalable web applications and AI-powered
+                products with the MERN stack, React Native, and Next.js. I focus
+                on systems that stay reliable, secure, and ready to grow over
+                time.
               </motion.p>
 
               <motion.p
                 variants={itemVariants}
                 className="text-gray-600 dark:text-gray-400"
               >
-                My expertise spans across frontend and backend technologies,
-                allowing me to create comprehensive solutions from concept to
-                deployment. I'm dedicated to writing clean, maintainable code
-                and implementing best practices to ensure optimal performance
-                and user satisfaction.
+                I deliver complete solutions from planning and architecture
+                through development and deployment: full-stack applications,
+                AI-integrated features (GPT, RAG, conversational AI, and
+                intelligent automation), and cloud-ready systems on AWS with
+                Docker, Kubernetes, and CI/CD. My focus is performance,
+                maintainability, and scalability as products grow.
               </motion.p>
 
               <motion.div
@@ -146,6 +152,12 @@ const About = () => {
                       System Architecture
                     </span>
                   </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                    <span className="text-gray-700 dark:text-gray-300">
+                      AI Integration
+                    </span>
+                  </div>
                 </div>
                 <div className="space-y-2">
                   <div className="flex items-center gap-2">
@@ -164,6 +176,12 @@ const About = () => {
                     <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
                     <span className="text-gray-700 dark:text-gray-300">
                       Cloud Infrastructure
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle className="w-5 h-5 text-purple-600 dark:text-purple-400" />
+                    <span className="text-gray-700 dark:text-gray-300">
+                      API Development
                     </span>
                   </div>
                 </div>
@@ -187,7 +205,7 @@ const About = () => {
                   </div>
                 </div>
                 <h3 className="text-3xl font-bold text-gray-900 dark:text-white mb-1 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors">
-                  {stat.value}
+                  <CountUp end={stat.end} suffix={stat.suffix} />
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400">{stat.label}</p>
               </motion.div>

@@ -26,6 +26,7 @@ const Navbar = () => {
       const sections = [
         "home",
         "about",
+        "experience",
         "skills",
         "tech-stack",
         "services",
@@ -57,13 +58,21 @@ const Navbar = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
 
+  // Order mirrors the landing page sections; `sections` lists the ids that
+  // mark a link active while scrolled into view.
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "About", href: "#about" },
-    { name: "Skills", href: "#skills" },
-    { name: "Projects", href: "#web-projects" },
-    { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home", sections: ["home"] },
+    { name: "About", href: "#about", sections: ["about"] },
+    { name: "Experience", href: "#experience", sections: ["experience"] },
+    { name: "Skills", href: "#skills", sections: ["skills"] },
+    { name: "Tech Stack", href: "#tech-stack", sections: ["tech-stack"] },
+    { name: "Services", href: "#services", sections: ["services"] },
+    {
+      name: "Projects",
+      href: "#web-projects",
+      sections: ["web-projects", "mobile-projects"],
+    },
+    { name: "Contact", href: "#contact", sections: ["contact"] },
   ];
 
   return (
@@ -78,7 +87,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link
             href="#home"
-            className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white"
+            className="font-display text-xl md:text-2xl font-bold text-gray-900 dark:text-white"
           >
             <span className="gradient-text">Muneeb</span> Nawaz
           </Link>
@@ -86,17 +95,7 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-1">
             {navLinks.map((link) => {
-              const isActive =
-                (link.href === "#home" && activeSection === "home") ||
-                (link.href === "#about" && activeSection === "about") ||
-                (link.href === "#skills" &&
-                  (activeSection === "skills" ||
-                    activeSection === "tech-stack")) ||
-                (link.href === "#web-projects" &&
-                  (activeSection === "web-projects" ||
-                    activeSection === "mobile-projects")) ||
-                (link.href === "#services" && activeSection === "services") ||
-                (link.href === "#contact" && activeSection === "contact");
+              const isActive = link.sections.includes(activeSection);
 
               return (
                 <Link
@@ -165,18 +164,7 @@ const Navbar = () => {
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-2">
                 {navLinks.map((link) => {
-                  const isActive =
-                    (link.href === "#home" && activeSection === "home") ||
-                    (link.href === "#about" && activeSection === "about") ||
-                    (link.href === "#skills" &&
-                      (activeSection === "skills" ||
-                        activeSection === "tech-stack")) ||
-                    (link.href === "#web-projects" &&
-                      (activeSection === "web-projects" ||
-                        activeSection === "mobile-projects")) ||
-                    (link.href === "#services" &&
-                      activeSection === "services") ||
-                    (link.href === "#contact" && activeSection === "contact");
+                  const isActive = link.sections.includes(activeSection);
 
                   return (
                     <Link

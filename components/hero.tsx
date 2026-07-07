@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Download, Github, Linkedin, Mail } from "lucide-react";
+import { ChevronDown, Download, Mail } from "lucide-react";
+import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import VanillaTilt from "vanilla-tilt";
+import Magnetic from "@/components/magnetic";
 
 const Hero = () => {
   const tiltRef = useRef<HTMLDivElement>(null);
@@ -25,7 +27,7 @@ const Hero = () => {
     }
   }, []);
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -36,7 +38,7 @@ const Hero = () => {
     },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { y: 20, opacity: 0 },
     visible: {
       y: 0,
@@ -47,12 +49,12 @@ const Hero = () => {
 
   const socialLinks = [
     {
-      icon: <Github className="w-5 h-5" />,
-      href: "https://github.com/MnbNwz",
+      icon: <GithubIcon className="w-5 h-5" />,
+      href: "https://github.com/muneebnawaz018",
       label: "GitHub",
     },
     {
-      icon: <Linkedin className="w-5 h-5" />,
+      icon: <LinkedinIcon className="w-5 h-5" />,
       href: "https://www.linkedin.com/in/muneeb-nawaz-a6272419b/",
       label: "LinkedIn",
     },
@@ -94,15 +96,21 @@ const Hero = () => {
             >
               <TypeAnimation
                 sequence={[
-                  "Web Developer",
+                  "Sr. Full Stack Developer",
                   1000,
-                  "Full Stack Developer",
+                  "Backend & Microservices Engineer",
                   1000,
-                  "React Native Developer",
+                  "AI Engineer (LLMs & Agents)",
                   1000,
-                  "Cloud Engineer",
+                  "Web & Mobile App Developer",
                   1000,
-                  "System Architect",
+                  "Database & Data Engineer",
+                  1000,
+                  "AWS Cloud Engineer",
+                  1000,
+                  "DevOps Engineer (K8s / Terraform)",
+                  1000,
+                  "Solution Architect",
                   1000,
                 ]}
                 wrapper="span"
@@ -115,29 +123,33 @@ const Hero = () => {
               variants={itemVariants}
               className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg"
             >
-              I build exceptional digital experiences that are fast, accessible,
-              visually appealing, and responsive. With expertise in both web and
-              mobile development, I create solutions that drive business growth.
+              I design and ship fast, secure, scalable web and mobile apps, plus
+              AI features built on LLMs, RAG, and agents. 6+ years turning
+              complex ideas into production systems.
             </motion.p>
 
             <motion.div
               variants={itemVariants}
               className="flex flex-wrap gap-4 mb-8"
             >
-              <Link
-                href="#contact"
-                className="px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-full hover:opacity-90 transition-all duration-300 hover:shadow-lg animate-pulse-glow shine"
-              >
-                Get In Touch
-              </Link>
-              <Link
-                href="/resume.pdf"
-                target="_blank"
-                className="px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 flex items-center gap-2"
-              >
-                <Download size={18} />
-                <span>Download CV</span>
-              </Link>
+              <Magnetic className="inline-block">
+                <Link
+                  href="#contact"
+                  className="inline-block px-6 py-3 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-medium rounded-full hover:opacity-90 transition-all duration-300 hover:shadow-lg animate-pulse-glow shine"
+                >
+                  Get In Touch
+                </Link>
+              </Magnetic>
+              <Magnetic className="inline-block">
+                <Link
+                  href="/resume.pdf"
+                  target="_blank"
+                  className="px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 flex items-center gap-2"
+                >
+                  <Download size={18} />
+                  <span>Download CV</span>
+                </Link>
+              </Magnetic>
             </motion.div>
 
             <motion.div
