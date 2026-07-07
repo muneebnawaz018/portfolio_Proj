@@ -1,21 +1,21 @@
 # 🧑‍💻 Portfolio Project
 
-A modern, responsive portfolio website showcasing skills and projects as a Full Stack Developer. Built with cutting-edge technologies including Next.js 15, TypeScript, Tailwind CSS, and Framer Motion for smooth animations. Features a clean design with dark/light theme support, interactive contact form, and optimized performance.
+A modern, responsive portfolio for Muneeb Nawaz, Sr. Full Stack Developer and Solution Architect. It covers full-stack, mobile, and AI work, and is built with Next.js 15, React 19, TypeScript, Tailwind CSS, and Framer Motion. Highlights: dark/light themes, an interactive particle background, an EmailJS contact form, and a focus on performance.
 
 🔗 **Live Portfolio**: [muneeb-nawaz-portfolio.netlify.app](https://muneeb-nawaz-portfolio.netlify.app)
 
-### ⚡ Key Technologies
+## ⚡ Key Technologies
 
 - **Next.js 15** with App Router
+- **React 19**
 - **TypeScript** for type safety
 - **Tailwind CSS** for styling
 - **Framer Motion** for animations
-- **shadcn/ui** components
-- **EmailJS** for contact form
+- **EmailJS** for the contact form
 
 ---
 
-## � Prerequisites
+## 📋 Prerequisites
 
 Before running this project, make sure you have the following installed on your system:
 
@@ -28,6 +28,7 @@ If you don't have Node.js v22, you can install it using:
 
 - Download from [nodejs.org](https://nodejs.org/)
 - Or use a version manager like `nvm`:
+
   ```bash
   nvm install 22
   nvm use 22
@@ -35,7 +36,7 @@ If you don't have Node.js v22, you can install it using:
 
 ---
 
-## �🚀 Getting Started
+## 🚀 Getting Started
 
 ### 1. Clone the repository
 
@@ -101,9 +102,9 @@ Runs ESLint to check code quality
 
 ## 🏗️ Project Structure
 
-```
+```text
 portfolio_Proj/
-├── app/                    # Next.js 13+ app directory
+├── app/                    # Next.js App Router directory
 │   ├── globals.css        # Global styles
 │   ├── layout.tsx         # Root layout component
 │   └── page.tsx           # Home page
@@ -114,7 +115,6 @@ portfolio_Proj/
 │   ├── mobile-projects.tsx # Mobile projects showcase
 │   └── ...               # Other components
 ├── public/               # Static assets
-├── styles/               # Additional styles
 └── package.json          # Project dependencies and scripts
 ```
 
@@ -124,14 +124,13 @@ portfolio_Proj/
 
 This portfolio is built using modern web technologies:
 
-- **Framework**: [Next.js 15.2.4](https://nextjs.org/) - React framework with App Router
+- **Framework**: [Next.js 15](https://nextjs.org/) - React framework with App Router
+- **Library**: [React 19](https://react.dev/)
 - **Language**: [TypeScript](https://www.typescriptlang.org/) - Type-safe JavaScript
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/) - Utility-first CSS framework
-- **UI Components**: [shadcn/ui](https://ui.shadcn.com/) - Beautiful UI components
 - **Animations**: [Framer Motion](https://www.framer.com/motion/) - Motion library for React
-- **Forms**: [React Hook Form](https://react-hook-form.com/) + [Zod](https://zod.dev/) validation
-- **Email**: [EmailJS](https://www.emailjs.com/) - Contact form integration
-- **Icons**: [Lucide React](https://lucide.dev/) - Beautiful & consistent icons
+- **Contact form**: [EmailJS](https://www.emailjs.com/) - Client-side email delivery
+- **Icons**: [Lucide React](https://lucide.dev/) - Consistent icon set
 - **Deployment**: [Netlify](https://www.netlify.com/) - Fast and reliable hosting
 
 ---
@@ -160,7 +159,7 @@ This portfolio is built using modern web technologies:
 
 ---
 
-## � Contributing
+## 🤝 Contributing
 
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feature-name`
@@ -194,9 +193,9 @@ This portfolio is built using modern web technologies:
 
 Feel free to connect or collaborate!
 
-- **Email**: muneebnawaz2018@gmail.com
+- **Email**: [muneebnawaz2018@gmail.com](mailto:muneebnawaz2018@gmail.com)
 - **LinkedIn**: [linkedin.com/in/muneeb-nawaz-a6272419b](https://www.linkedin.com/in/muneeb-nawaz-a6272419b/)
-- **GitHub**: [github.com/MnbNwz](https://github.com/MnbNwz)
+- **GitHub**: [github.com/muneebnawaz018](https://github.com/muneebnawaz018)
 
 ---
 

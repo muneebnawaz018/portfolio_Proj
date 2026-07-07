@@ -123,9 +123,10 @@ const Hero = () => {
               variants={itemVariants}
               className="text-base md:text-lg text-gray-600 dark:text-gray-400 mb-8 max-w-lg"
             >
-              I design and ship fast, secure, scalable web and mobile apps, plus
-              AI features built on LLMs, RAG, and agents. 6+ years turning
-              complex ideas into production systems.
+              I architect and ship secure, scalable systems end to end: web and
+              mobile apps, AI features (LLMs, RAG, agents), and the cloud
+              backends that run them. 6+ years taking complex products from
+              design to production.
             </motion.p>
 
             <motion.div
