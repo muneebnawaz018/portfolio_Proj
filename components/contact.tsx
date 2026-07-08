@@ -5,9 +5,19 @@ import type React from "react";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Send, AlertCircle } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import emailjs from "@emailjs/browser";
+
+// Module-scope so its identity is stable across renders (a component defined
+// inside Contact would remount on every keystroke and trip Fast Refresh).
+const FieldError = ({ msg }: { msg?: string }) =>
+  msg ? (
+    <p className="mt-1.5 flex items-center gap-1.5 text-sm text-red-500 dark:text-red-400">
+      <AlertCircle size={14} className="shrink-0" />
+      <span>{msg}</span>
+    </p>
+  ) : null;
 
 const Contact = () => {
   const [ref, inView] = useInView({
@@ -19,6 +29,19 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  const clearError = (field: string) =>
+    setErrors((prev) => (prev[field] ? { ...prev, [field]: "" } : prev));
+
+  // Shared input styling. Turns the ring and border red when a field has an
+  // error so validation reads in-theme instead of the browser's native bubble.
+  const fieldClass = (err?: string) =>
+    `w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white transition-colors ${
+      err
+        ? "border-red-400 dark:border-red-500"
+        : "border-gray-300 dark:border-gray-600"
+    }`;
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -43,29 +66,32 @@ const Contact = () => {
     if (!form.current) return false;
 
     const formElements = form.current.elements as HTMLFormControlsCollection;
-    const name = (
-      formElements.namedItem("user_name") as HTMLInputElement
-    )?.value.trim();
-    const email = (
-      formElements.namedItem("user_email") as HTMLInputElement
-    )?.value.trim();
-    const message = (
-      formElements.namedItem("message") as HTMLTextAreaElement
-    )?.value.trim();
+    const val = (n: string) =>
+      (formElements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement)
+        ?.value.trim() ?? "";
 
-    if (!name || !email || !message) {
-      setSubmitError("All fields are required.");
-      return false;
-    }
+    const name = val("user_name");
+    const email = val("user_email");
+    const subject = val("subject");
+    const message = val("message");
 
-    // Basic email format validation
+    const next: Record<string, string> = {};
+    if (!name) next.user_name = "Please enter your name.";
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailPattern.test(email)) {
-      setSubmitError("Please enter a valid email address.");
+    if (!email) next.user_email = "Please enter your email.";
+    else if (!emailPattern.test(email))
+      next.user_email = "Enter a valid email address.";
+    if (!subject) next.subject = "Please add a subject.";
+    if (!message) next.message = "Please write a message.";
+
+    setErrors(next);
+    setSubmitError("");
+
+    const firstInvalid = Object.keys(next)[0];
+    if (firstInvalid) {
+      (formElements.namedItem(firstInvalid) as HTMLElement | null)?.focus();
       return false;
     }
-
-    setSubmitError("");
     return true;
   };
 
@@ -85,6 +111,7 @@ const Contact = () => {
         ?.value,
       from_email: (formElements.namedItem("user_email") as HTMLInputElement)
         ?.value,
+      subject: (formElements.namedItem("subject") as HTMLInputElement)?.value,
       message: (formElements.namedItem("message") as HTMLTextAreaElement)
         ?.value,
     };
@@ -103,6 +130,7 @@ const Contact = () => {
           console.log(result.text);
           setSubmitSuccess(true);
           form.current?.reset();
+          setErrors({});
           setIsSubmitting(false);
 
           // Reset success message after 5 seconds
@@ -278,7 +306,7 @@ const Contact = () => {
             </motion.div>
 
             <div className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 gradient-border">
-              <form ref={form} onSubmit={handleSubmit} className="space-y-6">
+              <form ref={form} onSubmit={handleSubmit} noValidate className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label
@@ -292,9 +320,12 @@ const Contact = () => {
                       id="user_name"
                       name="user_name"
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                      aria-invalid={!!errors.user_name}
+                      onChange={() => clearError("user_name")}
+                      className={fieldClass(errors.user_name)}
                       placeholder="John Doe"
                     />
+                    <FieldError msg={errors.user_name} />
                   </div>
                   <div>
                     <label
@@ -308,9 +339,12 @@ const Contact = () => {
                       id="user_email"
                       name="user_email"
                       required
-                      className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                      aria-invalid={!!errors.user_email}
+                      onChange={() => clearError("user_email")}
+                      className={fieldClass(errors.user_email)}
                       placeholder="john@example.com"
                     />
+                    <FieldError msg={errors.user_email} />
                   </div>
                 </div>
                 <div>
@@ -325,9 +359,12 @@ const Contact = () => {
                     id="subject"
                     name="subject"
                     required
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white"
+                    aria-invalid={!!errors.subject}
+                    onChange={() => clearError("subject")}
+                    className={fieldClass(errors.subject)}
                     placeholder="Project Inquiry"
                   />
+                  <FieldError msg={errors.subject} />
                 </div>
                 <div>
                   <label
@@ -341,9 +378,12 @@ const Contact = () => {
                     name="message"
                     required
                     rows={5}
-                    className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent bg-white dark:bg-gray-700 text-gray-900 dark:text-white resize-none"
+                    aria-invalid={!!errors.message}
+                    onChange={() => clearError("message")}
+                    className={`${fieldClass(errors.message)} resize-none`}
                     placeholder="Your message here..."
                   ></textarea>
+                  <FieldError msg={errors.message} />
                 </div>
                 <div>
                   <button
@@ -365,15 +405,16 @@ const Contact = () => {
                   </button>
                 </div>
                 {submitSuccess && (
-                  <div className="p-3 bg-green-100 text-green-700 rounded-lg">
+                  <div className="p-3 rounded-lg border border-green-200 dark:border-green-800/50 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-400">
                     Your message has been sent successfully!
                     <span className="gradient-text">&nbsp;Muneeb</span> will get
                     back to you soon.
                   </div>
                 )}
                 {submitError && (
-                  <div className="p-3 bg-red-100 text-red-700 rounded-lg">
-                    {submitError}
+                  <div className="flex items-center gap-2 p-3 rounded-lg border border-red-200 dark:border-red-800/50 bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400">
+                    <AlertCircle size={16} className="shrink-0" />
+                    <span>{submitError}</span>
                   </div>
                 )}
               </form>

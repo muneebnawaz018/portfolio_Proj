@@ -4,9 +4,11 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
+import { getYearsExperience } from "@/lib/experience";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
+  const years = getYearsExperience();
 
   const footerVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -35,7 +37,7 @@ const Footer = () => {
               Muneeb Nawaz
             </Link>
             <p className="text-gray-400 mb-6 max-w-md">
-              Sr. Full Stack Developer and Solution Architect with 6+ years of
+              Sr. Full Stack Developer and Solution Architect with {years}+ years of
               experience. I build scalable web and mobile products with the MERN
               stack and React Native, and AI systems with LLMs, RAG, and
               intelligent agents.

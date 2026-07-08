@@ -3,9 +3,11 @@
 import { motion, type Variants } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Briefcase } from "lucide-react";
+import { getYearsExperience } from "@/lib/experience";
 
 const Experience = () => {
   const [ref, inView] = useInView({ triggerOnce: true, threshold: 0.1 });
+  const years = getYearsExperience();
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -116,7 +118,7 @@ const Experience = () => {
               Work <span className="gradient-text">Experience</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              6+ years designing and shipping scalable full-stack, mobile, and
+              {years}+ years designing and shipping scalable full-stack, mobile, and
               AI-powered systems.
             </p>
           </motion.div>

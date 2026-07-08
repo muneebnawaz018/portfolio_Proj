@@ -9,11 +9,13 @@ import { ChevronDown, Download, Mail } from "lucide-react";
 import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
 import VanillaTilt from "vanilla-tilt";
 import Magnetic from "@/components/magnetic";
+import { getYearsExperience } from "@/lib/experience";
 
 const Hero = () => {
   const tiltRef = useRef<HTMLDivElement>(null);
   const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const years = getYearsExperience();
 
   useEffect(() => {
     setMounted(true);
@@ -125,7 +127,7 @@ const Hero = () => {
             >
               I architect and ship secure, scalable systems end to end: web and
               mobile apps, AI features (LLMs, RAG, agents), and the cloud
-              backends that run them. 6+ years taking complex products from
+              backends that run them. {years}+ years taking complex products from
               design to production.
             </motion.p>
 
@@ -222,8 +224,15 @@ const Hero = () => {
                   />
                 )}
               </div>
-              <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-white dark:bg-gray-800 rounded-full border-4 border-purple-600 dark:border-purple-500 flex items-center justify-center shadow-lg animate-float z-20">
-                <span className="text-3xl">👨‍💻</span>
+              <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center shadow-lg animate-float z-20">
+                <span className="font-mono text-2xl font-extrabold tracking-tighter gradient-text select-none">
+                  &lt;/&gt;
+                </span>
+                {/* availability pulse — signals open to work */}
+                <span className="absolute top-0.5 right-0.5 flex h-3 w-3">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75" />
+                  <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500 border-2 border-white dark:border-gray-800" />
+                </span>
               </div>
             </div>
           </motion.div>

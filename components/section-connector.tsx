@@ -20,9 +20,9 @@ const SectionConnector = () => (
           y2="96"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stopColor="#9333ea" stopOpacity="0" />
-          <stop offset="0.5" stopColor="#a855f7" />
-          <stop offset="1" stopColor="#3b82f6" stopOpacity="0" />
+          <stop stopColor="#9333ea" stopOpacity="0.25" />
+          <stop offset="0.5" stopColor="#7c3aed" />
+          <stop offset="1" stopColor="#2563eb" stopOpacity="0.25" />
         </linearGradient>
       </defs>
 
@@ -32,7 +32,7 @@ const SectionConnector = () => (
         x2="12"
         y2="92"
         stroke="url(#connector-grad)"
-        strokeWidth="1.5"
+        strokeWidth="2.5"
         strokeDasharray="3 5"
         strokeLinecap="round"
         initial={{ pathLength: 0, opacity: 0 }}

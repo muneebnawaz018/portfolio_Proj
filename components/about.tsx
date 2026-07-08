@@ -5,12 +5,15 @@ import { useInView } from "react-intersection-observer";
 import Image from "next/image";
 import { CheckCircle, Calendar, Users } from "lucide-react";
 import CountUp from "@/components/count-up";
+import { getYearsExperience } from "@/lib/experience";
 
 const About = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
   });
+
+  const years = getYearsExperience();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -33,7 +36,7 @@ const About = () => {
 
   const stats = [
     {
-      end: 6,
+      end: years,
       suffix: "+",
       label: "Years Experience",
       icon: (
@@ -110,7 +113,7 @@ const About = () => {
                 className="text-gray-600 dark:text-gray-400"
               >
                 I'm Muneeb Nawaz, a Sr. Full Stack Developer and Solution
-                Architect with over 6 years of experience. I help startups and
+                Architect with over {years} years of experience. I help startups and
                 growing businesses build scalable web applications and AI-powered
                 products with the MERN stack, React Native, and Next.js. I focus
                 on systems that stay reliable, secure, and ready to grow over
@@ -123,8 +126,8 @@ const About = () => {
               >
                 I deliver complete solutions from planning and architecture
                 through development and deployment: full-stack applications,
-                AI-integrated features (GPT, RAG, conversational AI, and
-                intelligent automation), and cloud-ready systems on AWS with
+                AI-integrated features (LLMs, RAG, conversational AI, and
+                autonomous agents), and cloud-ready systems on AWS with
                 Docker, Kubernetes, and CI/CD. My focus is performance,
                 maintainability, and scalability as products grow.
               </motion.p>
@@ -139,7 +142,7 @@ const About = () => {
                   "Backend & APIs",
                   "Databases & Data",
                   "AI Engineering",
-                  "Cloud & DevOps",
+                  "DevOps & Cloud",
                   "Security & Compliance",
                   "Solution Architecture",
                 ].map((item) => (

@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion"
 import { useInView } from "react-intersection-observer"
-import { Code, Smartphone, Globe, Server, Database, Cloud, Cpu, Lock, Bot } from "lucide-react"
+import { Smartphone, Globe, Server, Database, Cloud, Cpu, Lock, Bot, Activity } from "lucide-react"
 
 const Services = () => {
   const [ref, inView] = useInView({
@@ -34,55 +34,55 @@ const Services = () => {
       icon: <Globe className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
       title: "Web Application Development",
       description:
-        "Architecting and developing scalable, high-performance web applications using modern frameworks and microservices architecture. Implementing responsive designs with progressive enhancement for optimal user experience across all devices.",
-    },
-    {
-      icon: <Bot className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
-      title: "AI Integration & Solutions",
-      description:
-        "Designing and integrating GPT-based features, RAG systems, conversational AI, and intelligent automation into production applications. Building AI agents and chatbots, and embedding AI modules into existing systems to power real business workflows.",
+        "Fast, accessible web apps in React and Next.js, from marketing sites to data-heavy dashboards. Component systems, sensible state, and clean data flow that stay maintainable as the product grows.",
     },
     {
       icon: <Smartphone className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
       title: "Mobile App Development",
       description:
-        "Creating cross-platform mobile applications with React Native that leverage native device capabilities. Implementing offline-first architecture, efficient state management, and optimized rendering for smooth performance on both iOS and Android platforms.",
+        "Cross-platform iOS and Android apps in React Native and Expo, with offline-first data, native modules, deep linking, push, and payments. Shipped to the App Store and Google Play, including wallet and App Clip work.",
     },
     {
       icon: <Server className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
-      title: "Backend Architecture",
+      title: "Backend & Microservices",
       description:
-        "Designing robust server-side architectures with Node.js, Express, and other backend technologies. Implementing RESTful and GraphQL APIs, microservices, event-driven systems, and message queues for scalable and maintainable backend solutions.",
+        "APIs and services in Node.js and NestJS across REST, GraphQL, and gRPC, with event-driven messaging on Kafka or RabbitMQ. Circuit breakers, load balancing, and auto-scaling for systems that hold up under load.",
     },
     {
       icon: <Database className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
-      title: "Database Engineering",
+      title: "Database & Data Engineering",
       description:
-        "Designing efficient database schemas and implementing data models for relational and NoSQL databases. Optimizing query performance, implementing data sharding strategies, and creating robust data access layers with proper indexing and caching mechanisms.",
+        "Schema and data-model design across PostgreSQL, MongoDB, and Elasticsearch, with indexing, sharding, and replication for scale. Caching and warehousing on Snowflake, BigQuery, or Redshift when the data grows.",
+    },
+    {
+      icon: <Bot className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
+      title: "AI Engineering",
+      description:
+        "LLM features that do real work: RAG over your own data, conversational assistants, and autonomous agents, wired into production apps with the right guardrails, evaluation, and cost control.",
     },
     {
       icon: <Cloud className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
-      title: "Cloud Infrastructure & DevOps",
+      title: "Cloud & DevOps",
       description:
-        "Implementing CI/CD pipelines, containerization with Docker, and orchestration with Kubernetes. Designing cloud-native architectures on AWS, GCP, or Azure with infrastructure as code, automated scaling, and comprehensive monitoring solutions.",
+        "AWS-native infrastructure with Docker, Kubernetes, and Terraform. CI/CD pipelines, blue-green deploys, autoscaling, and monitoring so releases stay boring and the platform stays up.",
     },
     {
       icon: <Lock className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
-      title: "Security Implementation",
+      title: "Security & Compliance",
       description:
-        "Implementing robust security measures including authentication systems, authorization frameworks, and data encryption. Conducting security audits, implementing OWASP best practices, and ensuring compliance with data protection regulations.",
+        "Authentication and authorization done right with JWT, OAuth2, and OIDC, plus role and policy-based access (RBAC, ABAC, Cedar). OWASP hardening, encryption, TLS, and security headers built in from the start.",
+    },
+    {
+      icon: <Activity className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
+      title: "Testing & Observability",
+      description:
+        "Confidence in every release: unit, integration, and end-to-end tests with Jest, Cypress, and Playwright, plus monitoring and tracing through Sentry, Datadog, and Grafana, with Core Web Vitals kept in check.",
     },
     {
       icon: <Cpu className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
-      title: "System Architecture",
+      title: "Solution Architecture",
       description:
-        "Designing comprehensive system architectures that balance scalability, performance, and maintainability. Creating technical specifications, component diagrams, and implementation roadmaps for complex distributed systems.",
-    },
-    {
-      icon: <Code className="w-10 h-10 text-purple-600 dark:text-purple-400" />,
-      title: "Full Stack Development",
-      description:
-        "End-to-end development services covering both frontend and backend aspects of your application. Implementing domain-driven design principles, clean architecture patterns, and comprehensive testing strategies for robust, maintainable codebases.",
+        "End-to-end system design that balances scale, cost, and delivery speed. Domain-driven boundaries, clear service contracts, and a roadmap that takes a product from idea to production.",
     },
   ]
 
@@ -104,7 +104,7 @@ const Services = () => {
               My <span className="gradient-text">Services</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              Comprehensive development and architectural services to bring your digital vision to life
+              End-to-end product engineering, from front-end and mobile through backend, data, AI, and the cloud that runs it.
             </p>
           </motion.div>
 
