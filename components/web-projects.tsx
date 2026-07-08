@@ -293,7 +293,7 @@ const WebProjects = () => {
                 }}
                 className="cursor-pointer bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group gradient-border card-3d spotlight-card"
               >
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-48 sm:h-56 overflow-hidden">
                   {project.image ? (
                     <Image
                       src={project.image}
@@ -303,7 +303,7 @@ const WebProjects = () => {
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500">
-                      <span className="text-5xl font-extrabold tracking-tight text-white/90 select-none">
+                      <span className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white/90 select-none px-4 text-center">
                         {project.title}
                       </span>
                     </div>

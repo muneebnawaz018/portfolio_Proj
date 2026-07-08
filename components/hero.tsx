@@ -94,7 +94,7 @@ const Hero = () => {
             </motion.h1>
             <motion.div
               variants={itemVariants}
-              className="text-xl md:text-2xl font-medium mb-6 h-[40px]"
+              className="text-xl md:text-2xl font-medium mb-6 min-h-[40px]"
             >
               <TypeAnimation
                 sequence={[

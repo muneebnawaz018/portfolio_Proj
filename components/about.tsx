@@ -134,7 +134,7 @@ const About = () => {
 
               <motion.div
                 variants={itemVariants}
-                className="grid grid-cols-2 gap-x-4 gap-y-2 mt-8"
+                className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mt-8"
               >
                 {[
                   "Web Development",

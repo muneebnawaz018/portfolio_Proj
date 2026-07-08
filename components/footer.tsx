@@ -137,7 +137,7 @@ const Footer = () => {
                 <span className="block">Email:</span>
                 <a
                   href="mailto:muneeb.fusion@gmail.com"
-                  className="hover:text-purple-400 transition-colors"
+                  className="break-words hover:text-purple-400 transition-colors"
                 >
                   muneeb.fusion@gmail.com
                 </a>
