@@ -40,6 +40,56 @@ const MobileProjects = () => {
   const mobileProjects = [
     {
       id: 1,
+      title: "Evolo AI Student",
+      description:
+        "The student app for the Evolo AI education platform: swipe-to-apply on simplified job listings, employer matching, career exploration, AI guidance, and a real-time push notification center.",
+      longDescription:
+        "The student-facing app for the Evolo AI education platform. Students swipe to apply on simplified job listings, get matched to employers through a few quick questions, explore careers, and receive AI guidance, with a notification center driven by real-time push over Firebase Cloud Messaging and APNs. It runs on a Node.js, Express, and MongoDB backend with JWT access and refresh tokens.",
+      role: "Full-stack mobile",
+      tenure: "From the start",
+      highlights: [
+        "Swipe-to-apply on simplified job listings with employer matching",
+        "Career exploration and AI guidance",
+        "Notification center with real-time push over FCM and APNs",
+        "Node.js, Express, and MongoDB backend with JWT access and refresh tokens",
+      ],
+      image: "/projects/evolo-student.webp",
+      imgPos: "object-center",
+      platforms: ["ios", "android"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiapp&hl=en",
+      appStoreLink: "https://apps.apple.com/us/app/evolo-ai/id6569237819",
+      siteLink: "",
+      technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
+      fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "AsyncStorage", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "Cloudflare CDN"],
+      filters: ["react-native", "node", "ai"],
+    },
+    {
+      id: 2,
+      title: "Evolo AI School",
+      description:
+        "The instructor app for the Evolo AI education platform: track student applications, give resume feedback, monitor employment progress, and run sessions, career fairs, and incident reports.",
+      longDescription:
+        "The instructor-facing app for the Evolo AI education platform. Teachers track their students' job applications, give resume feedback, and monitor employment progress across a class, alongside session scheduling, career fairs, and incident reporting. It shares the same Node.js, Express, and MongoDB backend as the student app, with role-scoped JWT auth separating instructor and student access.",
+      role: "Full-stack, web and mobile",
+      tenure: "From the start",
+      highlights: [
+        "Class-wide tracking of student applications and employment progress",
+        "Resume feedback and AI-assisted student guidance",
+        "Session scheduling, career fairs, and incident reports",
+        "Shared backend with the student app, role-scoped JWT auth",
+      ],
+      image: "/projects/evolo-school.webp",
+      imgPos: "object-center",
+      platforms: ["ios", "android"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiinstructor&hl=en",
+      appStoreLink: "https://apps.apple.com/us/app/evolo-ai-school/id6741904184",
+      siteLink: "https://goevolo.com/",
+      technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
+      fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "SMTP transactional email", "Cloudflare CDN"],
+      filters: ["react-native", "node", "ai"],
+    },
+    {
+      id: 3,
       title: "KiddieCove",
       description:
         "A school-management app linking parents, teachers, and drivers with schools. Parents track kids, chat in real time, and view timetables, attendance, invoices, and transport; teachers manage attendance and diaries. Backed by a NestJS API.",
@@ -65,7 +115,7 @@ const MobileProjects = () => {
       filters: ["react-native", "node", "enterprise"],
     },
     {
-      id: 2,
+      id: 4,
       title: "VemosPay",
       description:
         "A QR-at-table payments app for restaurants and bars: pay checks, open, join, and split tabs, order and take out, plus loyalty, memberships, and event tickets. Ships iOS, Android, and web with a main app and an App Clip.",
@@ -89,56 +139,6 @@ const MobileProjects = () => {
       technologies: ["React Native", "Expo", "Redux Toolkit", "Apple / Google Pay", "Firebase", "Reanimated"],
       fullStack: ["React Native 0.85", "React 19", "Expo", "TypeScript", "Redux Toolkit", "MMKV", "React Navigation 7", "Apple / Google Pay", "Firebase", "Vision Camera", "Reanimated 4", "FlashList", "PostHog + Sentry", "Branch", "Stallion OTA", "Node.js / Express"],
       filters: ["react-native", "node"],
-    },
-    {
-      id: 3,
-      title: "Evolo AI Student",
-      description:
-        "The student app for the Evolo AI education platform: swipe-to-apply on simplified job listings, employer matching, career exploration, AI guidance, and a real-time push notification center.",
-      longDescription:
-        "The student-facing app for the Evolo AI education platform. Students swipe to apply on simplified job listings, get matched to employers through a few quick questions, explore careers, and receive AI guidance, with a notification center driven by real-time push over Firebase Cloud Messaging and APNs. It runs on a Node.js, Express, and MongoDB backend with JWT access and refresh tokens.",
-      role: "Full-stack mobile",
-      tenure: "From the start",
-      highlights: [
-        "Swipe-to-apply on simplified job listings with employer matching",
-        "Career exploration and AI guidance",
-        "Notification center with real-time push over FCM and APNs",
-        "Node.js, Express, and MongoDB backend with JWT access and refresh tokens",
-      ],
-      image: "/projects/evolo-student.webp",
-      imgPos: "object-center",
-      platforms: ["ios", "android"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiapp&hl=en",
-      appStoreLink: "https://apps.apple.com/us/app/evolo-ai/id6569237819",
-      siteLink: "",
-      technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
-      fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "AsyncStorage", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "Cloudflare CDN"],
-      filters: ["react-native", "node", "ai"],
-    },
-    {
-      id: 4,
-      title: "Evolo AI School",
-      description:
-        "The instructor app for the Evolo AI education platform: track student applications, give resume feedback, monitor employment progress, and run sessions, career fairs, and incident reports.",
-      longDescription:
-        "The instructor-facing app for the Evolo AI education platform. Teachers track their students' job applications, give resume feedback, and monitor employment progress across a class, alongside session scheduling, career fairs, and incident reporting. It shares the same Node.js, Express, and MongoDB backend as the student app, with role-scoped JWT auth separating instructor and student access.",
-      role: "Full-stack, web and mobile",
-      tenure: "From the start",
-      highlights: [
-        "Class-wide tracking of student applications and employment progress",
-        "Resume feedback and AI-assisted student guidance",
-        "Session scheduling, career fairs, and incident reports",
-        "Shared backend with the student app, role-scoped JWT auth",
-      ],
-      image: "/projects/evolo-school.webp",
-      imgPos: "object-center",
-      platforms: ["ios", "android"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiinstructor&hl=en",
-      appStoreLink: "https://apps.apple.com/us/app/evolo-ai-school/id6741904184",
-      siteLink: "https://goevolo.com/",
-      technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
-      fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "SMTP transactional email", "Cloudflare CDN"],
-      filters: ["react-native", "node", "ai"],
     },
     {
       id: 5,
