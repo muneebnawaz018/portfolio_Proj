@@ -19,6 +19,8 @@ export type ModalProject = {
   image: string | null;
   imgPos?: string;
   role?: string;
+  engagement?: string;
+  tenure?: string;
   description: string;
   longDescription?: string;
   highlights?: string[];
@@ -38,6 +40,39 @@ const linkIcon = (kind: ModalLink["kind"]) => {
   if (kind === "app") return <AppleIcon size={16} />;
   if (kind === "play") return <GooglePlayIcon size={16} />;
   return <ExternalLink size={16} />;
+};
+
+const ProjectMeta = ({
+  role,
+  engagement,
+  tenure,
+}: {
+  role?: string;
+  engagement?: string;
+  tenure?: string;
+}) => {
+  const items = [
+    { label: "Role", value: role },
+    { label: "Engagement", value: engagement },
+    { label: "Tenure", value: tenure },
+  ].filter((i) => i.value);
+
+  if (items.length === 0) return null;
+
+  return (
+    <dl className="flex flex-wrap gap-x-8 gap-y-3">
+      {items.map((i) => (
+        <div key={i.label} className="space-y-0.5">
+          <dt className="text-[11px] font-semibold uppercase tracking-wider text-gray-400 dark:text-gray-500">
+            {i.label}
+          </dt>
+          <dd className="text-sm font-medium text-purple-600 dark:text-purple-400">
+            {i.value}
+          </dd>
+        </div>
+      ))}
+    </dl>
+  );
 };
 
 const ProjectModal = ({
@@ -152,11 +187,11 @@ const ProjectModal = ({
                     </span>
                   ))}
                 </div>
-                {project.role && (
-                  <p className="text-sm font-medium text-purple-600 dark:text-purple-400">
-                    {project.role}
-                  </p>
-                )}
+                <ProjectMeta
+                  role={project.role}
+                  engagement={project.engagement}
+                  tenure={project.tenure}
+                />
               </div>
 
               <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

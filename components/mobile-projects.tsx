@@ -15,6 +15,7 @@ const MobileProjects = () => {
     threshold: 0.1,
   });
 
+  const [activeFilter, setActiveFilter] = useState("all");
   const [selected, setSelected] = useState<ModalProject | null>(null);
 
   const containerVariants = {
@@ -44,7 +45,9 @@ const MobileProjects = () => {
         "A school-management app linking parents, teachers, and drivers with schools. Parents track kids, chat in real time, and view timetables, attendance, invoices, and transport; teachers manage attendance and diaries. Backed by a NestJS API.",
       longDescription:
         "A React Native school-management app connecting parents, teachers, and drivers with schools. It runs three role-based experiences: parents track their kids, chat in real time, and view timetables, attendance, invoices, a daily diary, photo albums, transport tracking, and QR scanning; teachers manage attendance, diary, albums, and applications; and a planned driver module handles live tracking and travel history. It is backed by 90+ React Query hooks over an Axios API with token injection and session handling.",
-      role: "Full-time full-stack mobile. Joined mid-project. NestJS backend.",
+      role: "Full-stack mobile",
+      engagement: "Full-time",
+      tenure: "Joined mid-project",
       highlights: [
         "Three role-based experiences for parents, teachers, and drivers",
         "Real-time chat, live transport tracking, and QR scanning",
@@ -59,6 +62,7 @@ const MobileProjects = () => {
       siteLink: "https://kiddiecove.io/",
       technologies: ["React Native", "Zustand", "React Query", "Socket.io", "Maps", "NestJS"],
       fullStack: ["React Native 0.85", "TypeScript", "Zustand", "TanStack React Query 5", "React Navigation 7", "react-native-unistyles", "Formik + Yup", "Axios", "Socket.io", "react-native-maps", "Vision Camera", "Firebase Cloud Messaging", "NestJS"],
+      filters: ["react-native", "node", "enterprise"],
     },
     {
       id: 2,
@@ -67,7 +71,9 @@ const MobileProjects = () => {
         "A QR-at-table payments app for restaurants and bars: pay checks, open, join, and split tabs, order and take out, plus loyalty, memberships, and event tickets. Ships iOS, Android, and web with a main app and an App Clip.",
       longDescription:
         "A QR-at-table mobile payments app for restaurants and bars. Diners pay checks, open, join, and split tabs, order, and take out, with loyalty and rewards, memberships, events and ticket QR, and venue discovery. It ships on iOS, Android, and web as two iOS apps, a main app and an App Clip built to a 15 MB budget.",
-      role: "Full-time full-stack. Joined mid-project. Node.js and Express backend.",
+      role: "Full-stack mobile",
+      engagement: "Full-time",
+      tenure: "Joined mid-project",
       highlights: [
         "QR-at-table checks: pay, open, join, and split tabs",
         "Ordering, takeout, loyalty and rewards, and memberships",
@@ -82,6 +88,7 @@ const MobileProjects = () => {
       siteLink: "",
       technologies: ["React Native", "Expo", "Redux Toolkit", "Apple / Google Pay", "Firebase", "Reanimated"],
       fullStack: ["React Native 0.85", "React 19", "Expo", "TypeScript", "Redux Toolkit", "MMKV", "React Navigation 7", "Apple / Google Pay", "Firebase", "Vision Camera", "Reanimated 4", "FlashList", "PostHog + Sentry", "Branch", "Stallion OTA", "Node.js / Express"],
+      filters: ["react-native", "node"],
     },
     {
       id: 3,
@@ -90,7 +97,8 @@ const MobileProjects = () => {
         "The student app for the Evolo AI education platform: swipe-to-apply on simplified job listings, employer matching, career exploration, AI guidance, and a real-time push notification center.",
       longDescription:
         "The student-facing app for the Evolo AI education platform. Students swipe to apply on simplified job listings, get matched to employers through a few quick questions, explore careers, and receive AI guidance, with a notification center driven by real-time push over Firebase Cloud Messaging and APNs. It runs on a Node.js, Express, and MongoDB backend with JWT access and refresh tokens.",
-      role: "Full-stack mobile (iOS + Android). Joined from the start.",
+      role: "Full-stack mobile",
+      tenure: "From the start",
       highlights: [
         "Swipe-to-apply on simplified job listings with employer matching",
         "Career exploration and AI guidance",
@@ -105,6 +113,7 @@ const MobileProjects = () => {
       siteLink: "",
       technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
       fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "AsyncStorage", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "Cloudflare CDN"],
+      filters: ["react-native", "node", "ai"],
     },
     {
       id: 4,
@@ -113,7 +122,8 @@ const MobileProjects = () => {
         "The instructor app for the Evolo AI education platform: track student applications, give resume feedback, monitor employment progress, and run sessions, career fairs, and incident reports.",
       longDescription:
         "The instructor-facing app for the Evolo AI education platform. Teachers track their students' job applications, give resume feedback, and monitor employment progress across a class, alongside session scheduling, career fairs, and incident reporting. It shares the same Node.js, Express, and MongoDB backend as the student app, with role-scoped JWT auth separating instructor and student access.",
-      role: "Full-stack development (web, iOS, Android). Joined from the start.",
+      role: "Full-stack, web and mobile",
+      tenure: "From the start",
       highlights: [
         "Class-wide tracking of student applications and employment progress",
         "Resume feedback and AI-assisted student guidance",
@@ -128,6 +138,7 @@ const MobileProjects = () => {
       siteLink: "https://goevolo.com/",
       technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
       fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "SMTP transactional email", "Cloudflare CDN"],
+      filters: ["react-native", "node", "ai"],
     },
     {
       id: 5,
@@ -136,7 +147,8 @@ const MobileProjects = () => {
         "Companion iOS and Android apps for NWFIT, serving AI-generated workout and training plans from the same hardened Express backend as the web app.",
       longDescription:
         "The companion iOS and Android apps for NWFIT, serving AI-generated workout and training plans from the same hardened Express backend as the web app, with media stored on DigitalOcean Spaces.",
-      role: "Full-stack development (web + iOS + Android). Joined mid-project.",
+      role: "Full-stack, web and mobile",
+      tenure: "Joined mid-project",
       highlights: [
         "AI-generated workout and training plans on iOS and Android",
         "Shared, helmet and CSP hardened Express backend with the web app",
@@ -150,6 +162,7 @@ const MobileProjects = () => {
       siteLink: "",
       technologies: ["React Native", "Node.js / Express", "REST API", "DO Spaces"],
       fullStack: ["React Native", "Node.js / Express", "REST API", "DigitalOcean Spaces"],
+      filters: ["react-native", "node", "ai"],
     },
     {
       id: 6,
@@ -158,7 +171,9 @@ const MobileProjects = () => {
         "A patented proof-of-presence app: prove a person was physically at a given place and time, with photos verifiably captured there. Live Google Maps capture, wallet-based ID verification, and a tamper-evident flow over an Express and MongoDB API.",
       longDescription:
         "A patented proof-of-presence platform: prove a person was physically at a given place and time, plus photos verifiably captured at that place and time. The React Native app pairs live Google Maps geolocation with wallet-based ID verification and a tamper-evident capture flow, backed by a Node.js, Express, and MongoDB API with JWT auth and AWS S3 for proof-of-location photos. Android is intentionally unpublished because most users in the Australia region are on iOS.",
-      role: "Full-time mobile front-end (iOS + Android). Joined from the start.",
+      role: "Mobile front-end",
+      engagement: "Full-time",
+      tenure: "From the start",
       highlights: [
         "Patented proof of a person's presence at a place and time",
         "Live Google Maps geolocation capture and rendering",
@@ -174,6 +189,7 @@ const MobileProjects = () => {
       siteLink: "",
       technologies: ["React Native", "Redux", "Google Maps SDK", "Wallet / IAP", "Node.js", "MongoDB"],
       fullStack: ["React Native", "Redux Thunk", "Google Maps SDK", "Mobile Wallet / IAP", "Node.js / Express", "MongoDB", "JWT", "AWS S3"],
+      filters: ["react-native", "node"],
     },
     {
       id: 7,
@@ -182,7 +198,9 @@ const MobileProjects = () => {
         "A government content-monitoring app for the UAE Media Council. Residents flag misleading or non-compliant media with link, image, and voice-note reports, using UAE Pass or guest sign-in, in a full RTL Arabic and English UI.",
       longDescription:
         "A government content-monitoring platform for the UAE Media Council that lets residents flag media as misleading, unsafe, or non-compliant advertising. I built the React Native app with UAE Pass and guest sign-in, category-based reporting with link, image, and voice-note attachments, and a full RTL Arabic and English UI, consuming the council's ASP.NET Core API.",
-      role: "Full-time mobile front-end (iOS). Joined from the start.",
+      role: "Mobile front-end",
+      engagement: "Full-time",
+      tenure: "From the start",
       highlights: [
         "Report misleading, unsafe, or non-compliant media",
         "UAE Pass national-identity sign-in plus guest reporting",
@@ -197,6 +215,7 @@ const MobileProjects = () => {
       siteLink: "https://amen.ae/",
       technologies: ["React Native", "Redux Toolkit", "RTK Query", "Arabic / English RTL", "UAE Pass OAuth"],
       fullStack: ["React Native", "TypeScript", "Redux Toolkit", "RTK Query", "React Navigation", "Arabic / English RTL", "UAE Pass OAuth", "ASP.NET Core API"],
+      filters: ["react-native", "enterprise"],
     },
     {
       id: 8,
@@ -205,7 +224,9 @@ const MobileProjects = () => {
         "A campus social network for college students: real-time chat, a social feed, media sharing, and event scheduling that connect peers within their community.",
       longDescription:
         "A campus social network for college students that connects peers within their community and helps them find new friendships, with real-time chat, a social feed, media sharing, and event scheduling, on a Node.js backend.",
-      role: "Full-time full-stack (iOS + Android). Joined from the start.",
+      role: "Full-stack mobile",
+      engagement: "Full-time",
+      tenure: "From the start",
       highlights: [
         "Campus community networking and friend discovery",
         "Real-time chat and a social feed",
@@ -220,6 +241,7 @@ const MobileProjects = () => {
       siteLink: "",
       technologies: ["React Native", "TypeScript", "Redux", "Firebase", "AWS S3", "Pusher"],
       fullStack: ["React Native", "TypeScript", "Redux (thunk + persist)", "React Navigation", "Firebase (Auth, FCM, Crashlytics)", "AWS S3", "Pusher", "Axios", "ImageKit", "Lottie", "Node.js"],
+      filters: ["react-native", "node"],
     },
     {
       id: 9,
@@ -228,7 +250,9 @@ const MobileProjects = () => {
         "A custom bar-chart component for the Adalo no-code platform, built with React Native and Victory. Renders natively on iOS and Android, adding charting the builder lacks out of the box.",
       longDescription:
         "A custom bar-chart component for the Adalo no-code platform, built with React Native and Victory using the Adalo Component Developer Kit. One component renders natively on both iOS and Android, with accent colors and dark mode driven by theme props, extending Adalo apps with charting the no-code builder does not provide out of the box.",
-      role: "Part-time component developer. UI fixes on an existing project, no backend work.",
+      role: "Component developer, UI only",
+      engagement: "Part-time",
+      tenure: "Joined an existing project",
       highlights: [
         "Custom bar-chart component via the Adalo Component Developer Kit",
         "Single codebase rendering natively on iOS and Android",
@@ -243,8 +267,22 @@ const MobileProjects = () => {
       siteLink: "https://www.adalo.com/",
       technologies: ["Adalo", "React Native", "Victory", "JavaScript"],
       fullStack: ["Adalo", "React Native", "Victory", "JavaScript"],
+      filters: ["react-native"],
     },
   ];
+
+  const filters = [
+    { name: "All", value: "all" },
+    { name: "React Native", value: "react-native" },
+    { name: "Node.js", value: "node" },
+    { name: "AI", value: "ai" },
+    { name: "Enterprise", value: "enterprise" },
+  ];
+
+  const filteredProjects =
+    activeFilter === "all"
+      ? mobileProjects
+      : mobileProjects.filter((project) => project.filters.includes(activeFilter));
 
   const platformBadge: Record<string, string> = {
     ios: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
@@ -267,6 +305,8 @@ const MobileProjects = () => {
       image: project.image,
       imgPos: project.imgPos,
       role: project.role,
+      engagement: project.engagement,
+      tenure: project.tenure,
       description: project.description,
       longDescription: project.longDescription,
       highlights: project.highlights,
@@ -302,11 +342,29 @@ const MobileProjects = () => {
             </p>
           </motion.div>
 
+          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-8">
+            {filters.map((filter) => (
+              <motion.button
+                key={filter.value}
+                onClick={() => setActiveFilter(filter.value)}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+                  activeFilter === filter.value
+                    ? "bg-gradient-to-r from-purple-600 to-blue-500 text-white shadow-md"
+                    : "bg-white dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-gray-700"
+                }`}
+              >
+                {filter.name}
+              </motion.button>
+            ))}
+          </motion.div>
+
           <motion.div
             variants={containerVariants}
             className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"
           >
-            {mobileProjects.map((project) => (
+            {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
                 variants={itemVariants}

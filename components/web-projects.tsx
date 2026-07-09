@@ -42,6 +42,8 @@ const WebProjects = () => {
     description: string
     longDescription: string
     role: string
+    engagement?: string
+    tenure?: string
     highlights: string[]
     image: string | null
     imgPos: string
@@ -59,8 +61,9 @@ const WebProjects = () => {
         "Admin console for an enterprise identity and access platform built on the Linux Foundation's Janssen Project. The React UI manages OAuth2/OIDC clients, FIDO2 passkeys, and SCIM, and enforces browser-side Cedar authorization (Rust compiled to WebAssembly), with live active-user and session dashboards.",
       longDescription:
         "A commercial enterprise IAM platform built on the Linux Foundation's Janssen Project. I work on the React Admin-UI, the console administrators use to run the identity server. A core part of the work is Cedarling, Janssen's policy-based authorization engine: a Rust engine compiled to WebAssembly that runs directly in the browser and evaluates Cedar policies on the client to authorize each module and action per the user's permissions. I rebuilt how the console enforces permissions so every screen and action is governed by fine-grained policies, delivered the policy and role-mapping screens, and added multi-issuer authorization plus the new policy-store format. I also modernized the platform, migrating the build to Vite and upgrading the core framework and UI libraries.",
-      role:
-        "Full-time web, front end (primary) and backend (secondary), plus deployments and VM provisioning. Joined mid-project, active since May 2025.",
+      role: "Full-stack web, front-end primary, plus deployments and VM provisioning",
+      engagement: "Full-time",
+      tenure: "Joined mid-project, active since May 2025",
       highlights: [
         "Browser-side Cedar authorization (Rust to WebAssembly) enforcing fine-grained, per-action permissions across every module",
         "Policy and role-mapping screens, multi-issuer authorization, and the new policy-store format",
@@ -82,7 +85,9 @@ const WebProjects = () => {
         "A cloud research administration platform for universities. Covers the full sponsored-research lifecycle, from pre-award proposals to awards, compliance, and reporting, with newer AI modules for funding discovery and benchmarking.",
       longDescription:
         "A cloud-based electronic research administration (eRA) platform for research institutions and universities. It manages the full sponsored-research lifecycle: pre-award proposal tracking, award management, compliance monitoring, and reporting and analytics, with newer AI-enhanced modules including the Lyn Pro AI assistant, FundFit AI funding discovery, and the HERD Visualizer for benchmarking.",
-      role: "Full-time full-stack web. Joined mid-project.",
+      role: "Full-stack web",
+      engagement: "Full-time",
+      tenure: "Joined mid-project",
       highlights: [
         "Full sponsored-research lifecycle: proposals, awards, compliance, and reporting",
         "React front end over Python services with a legacy Kuali Rice (Java) eRA core",
@@ -102,7 +107,8 @@ const WebProjects = () => {
         "A full-stack marketplace connecting customers, contractors, and admins for home services. Contractor bidding on job requests, staged Stripe payments, tiered memberships, property investment listings, and role-based analytics dashboards.",
       longDescription:
         "A full-stack marketplace connecting customers, contractors, and admins for home and commercial services. Customers post job requests, contractors bid, and payments release in stages through Stripe. It also carries tiered memberships, off-market property investment listings, and role-based dashboards with analytics and maps.",
-      role: "Full-stack web developer. Built from scratch.",
+      role: "Full-stack web",
+      tenure: "Built from scratch",
       highlights: [
         "Job requests with contractor bidding and staged Stripe payments",
         "Tiered memberships and subscription billing",
@@ -123,7 +129,8 @@ const WebProjects = () => {
         "A no-code platform for building AI TeamAgents with distinct personalities, trained in natural language on your own files and deployed to a web portal, website widget, WhatsApp, and API. Angular front end over an Express and Socket.IO real-time tier, powered by OpenAI, with Stripe billing.",
       longDescription:
         "A no-code platform for building AI TeamAgents with distinct personalities, trainable in natural language on uploaded files and deployable across a web portal, a website chat bubble, WhatsApp, and an API. The Angular portal is backed by an Express API and a dedicated Socket.IO real-time chat tier, with OpenAI-powered agents, Stripe billing, and Google, Microsoft, and LinkedIn social login.",
-      role: "Full-stack web developer. Built from scratch.",
+      role: "Full-stack web",
+      tenure: "Built from scratch",
       highlights: [
         "Build AI TeamAgents with distinct personalities, trained in natural language on your files",
         "Deploy to a web portal, website widget, WhatsApp, and API",
@@ -139,12 +146,13 @@ const WebProjects = () => {
     },
     {
       id: 5,
-      title: "Evolo AI",
+      title: "Evolo AI Web",
       description:
         "An AI education platform for K-12 and adult learners: swipe-to-apply job matching, employer matching, career exploration, and AI guidance, plus a real-time notification center. Web console backed by an Express and MongoDB API.",
       longDescription:
         "An AI-powered education platform for K-12 and adult learners. Students swipe to apply on simplified job listings, get matched to employers through a few quick questions, explore careers, and receive AI guidance that highlights their strengths, all with a real-time notification center. The web console is a Create React App SPA backed by an Express and MongoDB API, deployed on Vercel behind a Cloudflare CDN, with companion student and instructor apps on iOS and Android.",
-      role: "Full-stack development (web, iOS, Android). Joined from the start.",
+      role: "Full-stack, web and mobile",
+      tenure: "From the start",
       highlights: [
         "Swipe-to-apply on simplified job listings with employer matching",
         "Career exploration and AI guidance that highlights student strengths",
@@ -165,7 +173,8 @@ const WebProjects = () => {
         "A personalized fitness-coaching platform serving AI-generated workout and training plans. Next.js and MUI web app over a hardened Express API, with companion iOS and Android apps sharing the same backend.",
       longDescription:
         "A personalized fitness-coaching platform that serves AI-generated workout and training plans. The Next.js and Material UI web app runs on a hardened Express API (helmet and CSP), stores media on DigitalOcean Spaces, and shares its backend with native iOS and Android apps.",
-      role: "Full-stack development (web, iOS, Android). Joined mid-project.",
+      role: "Full-stack, web and mobile",
+      tenure: "Joined mid-project",
       highlights: [
         "AI-generated personalized workout and training plans",
         "Next.js and MUI web app on a helmet and CSP hardened Express API",
@@ -186,7 +195,8 @@ const WebProjects = () => {
         "A governance, risk, and compliance training platform. Marketing site wired to a serverless AWS signup flow, a hosted course academy for learners, and integrated scheduling for advisory and custom training.",
       longDescription:
         "A governance, risk, and compliance training platform. The marketing site wires a signup flow to a serverless AWS backend (Lambda and API Gateway), hosts its course academy on Teachable, and books advisory and custom-training sessions through Calendly. Static assets are served from S3 and CloudFront.",
-      role: "Full-stack web developer. Built from scratch.",
+      role: "Full-stack web",
+      tenure: "Built from scratch",
       highlights: [
         "Signup flow wired to a serverless AWS backend (Lambda and API Gateway)",
         "Course academy hosted on Teachable",
@@ -207,7 +217,8 @@ const WebProjects = () => {
         "A MERN home-services platform with real-time chat and notifications over Socket.IO, JWT auth, and Cloudinary media uploads, built on a REST API with Redux Toolkit state.",
       longDescription:
         "A MERN home-services platform with real-time chat and notifications over Socket.IO. It runs on a REST API with Redux Toolkit state, JWT authentication, and Cloudinary or S3 media uploads, styled with Tailwind CSS.",
-      role: "Full-stack developer. Joined mid-project.",
+      role: "Full-stack web",
+      tenure: "Joined mid-project",
       highlights: [
         "Real-time chat and notifications over Socket.IO",
         "REST API with JWT auth and Redux Toolkit state",
@@ -239,6 +250,8 @@ const WebProjects = () => {
       image: project.image,
       imgPos: project.imgPos,
       role: project.role,
+      engagement: project.engagement,
+      tenure: project.tenure,
       description: project.description,
       longDescription: project.longDescription,
       highlights: project.highlights,
