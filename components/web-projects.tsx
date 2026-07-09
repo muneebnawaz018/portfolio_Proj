@@ -36,7 +36,22 @@ const WebProjects = () => {
     },
   }
 
-  const projects = [
+  type WebProject = {
+    id: number
+    title: string
+    description: string
+    longDescription: string
+    role: string
+    highlights: string[]
+    image: string | null
+    imgPos: string
+    stack: string[]
+    fullStack: string[]
+    filters: string[]
+    demoLink: string
+  }
+
+  const projects: WebProject[] = [
     {
       id: 1,
       title: "Gluu Flex",
@@ -293,7 +308,7 @@ const WebProjects = () => {
                 }}
                 className="cursor-pointer bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group gradient-border card-3d spotlight-card"
               >
-                <div className="relative h-48 sm:h-56 overflow-hidden">
+                <div className="relative aspect-[2/1] overflow-hidden">
                   {project.image ? (
                     <Image
                       src={project.image}

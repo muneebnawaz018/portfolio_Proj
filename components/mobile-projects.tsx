@@ -75,7 +75,7 @@ const MobileProjects = () => {
         "iOS, Android, and web, including an App Clip under a 15 MB budget",
       ],
       image: "/projects/vemospay.png",
-      imgPos: "object-top",
+      imgPos: "object-center",
       platforms: ["ios", "android"],
       playStoreLink: "https://play.google.com/store/apps/details?id=com.vemos.vemospay",
       appStoreLink: "https://apps.apple.com/us/app/vemos-pay/id1521512947",

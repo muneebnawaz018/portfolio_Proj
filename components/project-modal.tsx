@@ -100,7 +100,7 @@ const ProjectModal = ({
             transition={{ duration: 0.25, ease: "easeOut" }}
           >
             {/* header image */}
-            <div className="relative h-52 sm:h-60 w-full overflow-hidden rounded-t-2xl">
+            <div className="relative aspect-[2/1] w-full overflow-hidden rounded-t-2xl">
               {project.image ? (
                 <button
                   type="button"
