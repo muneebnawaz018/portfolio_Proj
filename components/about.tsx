@@ -95,6 +95,7 @@ const About = () => {
                   src="https://res.cloudinary.com/dpwy3mjiz/image/upload/v1723016725/Profile_Pic_cafjay.png"
                   alt="Muneeb Nawaz"
                   fill
+                  sizes="(min-width: 1536px) 720px, (min-width: 1024px) 50vw, 100vw"
                   className="object-cover"
                 />
               </div>

@@ -219,6 +219,7 @@ const Hero = () => {
                     src="https://res.cloudinary.com/dpwy3mjiz/image/upload/v1723016725/Profile_Pic_cafjay.png"
                     alt="Muneeb Nawaz"
                     fill
+                    sizes="(min-width: 768px) 320px, 256px"
                     className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
                     priority
                   />

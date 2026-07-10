@@ -41,10 +41,15 @@ export type ModalProject = {
 
 const platformStyle: Record<string, string> = {
   ios: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
-  android: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
+  android:
+    "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
   web: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400",
 };
-const platformLabel: Record<string, string> = { ios: "iOS", android: "Android", web: "Web" };
+const platformLabel: Record<string, string> = {
+  ios: "iOS",
+  android: "Android",
+  web: "Web",
+};
 
 const linkIcon = (kind: ModalLink["kind"]) => {
   if (kind === "app") return <AppleIcon size={16} />;
@@ -180,7 +185,7 @@ const Carousel = ({
   const many = images.length > 1;
 
   return (
-    <div className="group/gallery relative aspect-[2/1] w-full overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-gray-800">
+    <div className="group/gallery relative aspect-video w-full overflow-hidden rounded-t-2xl bg-gray-100 dark:bg-gray-800">
       <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
           key={index}
@@ -190,7 +195,10 @@ const Carousel = ({
           initial="enter"
           animate="center"
           exit="exit"
-          transition={{ x: { type: "spring", stiffness: 320, damping: 34 }, opacity: { duration: 0.18 } }}
+          transition={{
+            x: { type: "spring", stiffness: 320, damping: 34 },
+            opacity: { duration: 0.18 },
+          }}
           drag={many && !reduce ? "x" : false}
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.18}
@@ -227,7 +235,11 @@ const Carousel = ({
 
       {many && (
         <>
-          <Arrow side="left" label="Previous image" onClick={() => onStep(-1)} />
+          <Arrow
+            side="left"
+            label="Previous image"
+            onClick={() => onStep(-1)}
+          />
           <Arrow side="right" label="Next image" onClick={() => onStep(1)} />
           <Dots count={images.length} index={index} onSelect={onSelect} />
           <span className="pointer-events-none absolute bottom-3 right-3 z-20 rounded-full bg-black/50 px-2.5 py-1 text-[11px] font-medium tabular-nums text-white backdrop-blur-md">
@@ -271,10 +283,12 @@ const ProjectModal = ({
   const step = useCallback(
     (d: number) => {
       if (gallery.length < 2) return;
-      setDirection(d);
-      setIndex((i) => (i + d + gallery.length) % gallery.length);
+      const next = (index + d + gallery.length) % gallery.length;
+      const wrapped = d > 0 ? next < index : next > index;
+      setDirection(wrapped ? -d : d);
+      setIndex(next);
     },
-    [gallery.length]
+    [gallery.length, index],
   );
 
   const select = useCallback(
@@ -282,7 +296,7 @@ const ProjectModal = ({
       setDirection(i > index ? 1 : -1);
       setIndex(i);
     },
-    [index]
+    [index],
   );
 
   useEffect(() => {
@@ -347,7 +361,7 @@ const ProjectModal = ({
                     onZoom={() => setZoom(true)}
                   />
                 ) : (
-                  <div className="relative aspect-[2/1] w-full overflow-hidden rounded-t-2xl">
+                  <div className="relative aspect-video w-full overflow-hidden rounded-t-2xl">
                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500">
                       <span className="text-4xl font-extrabold tracking-tight text-white/90 select-none px-6 text-center">
                         {project.title}
@@ -400,7 +414,10 @@ const ProjectModal = ({
                     </h4>
                     <ul className="space-y-2">
                       {project.highlights.map((h, i) => (
-                        <li key={i} className="flex gap-2.5 text-sm text-gray-600 dark:text-gray-300">
+                        <li
+                          key={i}
+                          className="flex gap-2.5 text-sm text-gray-600 dark:text-gray-300"
+                        >
                           <CheckCircle2
                             size={18}
                             className="mt-0.5 shrink-0 text-purple-600 dark:text-purple-400"
@@ -513,7 +530,7 @@ const ProjectModal = ({
         )}
       </AnimatePresence>
     </>,
-    document.body
+    document.body,
   );
 };
 

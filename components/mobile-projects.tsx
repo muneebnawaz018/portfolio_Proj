@@ -7,7 +7,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 import { AppleIcon, GooglePlayIcon } from "@/components/brand-icons";
-import ProjectModal, { type ModalProject, type ModalLink } from "@/components/project-modal";
+import ProjectModal, {
+  type ModalProject,
+  type ModalLink,
+} from "@/components/project-modal";
 
 const MobileProjects = () => {
   const [ref, inView] = useInView({
@@ -56,13 +59,41 @@ const MobileProjects = () => {
         "Node.js, Express, and MongoDB backend with JWT access and refresh tokens",
       ],
       image: "/projects/evolo-student.webp",
+      images: [
+        "/projects/evolo-student.webp",
+        "/projects/evolo-student-2.webp",
+        "/projects/evolo-student-3.webp",
+        "/projects/evolo-student-4.webp",
+        "/projects/evolo-student-5.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios", "android"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiapp&hl=en",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiapp&hl=en",
       appStoreLink: "https://apps.apple.com/us/app/evolo-ai/id6569237819",
       siteLink: "",
-      technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
-      fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "AsyncStorage", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "Cloudflare CDN"],
+      technologies: [
+        "React Native",
+        "Redux Toolkit",
+        "React Navigation",
+        "JWT",
+        "FCM / APNs",
+      ],
+      fullStack: [
+        "React Native",
+        "Redux Toolkit + redux-persist",
+        "React Navigation",
+        "Axios",
+        "JWT (access + refresh)",
+        "FCM / APNs",
+        "In-app notification center",
+        "Deep Linking",
+        "AsyncStorage",
+        "Node.js / Express",
+        "MongoDB / Mongoose",
+        "AWS S3",
+        "Cloudflare CDN",
+      ],
       filters: ["react-native", "node", "ai"],
     },
     {
@@ -82,13 +113,42 @@ const MobileProjects = () => {
         "Shared backend with the student app, role-scoped JWT auth",
       ],
       image: "/projects/evolo-school.webp",
+      images: [
+        "/projects/evolo-school.webp",
+        "/projects/evolo-school-2.webp",
+        "/projects/evolo-school-3.webp",
+        "/projects/evolo-school-4.webp",
+        "/projects/evolo-school-5.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios", "android"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiinstructor&hl=en",
-      appStoreLink: "https://apps.apple.com/us/app/evolo-ai-school/id6741904184",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.hiddenworkers.evoloaiinstructor&hl=en",
+      appStoreLink:
+        "https://apps.apple.com/us/app/evolo-ai-school/id6741904184",
       siteLink: "https://goevolo.com/",
-      technologies: ["React Native", "Redux Toolkit", "React Navigation", "JWT", "FCM / APNs"],
-      fullStack: ["React Native", "Redux Toolkit + redux-persist", "React Navigation", "Axios", "JWT (access + refresh)", "FCM / APNs", "In-app notification center", "Deep Linking", "Node.js / Express", "MongoDB / Mongoose", "AWS S3", "SMTP transactional email", "Cloudflare CDN"],
+      technologies: [
+        "React Native",
+        "Redux Toolkit",
+        "React Navigation",
+        "JWT",
+        "FCM / APNs",
+      ],
+      fullStack: [
+        "React Native",
+        "Redux Toolkit + redux-persist",
+        "React Navigation",
+        "Axios",
+        "JWT (access + refresh)",
+        "FCM / APNs",
+        "In-app notification center",
+        "Deep Linking",
+        "Node.js / Express",
+        "MongoDB / Mongoose",
+        "AWS S3",
+        "SMTP transactional email",
+        "Cloudflare CDN",
+      ],
       filters: ["react-native", "node", "ai"],
     },
     {
@@ -108,13 +168,41 @@ const MobileProjects = () => {
         "90+ React Query hooks over an Axios API with token injection and session handling",
       ],
       image: "/projects/kiddiecove.webp",
+      images: [
+        "/projects/kiddiecove.webp",
+        "/projects/kiddiecove-2.webp",
+        "/projects/kiddiecove-3.webp",
+        "/projects/kiddiecove-4.webp",
+        "/projects/kiddiecove-5.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios", "android"],
       playStoreLink: "",
       appStoreLink: "",
       siteLink: "https://kiddiecove.io/",
-      technologies: ["React Native", "Zustand", "React Query", "Socket.io", "Maps", "NestJS"],
-      fullStack: ["React Native 0.85", "TypeScript", "Zustand", "TanStack React Query 5", "React Navigation 7", "react-native-unistyles", "Formik + Yup", "Axios", "Socket.io", "react-native-maps", "Vision Camera", "Firebase Cloud Messaging", "NestJS"],
+      technologies: [
+        "React Native",
+        "Zustand",
+        "React Query",
+        "Socket.io",
+        "Maps",
+        "NestJS",
+      ],
+      fullStack: [
+        "React Native 0.85",
+        "TypeScript",
+        "Zustand",
+        "TanStack React Query 5",
+        "React Navigation 7",
+        "react-native-unistyles",
+        "Formik + Yup",
+        "Axios",
+        "Socket.io",
+        "react-native-maps",
+        "Vision Camera",
+        "Firebase Cloud Messaging",
+        "NestJS",
+      ],
       filters: ["react-native", "node", "enterprise"],
     },
     {
@@ -136,13 +224,47 @@ const MobileProjects = () => {
         "iOS, Android, and web, including an App Clip under a 15 MB budget",
       ],
       image: "/projects/vemospay.webp",
+      images: [
+        "/projects/vemospay.webp",
+        "/projects/vemospay-2.webp",
+        "/projects/vemospay-3.webp",
+        "/projects/vemospay-4.webp",
+        "/projects/vemospay-5.webp",
+        "/projects/vemospay-6.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios", "android"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.vemos.vemospay",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.vemos.vemospay",
       appStoreLink: "https://apps.apple.com/us/app/vemos-pay/id1521512947",
       siteLink: "",
-      technologies: ["React Native", "Expo", "Redux Toolkit", "Apple / Google Pay", "Firebase", "Reanimated"],
-      fullStack: ["React Native 0.85", "React 19", "Expo", "TypeScript", "Redux Toolkit", "MMKV", "React Navigation 7", "Apple / Google Pay", "Toast POS", "Firebase", "Vision Camera", "Reanimated 4", "FlashList", "PostHog + Sentry", "Branch", "Stallion OTA", "Node.js / Express"],
+      technologies: [
+        "React Native",
+        "Expo",
+        "Redux Toolkit",
+        "Apple / Google Pay",
+        "Firebase",
+        "Reanimated",
+      ],
+      fullStack: [
+        "React Native 0.85",
+        "React 19",
+        "Expo",
+        "TypeScript",
+        "Redux Toolkit",
+        "MMKV",
+        "React Navigation 7",
+        "Apple / Google Pay",
+        "Toast POS",
+        "Firebase",
+        "Vision Camera",
+        "Reanimated 4",
+        "FlashList",
+        "PostHog + Sentry",
+        "Branch",
+        "Stallion OTA",
+        "Node.js / Express",
+      ],
       filters: ["react-native", "node"],
     },
     {
@@ -163,13 +285,32 @@ const MobileProjects = () => {
         "Media storage on DigitalOcean Spaces",
       ],
       image: "/projects/nwfit.webp",
+      images: [
+        "/projects/nwfit.webp",
+        "/projects/nwfit-2.webp",
+        "/projects/nwfit-3.webp",
+        "/projects/nwfit-4.webp",
+        "/projects/nwfit-5.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios", "android"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.ninjawarriorsmeta.nwfit",
-      appStoreLink: "https://apps.apple.com/us/app/nwfit-fitness-weight-loss/id6475285888",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.ninjawarriorsmeta.nwfit",
+      appStoreLink:
+        "https://apps.apple.com/us/app/nwfit-fitness-weight-loss/id6475285888",
       siteLink: "",
-      technologies: ["React Native", "Node.js / Express", "REST API", "DO Spaces"],
-      fullStack: ["React Native", "Node.js / Express", "REST API", "DigitalOcean Spaces"],
+      technologies: [
+        "React Native",
+        "Node.js / Express",
+        "REST API",
+        "DO Spaces",
+      ],
+      fullStack: [
+        "React Native",
+        "Node.js / Express",
+        "REST API",
+        "DigitalOcean Spaces",
+      ],
       filters: ["react-native", "node", "ai"],
     },
     {
@@ -191,13 +332,39 @@ const MobileProjects = () => {
         "Tamper-evident capture over an Express and MongoDB API with S3 photo storage",
       ],
       image: "/projects/geoface.webp",
+      images: [
+        "/projects/geoface.webp",
+        "/projects/geoface-2.webp",
+        "/projects/geoface-3.webp",
+        "/projects/geoface-4.webp",
+        "/projects/geoface-5.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios"],
       playStoreLink: "",
       appStoreLink: "https://apps.apple.com/pk/app/geoface/id1602781941",
       siteLink: "",
-      technologies: ["React Native", "Redux", "Facial Recognition", "Google Maps SDK", "Wallet / IAP", "Node.js"],
-      fullStack: ["React Native", "Redux Thunk", "Facial Recognition", "Google Maps SDK", "QR Certificates", "Apple Wallet", "Mobile Wallet / IAP", "Node.js / Express", "MongoDB", "JWT", "AWS S3"],
+      technologies: [
+        "React Native",
+        "Redux",
+        "Facial Recognition",
+        "Google Maps SDK",
+        "Wallet / IAP",
+        "Node.js",
+      ],
+      fullStack: [
+        "React Native",
+        "Redux Thunk",
+        "Facial Recognition",
+        "Google Maps SDK",
+        "QR Certificates",
+        "Apple Wallet",
+        "Mobile Wallet / IAP",
+        "Node.js / Express",
+        "MongoDB",
+        "JWT",
+        "AWS S3",
+      ],
       filters: ["react-native", "node"],
     },
     {
@@ -217,13 +384,36 @@ const MobileProjects = () => {
         "Full RTL Arabic and English UI over the council's ASP.NET Core API",
       ],
       image: "/projects/amen.webp",
+      images: [
+        "/projects/amen.webp",
+        "/projects/amen-2.webp",
+        "/projects/amen-3.webp",
+        "/projects/amen-4.webp",
+        "/projects/amen-5.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios", "android"],
-      playStoreLink: "https://play.google.com/store/apps/details?id=com.uaemediacouncil.amen",
+      playStoreLink:
+        "https://play.google.com/store/apps/details?id=com.uaemediacouncil.amen",
       appStoreLink: "https://apps.apple.com/ae/app/amen/id6737225589",
       siteLink: "https://amen.ae/",
-      technologies: ["React Native", "Redux Toolkit", "RTK Query", "Arabic / English RTL", "UAE Pass OAuth"],
-      fullStack: ["React Native", "TypeScript", "Redux Toolkit", "RTK Query", "React Navigation", "Arabic / English RTL", "UAE Pass OAuth", "ASP.NET Core API"],
+      technologies: [
+        "React Native",
+        "Redux Toolkit",
+        "RTK Query",
+        "Arabic / English RTL",
+        "UAE Pass OAuth",
+      ],
+      fullStack: [
+        "React Native",
+        "TypeScript",
+        "Redux Toolkit",
+        "RTK Query",
+        "React Navigation",
+        "Arabic / English RTL",
+        "UAE Pass OAuth",
+        "ASP.NET Core API",
+      ],
       filters: ["react-native", "enterprise"],
     },
     {
@@ -244,13 +434,39 @@ const MobileProjects = () => {
         "Class rosters and syllabus sharing, scoped by student and faculty roles",
       ],
       image: "/projects/uroots.webp",
+      images: [
+        "/projects/uroots.webp",
+        "/projects/uroots-2.webp",
+        "/projects/uroots-3.webp",
+        "/projects/uroots-4.webp",
+        "/projects/uroots-5.webp",
+      ],
       imgPos: "object-center",
       platforms: ["ios", "android"],
       playStoreLink: "",
       appStoreLink: "",
       siteLink: "",
-      technologies: ["React Native", "TypeScript", "Redux", "Firebase", "AWS S3", "Pusher"],
-      fullStack: ["React Native", "TypeScript", "Redux (thunk + persist)", "React Navigation", "Firebase (Auth, FCM, Crashlytics)", "AWS S3", "Pusher", "Axios", "ImageKit", "Lottie", "Node.js"],
+      technologies: [
+        "React Native",
+        "TypeScript",
+        "Redux",
+        "Firebase",
+        "AWS S3",
+        "Pusher",
+      ],
+      fullStack: [
+        "React Native",
+        "TypeScript",
+        "Redux (thunk + persist)",
+        "React Navigation",
+        "Firebase (Auth, FCM, Crashlytics)",
+        "AWS S3",
+        "Pusher",
+        "Axios",
+        "ImageKit",
+        "Lottie",
+        "Node.js",
+      ],
       filters: ["react-native", "node"],
     },
     {
@@ -270,6 +486,7 @@ const MobileProjects = () => {
         "Adds native charting the no-code builder lacks",
       ],
       image: "/projects/adalo.webp",
+      images: ["/projects/adalo.webp", "/projects/adalo-2.webp"],
       imgPos: "object-center",
       platforms: ["ios", "android"],
       playStoreLink: "",
@@ -292,11 +509,14 @@ const MobileProjects = () => {
   const filteredProjects =
     activeFilter === "all"
       ? mobileProjects
-      : mobileProjects.filter((project) => project.filters.includes(activeFilter));
+      : mobileProjects.filter((project) =>
+          project.filters.includes(activeFilter),
+        );
 
   const platformBadge: Record<string, string> = {
     ios: "bg-blue-100 text-blue-600 dark:bg-blue-900/30 dark:text-blue-400",
-    android: "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
+    android:
+      "bg-green-100 text-green-600 dark:bg-green-900/30 dark:text-green-400",
     web: "bg-purple-100 text-purple-600 dark:bg-purple-900/30 dark:text-purple-400",
   };
   const platformLabel: Record<string, string> = {
@@ -307,13 +527,24 @@ const MobileProjects = () => {
 
   const openModal = (project: (typeof mobileProjects)[number]) => {
     const links: ModalLink[] = [];
-    if (project.appStoreLink) links.push({ label: "App Store", href: project.appStoreLink, kind: "app" });
-    if (project.playStoreLink) links.push({ label: "Play Store", href: project.playStoreLink, kind: "play" });
-    if (project.siteLink) links.push({ label: "Visit Site", href: project.siteLink, kind: "site" });
+    if (project.appStoreLink)
+      links.push({
+        label: "App Store",
+        href: project.appStoreLink,
+        kind: "app",
+      });
+    if (project.playStoreLink)
+      links.push({
+        label: "Play Store",
+        href: project.playStoreLink,
+        kind: "play",
+      });
+    if (project.siteLink)
+      links.push({ label: "Visit Site", href: project.siteLink, kind: "site" });
     setSelected({
       title: project.title,
       image: project.image,
-      images: (project as { images?: string[] }).images,
+      images: project.images,
       imgPos: project.imgPos,
       role: project.role,
       engagement: project.engagement,
@@ -348,12 +579,16 @@ const MobileProjects = () => {
               Mobile <span className="gradient-text">Projects</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              Cross-platform React Native apps shipped to the App Store and Google Play, spanning payments,
-              education, government, and AI, most wired to backends I also built.
+              Cross-platform React Native apps shipped to the App Store and
+              Google Play, spanning payments, education, government, and AI,
+              most wired to backends I also built.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-8">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-4 mb-8"
+          >
             {filters.map((filter) => (
               <motion.button
                 key={filter.value}
@@ -385,9 +620,15 @@ const MobileProjects = () => {
                   transition: { duration: 0.3 },
                 }}
                 onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`)
-                  e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`)
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty(
+                    "--mx",
+                    `${e.clientX - rect.left}px`,
+                  );
+                  e.currentTarget.style.setProperty(
+                    "--my",
+                    `${e.clientY - rect.top}px`,
+                  );
                 }}
                 className="cursor-pointer bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group gradient-border card-3d spotlight-card"
               >
@@ -397,6 +638,7 @@ const MobileProjects = () => {
                       src={project.image}
                       alt={project.title}
                       fill
+                      sizes="(min-width: 1536px) 470px, (min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                       className={`object-cover ${project.imgPos} transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
                     />
                   ) : (
@@ -447,7 +689,9 @@ const MobileProjects = () => {
                         </Link>
                       ) : null}
 
-                      {!project.appStoreLink && !project.playStoreLink && !project.siteLink ? (
+                      {!project.appStoreLink &&
+                      !project.playStoreLink &&
+                      !project.siteLink ? (
                         <span className="flex-1 min-w-[104px] px-3 py-2 rounded-full flex items-center justify-center text-sm font-medium text-white backdrop-blur-md bg-white/15 border border-white/30">
                           View Details
                         </span>

@@ -91,7 +91,7 @@ const Navbar = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-1">
             {navLinks.map((link) => {
               const isActive = link.sections.includes(activeSection);
 
@@ -126,7 +126,7 @@ const Navbar = () => {
           </nav>
 
           {/* Mobile Navigation Toggle */}
-          <div className="flex items-center md:hidden space-x-2">
+          <div className="flex items-center lg:hidden space-x-2">
             <button
               onClick={toggleTheme}
               className="p-2 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-gray-700 transition-colors"
@@ -157,7 +157,7 @@ const Navbar = () => {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white dark:bg-gray-900 shadow-lg"
+            className="lg:hidden bg-white dark:bg-gray-900 shadow-lg"
           >
             <div className="container mx-auto px-4 py-4">
               <nav className="flex flex-col space-y-2">

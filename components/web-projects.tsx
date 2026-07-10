@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { useInView } from "react-intersection-observer"
-import Image from "next/image"
-import Link from "next/link"
-import { Eye } from "lucide-react"
-import ProjectModal, { type ModalProject } from "@/components/project-modal"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import Image from "next/image";
+import Link from "next/link";
+import { Eye } from "lucide-react";
+import ProjectModal, { type ModalProject } from "@/components/project-modal";
 
 const WebProjects = () => {
   const [ref, inView] = useInView({
     triggerOnce: true,
     threshold: 0.1,
-  })
+  });
 
-  const [activeFilter, setActiveFilter] = useState("all")
-  const [selected, setSelected] = useState<ModalProject | null>(null)
+  const [activeFilter, setActiveFilter] = useState("all");
+  const [selected, setSelected] = useState<ModalProject | null>(null);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -25,7 +25,7 @@ const WebProjects = () => {
         staggerChildren: 0.1,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { y: 20, opacity: 0 },
@@ -34,25 +34,25 @@ const WebProjects = () => {
       opacity: 1,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   type WebProject = {
-    id: number
-    title: string
-    description: string
-    longDescription: string
-    role: string
-    engagement?: string
-    tenure?: string
-    highlights: string[]
-    image: string | null
-    images?: string[]
-    imgPos: string
-    stack: string[]
-    fullStack: string[]
-    filters: string[]
-    demoLink: string
-  }
+    id: number;
+    title: string;
+    description: string;
+    longDescription: string;
+    role: string;
+    engagement?: string;
+    tenure?: string;
+    highlights: string[];
+    image: string | null;
+    images?: string[];
+    imgPos: string;
+    stack: string[];
+    fullStack: string[];
+    filters: string[];
+    demoLink: string;
+  };
 
   const projects: WebProject[] = [
     {
@@ -74,9 +74,36 @@ const WebProjects = () => {
         "Migrated the build to Vite and streamlined API access with Orval-generated OpenAPI clients",
       ],
       image: "/projects/gluu.webp",
+      images: [
+        "/projects/gluu.webp",
+        "/projects/gluu-2.webp",
+        "/projects/gluu-3.webp",
+        "/projects/gluu-4.webp",
+        "/projects/gluu-5.webp",
+      ],
       imgPos: "object-center",
-      stack: ["React 19", "TypeScript", "Cedar / WASM", "React Query", "MUI", "IAM"],
-      fullStack: ["React 19", "TypeScript", "Vite", "Redux Toolkit", "React Query", "Cedarling / WASM", "MUI", "React Router 7", "Orval (OpenAPI)", "Formik + Yup", "i18next", "Java (Janssen)"],
+      stack: [
+        "React 19",
+        "TypeScript",
+        "Cedar / WASM",
+        "React Query",
+        "MUI",
+        "IAM",
+      ],
+      fullStack: [
+        "React 19",
+        "TypeScript",
+        "Vite",
+        "Redux Toolkit",
+        "React Query",
+        "Cedarling / WASM",
+        "MUI",
+        "React Router 7",
+        "Orval (OpenAPI)",
+        "Formik + Yup",
+        "i18next",
+        "Java (Janssen)",
+      ],
       filters: ["react", "enterprise"],
       demoLink: "https://gluu.org/flex/",
     },
@@ -98,9 +125,28 @@ const WebProjects = () => {
         "React front end over Python services with a legacy Kuali Rice (Java) eRA core",
       ],
       image: "/projects/streamlyne.webp",
+      images: [
+        "/projects/streamlyne.webp",
+        "/projects/streamlyne-2.webp",
+        "/projects/streamlyne-3.webp",
+        "/projects/streamlyne-4.webp",
+        "/projects/streamlyne-5.webp",
+      ],
       imgPos: "object-center",
-      stack: ["React", "Python", "REST APIs", "Kuali Rice (Java)", "AI Modules"],
-      fullStack: ["React", "Python", "REST APIs", "Kuali Rice (Java)", "AI Modules"],
+      stack: [
+        "React",
+        "Python",
+        "REST APIs",
+        "Kuali Rice (Java)",
+        "AI Modules",
+      ],
+      fullStack: [
+        "React",
+        "Python",
+        "REST APIs",
+        "Kuali Rice (Java)",
+        "AI Modules",
+      ],
       filters: ["react", "ai", "enterprise"],
       demoLink: "https://streamlyne.com/",
     },
@@ -121,9 +167,39 @@ const WebProjects = () => {
         "Fully bilingual English and French interface",
       ],
       image: "/projects/aas.webp",
+      images: [
+        "/projects/aas.webp",
+        "/projects/aas-2.webp",
+        "/projects/aas-3.webp",
+        "/projects/aas-4.webp",
+        "/projects/aas-5.webp",
+      ],
       imgPos: "object-center",
-      stack: ["React 19", "Vite", "Redux Toolkit", "Node.js / Express", "MongoDB", "Stripe", "AWS S3"],
-      fullStack: ["React 19", "Vite", "TypeScript", "Redux Toolkit", "Tailwind CSS", "React Hook Form + Zod", "Recharts", "React Leaflet", "Node.js / Express", "MongoDB", "Stripe", "AWS S3", "JWT", "Nodemailer"],
+      stack: [
+        "React 19",
+        "Vite",
+        "Redux Toolkit",
+        "Node.js / Express",
+        "MongoDB",
+        "Stripe",
+        "AWS S3",
+      ],
+      fullStack: [
+        "React 19",
+        "Vite",
+        "TypeScript",
+        "Redux Toolkit",
+        "Tailwind CSS",
+        "React Hook Form + Zod",
+        "Recharts",
+        "React Leaflet",
+        "Node.js / Express",
+        "MongoDB",
+        "Stripe",
+        "AWS S3",
+        "JWT",
+        "Nodemailer",
+      ],
       filters: ["react", "node"],
       demoLink: "https://aasquebec.com/en",
     },
@@ -143,9 +219,33 @@ const WebProjects = () => {
         "OpenAI agents, Stripe billing, and Google, Microsoft, and LinkedIn OAuth",
       ],
       image: "/projects/headoffice.webp",
+      images: [
+        "/projects/headoffice.webp",
+        "/projects/headoffice-2.webp",
+        "/projects/headoffice-3.webp",
+        "/projects/headoffice-4.webp",
+        "/projects/headoffice-5.webp",
+      ],
       imgPos: "object-center",
-      stack: ["Angular", "Node.js / Express", "Socket.IO", "OpenAI", "Stripe", "OAuth"],
-      fullStack: ["Angular", "TypeScript", "Node.js / Express", "Socket.IO", "OpenAI", "Stripe", "OAuth", "AWS S3 / CloudFront", "nginx"],
+      stack: [
+        "Angular",
+        "Node.js / Express",
+        "Socket.IO",
+        "OpenAI",
+        "Stripe",
+        "OAuth",
+      ],
+      fullStack: [
+        "Angular",
+        "TypeScript",
+        "Node.js / Express",
+        "Socket.IO",
+        "OpenAI",
+        "Stripe",
+        "OAuth",
+        "AWS S3 / CloudFront",
+        "nginx",
+      ],
       filters: ["ai", "node"],
       demoLink: "https://headoffice.ai/",
     },
@@ -168,9 +268,33 @@ const WebProjects = () => {
         "React SPA over an Express and MongoDB API, JWT auth, AWS S3, Cloudflare CDN",
       ],
       image: "/projects/evolo-web.webp",
+      images: [
+        "/projects/evolo-web.webp",
+        "/projects/evolo-web-2.webp",
+        "/projects/evolo-web-3.webp",
+      ],
       imgPos: "object-center",
-      stack: ["React", "Redux Toolkit", "Node.js / Express", "MongoDB", "JWT", "AWS S3"],
-      fullStack: ["React (CRA SPA)", "Redux Toolkit", "React Router", "Yup", "Axios", "Node.js / Express", "MongoDB / Mongoose", "JWT (access + refresh)", "AWS S3", "Vercel", "Cloudflare CDN"],
+      stack: [
+        "React",
+        "Redux Toolkit",
+        "Node.js / Express",
+        "MongoDB",
+        "JWT",
+        "AWS S3",
+      ],
+      fullStack: [
+        "React (CRA SPA)",
+        "Redux Toolkit",
+        "React Router",
+        "Yup",
+        "Axios",
+        "Node.js / Express",
+        "MongoDB / Mongoose",
+        "JWT (access + refresh)",
+        "AWS S3",
+        "Vercel",
+        "Cloudflare CDN",
+      ],
       filters: ["react", "node", "ai"],
       demoLink: "https://goevolo.com/",
     },
@@ -193,9 +317,23 @@ const WebProjects = () => {
         "Media storage on DigitalOcean Spaces, deployed on Cloudflare",
       ],
       image: "/projects/nwfit.webp",
+      images: [
+        "/projects/nwfit.webp",
+        "/projects/nwfit-2.webp",
+        "/projects/nwfit-3.webp",
+        "/projects/nwfit-4.webp",
+        "/projects/nwfit-5.webp",
+      ],
       imgPos: "object-center",
       stack: ["Next.js", "TypeScript", "MUI", "Node.js / Express", "DO Spaces"],
-      fullStack: ["Next.js", "TypeScript", "Material UI", "Node.js / Express", "DigitalOcean Spaces", "Cloudflare"],
+      fullStack: [
+        "Next.js",
+        "TypeScript",
+        "Material UI",
+        "Node.js / Express",
+        "DigitalOcean Spaces",
+        "Cloudflare",
+      ],
       filters: ["react", "node", "ai"],
       demoLink: "https://nwfit.ai/",
     },
@@ -216,9 +354,30 @@ const WebProjects = () => {
         "Static hosting on S3 and CloudFront",
       ],
       image: "/projects/traingrc.webp",
+      images: [
+        "/projects/traingrc.webp",
+        "/projects/traingrc-2.webp",
+        "/projects/traingrc-3.webp",
+        "/projects/traingrc-4.webp",
+        "/projects/traingrc-5.webp",
+      ],
       imgPos: "object-center",
-      stack: ["React", "AWS Lambda", "API Gateway", "S3 / CloudFront", "Serverless"],
-      fullStack: ["React", "Bootstrap", "AWS Lambda", "API Gateway", "S3 / CloudFront", "Teachable", "Calendly"],
+      stack: [
+        "React",
+        "AWS Lambda",
+        "API Gateway",
+        "S3 / CloudFront",
+        "Serverless",
+      ],
+      fullStack: [
+        "React",
+        "Bootstrap",
+        "AWS Lambda",
+        "API Gateway",
+        "S3 / CloudFront",
+        "Teachable",
+        "Calendly",
+      ],
       filters: ["react"],
       demoLink: "https://www.traingrc.com/",
     },
@@ -240,13 +399,38 @@ const WebProjects = () => {
         "REST API with JWT auth, Redux Toolkit state, and Cloudinary or S3 uploads",
       ],
       image: "/projects/housescrew.webp",
+      images: [
+        "/projects/housescrew.webp",
+        "/projects/housescrew-2.webp",
+        "/projects/housescrew-3.webp",
+        "/projects/housescrew-4.webp",
+        "/projects/housescrew-5.webp",
+      ],
       imgPos: "object-center",
-      stack: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Socket.IO", "JWT"],
-      fullStack: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Socket.IO", "JWT", "Cloudinary / S3", "Tailwind CSS"],
+      stack: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Redux Toolkit",
+        "Socket.IO",
+        "JWT",
+      ],
+      fullStack: [
+        "React",
+        "Node.js",
+        "Express",
+        "MongoDB",
+        "Redux Toolkit",
+        "Socket.IO",
+        "JWT",
+        "Cloudinary / S3",
+        "Tailwind CSS",
+      ],
       filters: ["react", "node"],
       demoLink: "",
     },
-  ]
+  ];
 
   const filters = [
     { name: "All", value: "all" },
@@ -254,10 +438,12 @@ const WebProjects = () => {
     { name: "Node.js", value: "node" },
     { name: "AI", value: "ai" },
     { name: "Enterprise", value: "enterprise" },
-  ]
+  ];
 
   const filteredProjects =
-    activeFilter === "all" ? projects : projects.filter((project) => project.filters.includes(activeFilter))
+    activeFilter === "all"
+      ? projects
+      : projects.filter((project) => project.filters.includes(activeFilter));
 
   const openModal = (project: (typeof projects)[number]) => {
     setSelected({
@@ -275,11 +461,14 @@ const WebProjects = () => {
       links: project.demoLink
         ? [{ label: "Visit Site", href: project.demoLink, kind: "demo" }]
         : [],
-    })
-  }
+    });
+  };
 
   return (
-    <section id="web-projects" className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden">
+    <section
+      id="web-projects"
+      className="py-20 bg-gray-50 dark:bg-gray-900 relative overflow-hidden"
+    >
       <div className="floating-element floating-element-1"></div>
       <div className="floating-element floating-element-2"></div>
       <div className="floating-element floating-element-3"></div>
@@ -292,17 +481,24 @@ const WebProjects = () => {
           variants={containerVariants}
           className="space-y-12"
         >
-          <motion.div variants={itemVariants} className="text-center max-w-3xl mx-auto space-y-4">
+          <motion.div
+            variants={itemVariants}
+            className="text-center max-w-3xl mx-auto space-y-4"
+          >
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white">
               Web <span className="gradient-text">Projects</span>
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-400">
-              Production platforms I have shipped across enterprise IAM, research administration, AI, and
-              full-stack marketplaces, from front-end console to cloud backend.
+              Production platforms I have shipped across enterprise IAM,
+              research administration, AI, and full-stack marketplaces, from
+              front-end console to cloud backend.
             </p>
           </motion.div>
 
-          <motion.div variants={itemVariants} className="flex flex-wrap justify-center gap-4 mb-8">
+          <motion.div
+            variants={itemVariants}
+            className="flex flex-wrap justify-center gap-4 mb-8"
+          >
             {filters.map((filter) => (
               <motion.button
                 key={filter.value}
@@ -320,7 +516,10 @@ const WebProjects = () => {
             ))}
           </motion.div>
 
-          <motion.div variants={containerVariants} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <motion.div
+            variants={containerVariants}
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          >
             {filteredProjects.map((project) => (
               <motion.div
                 key={project.id}
@@ -331,18 +530,25 @@ const WebProjects = () => {
                   transition: { duration: 0.3 },
                 }}
                 onMouseMove={(e) => {
-                  const rect = e.currentTarget.getBoundingClientRect()
-                  e.currentTarget.style.setProperty("--mx", `${e.clientX - rect.left}px`)
-                  e.currentTarget.style.setProperty("--my", `${e.clientY - rect.top}px`)
+                  const rect = e.currentTarget.getBoundingClientRect();
+                  e.currentTarget.style.setProperty(
+                    "--mx",
+                    `${e.clientX - rect.left}px`,
+                  );
+                  e.currentTarget.style.setProperty(
+                    "--my",
+                    `${e.clientY - rect.top}px`,
+                  );
                 }}
                 className="cursor-pointer bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-gray-700 group gradient-border card-3d spotlight-card"
               >
-                <div className="relative aspect-[2/1] overflow-hidden">
+                <div className="relative aspect-video overflow-hidden">
                   {project.image ? (
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
+                      sizes="(min-width: 1536px) 470px, (min-width: 1024px) 33vw, (min-width: 768px) 50vw, 100vw"
                       className={`object-cover ${project.imgPos} transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
                     />
                   ) : (
@@ -376,7 +582,9 @@ const WebProjects = () => {
                   <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors animated-underline">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed line-clamp-3">{project.description}</p>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4 text-sm leading-relaxed line-clamp-3">
+                    {project.description}
+                  </p>
                   <div className="flex flex-wrap gap-2">
                     {project.stack.map((tech) => (
                       <span
@@ -396,7 +604,7 @@ const WebProjects = () => {
 
       <ProjectModal project={selected} onClose={() => setSelected(null)} />
     </section>
-  )
-}
+  );
+};
 
-export default WebProjects
+export default WebProjects;
