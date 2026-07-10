@@ -224,7 +224,7 @@ const WebProjects = () => {
         "REST API with JWT auth and Redux Toolkit state",
         "Cloudinary and S3 media uploads",
       ],
-      image: null,
+      image: "/projects/housescrew.webp",
       imgPos: "object-center",
       stack: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Socket.IO", "JWT"],
       fullStack: ["React", "Node.js", "Express", "MongoDB", "Redux Toolkit", "Socket.IO", "JWT", "Cloudinary / S3", "Tailwind CSS"],

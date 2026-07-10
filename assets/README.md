@@ -7,7 +7,7 @@ only the normalized 2:1 master into `public/projects/`.
 ## Layout
 
 ```text
-assets/projects/<slug>/
+assets/<slug>/
   original.png   1920 x 1080 (16:9)   lossless master
   2x1.png        2160 x 1080 (2:1)    lossless master
 public/projects/<slug>.webp           served copy of 2x1.png
@@ -36,13 +36,13 @@ elements inside a safe margin so nothing clips at the edges.
 
 ## Adding a project
 
-1. Drop the raw file in `assets/projects/<slug>/original.png`.
+1. Drop the raw file in `assets/<slug>/original.png`.
 2. Produce `2x1.png` (see below).
 3. Encode the served copy:
 
    ```python
    from PIL import Image
-   Image.open("assets/projects/<slug>/2x1.png").convert("RGB").save(
+   Image.open("assets/<slug>/2x1.png").convert("RGB").save(
        "public/projects/<slug>.webp", "WEBP", quality=82, method=6
    )
    ```

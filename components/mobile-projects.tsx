@@ -197,7 +197,7 @@ const MobileProjects = () => {
       description:
         "A government content-monitoring app for the UAE Media Council. Residents flag misleading or non-compliant media with link, image, and voice-note reports, using UAE Pass or guest sign-in, in a full RTL Arabic and English UI.",
       longDescription:
-        "A government content-monitoring platform for the UAE Media Council that lets residents flag media as misleading, unsafe, or non-compliant advertising. I built the React Native app with UAE Pass and guest sign-in, category-based reporting with link, image, and voice-note attachments, and a full RTL Arabic and English UI, consuming the council's ASP.NET Core API.",
+        "A government content-monitoring platform for the UAE Media Council that lets residents flag media as misleading, unsafe, or non-compliant advertising. I built the React Native app for both platforms with UAE Pass and guest sign-in, category-based reporting with link, image, and voice-note attachments, and a full RTL Arabic and English UI, consuming the council's ASP.NET Core API.",
       role: "Mobile front-end",
       engagement: "Full-time",
       tenure: "From the start",
@@ -209,8 +209,8 @@ const MobileProjects = () => {
       ],
       image: "/projects/amen.webp",
       imgPos: "object-center",
-      platforms: ["ios"],
-      playStoreLink: "",
+      platforms: ["ios", "android"],
+      playStoreLink: "https://play.google.com/store/apps/details?id=com.uaemediacouncil.amen",
       appStoreLink: "https://apps.apple.com/ae/app/amen/id6737225589",
       siteLink: "https://amen.ae/",
       technologies: ["React Native", "Redux Toolkit", "RTK Query", "Arabic / English RTL", "UAE Pass OAuth"],
