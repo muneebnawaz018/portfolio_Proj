@@ -104,7 +104,7 @@ const WebProjects = () => {
         "i18next",
         "Java (Janssen)",
       ],
-      filters: ["react", "enterprise"],
+      filters: ["react", "java", "enterprise"],
       demoLink: "https://gluu.org/flex/",
     },
     {
@@ -147,7 +147,7 @@ const WebProjects = () => {
         "Kuali Rice (Java)",
         "AI Modules",
       ],
-      filters: ["react", "ai", "enterprise"],
+      filters: ["react", "python", "java", "ai", "enterprise"],
       demoLink: "https://streamlyne.com/",
     },
     {
@@ -246,7 +246,7 @@ const WebProjects = () => {
         "AWS S3 / CloudFront",
         "nginx",
       ],
-      filters: ["ai", "node"],
+      filters: ["angular", "node", "ai"],
       demoLink: "https://headoffice.ai/",
     },
     {
@@ -272,6 +272,7 @@ const WebProjects = () => {
         "/projects/evolo-web.webp",
         "/projects/evolo-web-2.webp",
         "/projects/evolo-web-3.webp",
+        "/projects/evolo-web-4.webp",
       ],
       imgPos: "object-center",
       stack: [
@@ -430,12 +431,53 @@ const WebProjects = () => {
       filters: ["react", "node"],
       demoLink: "",
     },
+    {
+      id: 9,
+      title: "KiddieCove Web",
+      description:
+        "The web half of the KiddieCove school platform: the public kiddiecove.io site and the admin console schools run day to day. A React front end over the same NestJS API that backs the parent, teacher, and driver apps.",
+      longDescription:
+        "The web half of KiddieCove, a school-management platform used by private schools, daycares, and Montessoris in Pakistan. It runs on the same NestJS API as the React Native apps, so the admin console and the parent, teacher, and driver apps share one source of truth. Schools handle admissions, attendance, weekly timetables, exam and result cards, and fee invoices from the browser, and follow live bus tracking on the same Socket.io channels the apps use. The public site carries the pricing and use-case pages.",
+      role: "Full-stack web",
+      engagement: "Full-time",
+      tenure: "Joined mid-project",
+      highlights: [
+        "Admin console for admissions, attendance, timetables, exam and result cards, and fee invoices",
+        "Live GPS bus tracking shared with the parent and driver apps",
+        "React front end over the same NestJS API that backs the mobile apps",
+        "Real-time updates over Socket.io, so a change in the console reaches the apps",
+        "Child-safety-first platform built for the Pakistani school market",
+      ],
+      image: "/projects/kiddiecove.webp",
+      images: [
+        "/projects/kiddiecove.webp",
+        "/projects/kiddiecove-2.webp",
+        "/projects/kiddiecove-3.webp",
+        "/projects/kiddiecove-4.webp",
+        "/projects/kiddiecove-5.webp",
+      ],
+      imgPos: "object-center",
+      stack: ["React", "NestJS", "Socket.io", "REST API"],
+      fullStack: [
+        "React",
+        "NestJS",
+        "Socket.io",
+        "Axios",
+        "REST API",
+        "Token injection + session handling",
+      ],
+      filters: ["react", "node", "enterprise"],
+      demoLink: "https://kiddiecove.io/",
+    },
   ];
 
   const filters = [
     { name: "All", value: "all" },
     { name: "React", value: "react" },
+    { name: "Angular", value: "angular" },
     { name: "Node.js", value: "node" },
+    { name: "Python", value: "python" },
+    { name: "Java", value: "java" },
     { name: "AI", value: "ai" },
     { name: "Enterprise", value: "enterprise" },
   ];
