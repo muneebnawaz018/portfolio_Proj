@@ -411,18 +411,37 @@ const ProjectModal = ({
               {/* body */}
               <div className="p-6 sm:p-8 pb-10 sm:pb-12 space-y-6">
                 <div className="space-y-3">
-                  <div className="flex flex-wrap items-center gap-2">
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {project.title}
-                    </h3>
-                    {project.platforms?.map((p) => (
-                      <span
-                        key={p}
-                        className={`px-2.5 py-1 rounded-full text-xs font-medium ${platformStyle[p]}`}
-                      >
-                        {platformLabel[p]}
-                      </span>
-                    ))}
+                  <div className="flex flex-wrap items-center gap-x-3 gap-y-4">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
+                        {project.title}
+                      </h3>
+                      {project.platforms?.map((p) => (
+                        <span
+                          key={p}
+                          className={`px-2.5 py-1 rounded-full text-xs font-medium ${platformStyle[p]}`}
+                        >
+                          {platformLabel[p]}
+                        </span>
+                      ))}
+                    </div>
+
+                    {project.links.length > 0 && (
+                      <div className="flex flex-wrap items-center justify-end gap-2 ml-auto">
+                        {project.links.map((l) => (
+                          <Link
+                            key={l.href}
+                            href={l.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-blue-500 hover:opacity-90 hover:shadow-lg hover:shadow-purple-500/30 transition-all"
+                          >
+                            {linkIcon(l.kind)}
+                            <span>{l.label}</span>
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
                   <ProjectMeta
                     role={project.role}
@@ -472,23 +491,6 @@ const ProjectModal = ({
                     ))}
                   </div>
                 </div>
-
-                {project.links.length > 0 && (
-                  <div className="flex flex-wrap gap-3 pt-2">
-                    {project.links.map((l) => (
-                      <Link
-                        key={l.href}
-                        href={l.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium text-white bg-gradient-to-r from-purple-600 to-blue-500 hover:opacity-90 hover:shadow-lg hover:shadow-purple-500/30 transition-all"
-                      >
-                        {linkIcon(l.kind)}
-                        <span>{l.label}</span>
-                      </Link>
-                    ))}
-                  </div>
-                )}
               </div>
             </motion.div>
           </motion.div>
