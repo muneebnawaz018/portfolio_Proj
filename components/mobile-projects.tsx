@@ -180,8 +180,7 @@ const MobileProjects = () => {
         "Wallet-based ID verification and in-app recharges",
         "Tamper-evident capture over an Express and MongoDB API with S3 photo storage",
       ],
-      image:
-        "https://res.cloudinary.com/dpwy3mjiz/image/upload/v1749845844/GeoFace_guennh.png",
+      image: "/projects/geoface.webp",
       imgPos: "object-center",
       platforms: ["ios"],
       playStoreLink: "",
