@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import Image from "next/image";
@@ -152,14 +152,16 @@ const Dots = ({
   count,
   index,
   onSelect,
+  className = "",
 }: {
   count: number;
   index: number;
   onSelect: (i: number) => void;
+  className?: string;
 }) => (
   <div
     onClick={(e) => e.stopPropagation()}
-    className="absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/40 px-2.5 py-1.5 backdrop-blur-md"
+    className={`absolute bottom-3 left-1/2 z-20 flex -translate-x-1/2 items-center gap-1.5 rounded-full bg-black/40 px-2.5 py-1.5 backdrop-blur-md ${className}`}
   >
     {Array.from({ length: count }).map((_, i) => (
       <button
@@ -284,12 +286,19 @@ const ProjectModal = ({
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
   const [rotation, setRotation] = useState(0);
+  const [chrome, setChrome] = useState(true);
+  const panned = useRef(false);
   const coarse = useCoarsePointer();
 
   useEffect(() => setMounted(true), []);
 
-  // A rotation belongs to the image the user turned, not to the next one.
-  useEffect(() => setRotation(0), [index, zoom]);
+  // Rotation survives paging: once the user turns the phone's worth of screen
+  // sideways they want to stay there. Closing the lightbox puts it back, and
+  // so does it bring back any controls the user tapped away.
+  useEffect(() => {
+    setRotation(0);
+    setChrome(true);
+  }, [zoom]);
 
   const gallery = useMemo(() => {
     if (!project) return [];
@@ -321,6 +330,27 @@ const ProjectModal = ({
       setIndex(i);
     },
     [index],
+  );
+
+  const turned = rotation % 180 !== 0;
+
+  // Tapping the photo hides the controls, the way a phone's own viewer does.
+  // A mouse has hover to reveal things with, so it keeps them on screen.
+  const chromeClass = `transition-opacity duration-200 ${
+    coarse && !chrome ? "opacity-0 pointer-events-none" : "opacity-100"
+  }`;
+
+  /** A pan reports screen pixels, but the stage under the finger may be turned.
+   *  Project the drag back onto the stage's own x axis so a swipe along the
+   *  image always pages, whichever way up the image is. */
+  const swipe = useCallback(
+    (offset: { x: number; y: number }) => {
+      const rad = (rotation * Math.PI) / 180;
+      const along = offset.x * Math.cos(rad) + offset.y * Math.sin(rad);
+      if (along < -SWIPE_THRESHOLD) step(1);
+      else if (along > SWIPE_THRESHOLD) step(-1);
+    },
+    [rotation, step],
   );
 
   useEffect(() => {
@@ -501,79 +531,107 @@ const ProjectModal = ({
       <AnimatePresence>
         {project && zoom && gallery.length > 0 && (
           <motion.div
-            // A turned image should reach the screen edges, so drop the inset
-            // that keeps the upright one clear of the controls.
-            className={`fixed inset-0 z-[110] flex items-center justify-center bg-black/90 cursor-zoom-out ${
-              rotation % 180 === 0 ? "p-4" : "p-0"
-            }`}
+            className="fixed inset-0 z-[110] overflow-hidden bg-black/90 cursor-zoom-out"
             onClick={() => setZoom(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            {/* No close button: tapping outside the image closes, and Escape
-                closes. A second X on top of the modal's own read as a bug. */}
-            {coarse && (
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setRotation((r) => (r + 90) % 360);
-                }}
-                aria-label="Rotate image"
-                className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md hover:bg-white/25 transition-colors"
-              >
-                <RotateCwSquare size={20} />
-              </button>
-            )}
-
-            {gallery.length > 1 && (
-              <>
+            {/* The whole stage turns, not just the image, so the arrows, the
+                dots and the swipe axis stay where the eye expects them once
+                the phone is held sideways. Its box takes the swapped viewport
+                axes, because a rotate transform never resizes the layout box. */}
+            <div
+              className="absolute left-1/2 top-1/2 flex items-center justify-center transition-transform duration-300 ease-out"
+              style={{
+                width: turned ? "100vh" : "100vw",
+                height: turned ? "100vw" : "100vh",
+                transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
+              }}
+            >
+              {/* No close button: tapping outside the image closes, and Escape
+                  closes. A second X on top of the modal's own read as a bug. */}
+              {coarse && (
                 <button
-                  aria-label="Previous image"
                   onClick={(e) => {
                     e.stopPropagation();
-                    step(-1);
+                    setRotation((r) => (r + 90) % 360);
                   }}
-                  className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent"
+                  aria-label="Rotate image"
+                  className={`absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md hover:bg-white/25 ${chromeClass}`}
                 >
-                  <ChevronLeft size={22} />
+                  <RotateCwSquare size={20} />
                 </button>
-                <button
-                  aria-label="Next image"
+              )}
+
+              {gallery.length > 1 && (
+                <>
+                  <button
+                    aria-label="Previous image"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      step(-1);
+                    }}
+                    className={`absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent ${chromeClass}`}
+                  >
+                    <ChevronLeft size={22} />
+                  </button>
+                  <button
+                    aria-label="Next image"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      step(1);
+                    }}
+                    className={`absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent ${chromeClass}`}
+                  >
+                    <ChevronRight size={22} />
+                  </button>
+                  <Dots
+                    count={gallery.length}
+                    index={index}
+                    onSelect={select}
+                    className={chromeClass}
+                  />
+                </>
+              )}
+
+              <AnimatePresence initial={false} custom={direction} mode="wait">
+                <motion.img
+                  key={index}
+                  src={gallery[index]}
+                  alt={`${project.title} screenshot ${index + 1} of ${gallery.length}`}
                   onClick={(e) => {
                     e.stopPropagation();
-                    step(1);
+                    // A swipe ends in a click too. Only a real tap, one that
+                    // travelled nowhere, should toggle the controls.
+                    if (coarse && !panned.current) setChrome((c) => !c);
                   }}
-                  className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent"
-                >
-                  <ChevronRight size={22} />
-                </button>
-                <Dots count={gallery.length} index={index} onSelect={select} />
-              </>
-            )}
-
-            <AnimatePresence initial={false} custom={direction} mode="wait">
-              <motion.img
-                key={index}
-                src={gallery[index]}
-                alt={`${project.title} screenshot ${index + 1} of ${gallery.length}`}
-                onClick={(e) => e.stopPropagation()}
-                // A rotate transform leaves the layout box alone, so on a
-                // quarter turn the box has to be measured against the swapped
-                // axes or the turned image spills off screen.
-                className={`object-contain shadow-2xl cursor-default ${
-                  rotation % 180 === 0
-                    ? "max-h-[92vh] max-w-[95vw] rounded-lg"
-                    : "max-h-[100vw] max-w-[100vh] rounded-none"
-                }`}
-                custom={direction}
-                initial={{ scale: 0.96, opacity: 0, rotate: rotation }}
-                animate={{ scale: 1, opacity: 1, rotate: rotation }}
-                exit={{ scale: 0.96, opacity: 0, rotate: rotation }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
-              />
-            </AnimatePresence>
+                  // onPanStart never runs for a tap, so the flag has to clear on
+                  // the press itself or the last swipe would suppress the tap.
+                  onPointerDown={() => (panned.current = false)}
+                  onPan={(_, info) => {
+                    if (Math.hypot(info.offset.x, info.offset.y) > 10)
+                      panned.current = true;
+                  }}
+                  onPanEnd={(_, info) => swipe(info.offset)}
+                  draggable={false}
+                  // touch-none: the browser claims horizontal drags for its own
+                  // gestures otherwise, and the pan never reaches us.
+                  // Turned, the image gives up its margin and fills the screen.
+                  className={`touch-none object-contain shadow-2xl cursor-default ${
+                    turned
+                      ? "max-h-full max-w-full"
+                      : "max-h-[92%] max-w-[95%] rounded-lg"
+                  }`}
+                  custom={direction}
+                  initial={{ scale: 0.96, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.96, opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                />
+              </AnimatePresence>
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
