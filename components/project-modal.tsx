@@ -31,6 +31,29 @@ const useCoarsePointer = () => {
   return coarse;
 };
 
+const useBackToClose = (layer: string, open: boolean, close: () => void) => {
+  const closeRef = useRef(close);
+  closeRef.current = close;
+
+  useEffect(() => {
+    if (!open) return;
+    const tagged = () => window.history.state?.overlay === layer;
+
+    window.history.pushState({ overlay: layer }, "");
+    const onPop = () => {
+      if (!tagged()) closeRef.current();
+    };
+    window.addEventListener("popstate", onPop);
+
+    return () => {
+      window.removeEventListener("popstate", onPop);
+      // Closed from the UI rather than by going back, so our entry is still on
+      // the stack. Drop it, or the next back press would be swallowed.
+      if (tagged()) window.history.back();
+    };
+  }, [layer, open]);
+};
+
 export type ModalLink = {
   label: string;
   href: string;
@@ -332,6 +355,10 @@ const ProjectModal = ({
     [index],
   );
 
+  // Back closes the lightbox first, then the modal, one press each.
+  useBackToClose("modal", !!project, onClose);
+  useBackToClose("lightbox", zoom, () => setZoom(false));
+
   const turned = rotation % 180 !== 0;
 
   // Tapping the photo hides the controls, the way a phone's own viewer does.
@@ -395,7 +422,7 @@ const ProjectModal = ({
               role="dialog"
               aria-modal="true"
               aria-label={project.title}
-              className="relative z-10 w-full max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-100 dark:border-gray-800"
+              className="relative z-10 w-full max-w-3xl max-h-[90dvh] overflow-y-auto rounded-2xl bg-white dark:bg-gray-900 shadow-2xl border border-gray-100 dark:border-gray-800"
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -531,7 +558,11 @@ const ProjectModal = ({
       <AnimatePresence>
         {project && zoom && gallery.length > 0 && (
           <motion.div
-            className="fixed inset-0 z-[110] overflow-hidden bg-black/90 cursor-zoom-out"
+            // dvh, not vh: on a phone `100vh` is the viewport with the address
+            // bar hidden, so a vh-tall box runs off the bottom of the screen and
+            // takes the controls pinned to its edges with it.
+            className="fixed inset-x-0 top-0 z-[110] overflow-hidden bg-black/90 cursor-zoom-out"
+            style={{ height: "100dvh" }}
             onClick={() => setZoom(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -545,8 +576,8 @@ const ProjectModal = ({
             <div
               className="absolute left-1/2 top-1/2 flex items-center justify-center transition-transform duration-300 ease-out"
               style={{
-                width: turned ? "100vh" : "100vw",
-                height: turned ? "100vw" : "100vh",
+                width: turned ? "100dvh" : "100vw",
+                height: turned ? "100vw" : "100dvh",
                 transform: `translate(-50%, -50%) rotate(${rotation}deg)`,
               }}
             >
