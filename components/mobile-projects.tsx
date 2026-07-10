@@ -220,19 +220,19 @@ const MobileProjects = () => {
       id: 8,
       title: "Uroots",
       description:
-        "A campus social network for college students: real-time chat, a social feed, media sharing, and event scheduling that connect peers within their community.",
+        "A campus social network for college students: a community feed, real-time chat, a student marketplace, events, and class rosters with syllabus sharing, all scoped by role.",
       longDescription:
-        "A campus social network for college students that connects peers within their community and helps them find new friendships, with real-time chat, a social feed, media sharing, and event scheduling, on a Node.js backend.",
+        "A campus social network for college students that connects peers within their community and helps them find new friendships. It runs a community feed with photo, event, and listing posts, real-time direct and group chat, a student marketplace, campus events, and class rosters with syllabus sharing, scoped so students and faculty see different views. Chat is delivered over Pusher with push notifications through Firebase Cloud Messaging, on a Node.js backend with media on AWS S3.",
       role: "Full-stack mobile",
       engagement: "Full-time",
       tenure: "From the start",
       highlights: [
-        "Campus community networking and friend discovery",
-        "Real-time chat and a social feed",
-        "Media sharing and event scheduling",
+        "Community feed with photo, event, and marketplace listing posts",
+        "Real-time direct and group chat over Pusher, push via FCM",
+        "Student marketplace and campus event scheduling",
+        "Class rosters and syllabus sharing, scoped by student and faculty roles",
       ],
-      image:
-        "https://res.cloudinary.com/dpwy3mjiz/image/upload/v1723030925/Portfolio/All%20Projects/uroots.png",
+      image: "/projects/uroots.webp",
       imgPos: "object-center",
       platforms: ["ios", "android"],
       playStoreLink: "",
@@ -302,6 +302,7 @@ const MobileProjects = () => {
     setSelected({
       title: project.title,
       image: project.image,
+      images: (project as { images?: string[] }).images,
       imgPos: project.imgPos,
       role: project.role,
       engagement: project.engagement,
@@ -385,7 +386,7 @@ const MobileProjects = () => {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className={`object-cover ${project.imgPos} transition-transform duration-500 group-hover:scale-110`}
+                      className={`object-cover ${project.imgPos} transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500 p-4">

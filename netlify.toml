@@ -1,0 +1,26 @@
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  # package.json requires >=22. Without this Netlify picks its own default,
+  # which drifts over time and has silently downgraded builds before.
+  NODE_VERSION = "22"
+  NEXT_TELEMETRY_DISABLED = "1"
+
+# The Next.js runtime is installed automatically when Netlify detects Next.
+# Do not declare it under [[plugins]] unless it is also a devDependency.
+
+# Project images keep a stable filename and get replaced in place, so they must
+# never be cached as immutable. Serve fast, revalidate in the background.
+[[headers]]
+  for = "/projects/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600, stale-while-revalidate=86400"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    X-Frame-Options = "SAMEORIGIN"

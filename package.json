@@ -7,9 +7,12 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "build": "NODE_ENV=production next build",
+    "build:verify": "NODE_ENV=production NEXT_DIST_DIR=.next-verify next build",
+    "start": "node scripts/start.mjs",
+    "start:only": "NODE_ENV=production next start",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "@emailjs/browser": "latest",

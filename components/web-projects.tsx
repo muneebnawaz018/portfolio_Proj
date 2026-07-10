@@ -46,6 +46,7 @@ const WebProjects = () => {
     tenure?: string
     highlights: string[]
     image: string | null
+    images?: string[]
     imgPos: string
     stack: string[]
     fullStack: string[]
@@ -248,6 +249,7 @@ const WebProjects = () => {
     setSelected({
       title: project.title,
       image: project.image,
+      images: project.images,
       imgPos: project.imgPos,
       role: project.role,
       engagement: project.engagement,
@@ -327,7 +329,7 @@ const WebProjects = () => {
                       src={project.image}
                       alt={project.title}
                       fill
-                      className={`object-cover ${project.imgPos} transition-transform duration-500 group-hover:scale-110`}
+                      className={`object-cover ${project.imgPos} transition-transform duration-700 ease-out group-hover:scale-[1.04] motion-reduce:transition-none motion-reduce:group-hover:scale-100`}
                     />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center bg-gradient-to-br from-purple-600 to-blue-500">
