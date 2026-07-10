@@ -59,13 +59,14 @@ const WebProjects = () => {
       id: 1,
       title: "Gluu Flex",
       description:
-        "Admin console for an enterprise identity and access platform built on the Linux Foundation's Janssen Project. The React UI manages OAuth2/OIDC clients, FIDO2 passkeys, and SCIM, and enforces browser-side Cedar authorization (Rust compiled to WebAssembly), with live active-user and session dashboards.",
+        "Admin console for an enterprise identity and access platform built on the Linux Foundation's Janssen Project. The React UI manages SSO, MFA and passkeys, OIDC/OAuth 2.0 and SAML clients, token issuance, and SCIM, and enforces browser-side Cedar authorization (Rust compiled to WebAssembly).",
       longDescription:
-        "A commercial enterprise IAM platform built on the Linux Foundation's Janssen Project. I work on the React Admin-UI, the console administrators use to run the identity server. A core part of the work is Cedarling, Janssen's policy-based authorization engine: a Rust engine compiled to WebAssembly that runs directly in the browser and evaluates Cedar policies on the client to authorize each module and action per the user's permissions. I rebuilt how the console enforces permissions so every screen and action is governed by fine-grained policies, delivered the policy and role-mapping screens, and added multi-issuer authorization plus the new policy-store format. I also modernized the platform, migrating the build to Vite and upgrading the core framework and UI libraries.",
+        "A commercial enterprise IAM platform built on the Linux Foundation's Janssen Project. I work on the React Admin-UI, the console administrators use to run the identity server: single sign-on, multi-factor authentication and FIDO2 passkeys, OIDC and OAuth 2.0 clients, SAML federation, token issuance and lifecycle, and SCIM provisioning, with live active-user, session, and token dashboards. A core part of the work is Cedarling, Janssen's policy-based authorization engine: a Rust engine compiled to WebAssembly that runs directly in the browser and evaluates Cedar policies on the client to authorize each module and action per the user's permissions. I rebuilt how the console enforces permissions so every screen and action is governed by fine-grained policies, delivered the policy and role-mapping screens, and added multi-issuer authorization plus the new policy-store format. I also modernized the platform, migrating the build to Vite and upgrading the core framework and UI libraries.",
       role: "Full-stack web, front-end primary, plus deployments and VM provisioning",
       engagement: "Full-time",
       tenure: "Joined mid-project, active since May 2025",
       highlights: [
+        "SSO, MFA and FIDO2 passkeys, OIDC / OAuth 2.0, SAML, and token management",
         "Browser-side Cedar authorization (Rust to WebAssembly) enforcing fine-grained, per-action permissions across every module",
         "Policy and role-mapping screens, multi-issuer authorization, and the new policy-store format",
         "GovOps continuous governance layer for automated compliance monitoring and policy enforcement",
@@ -83,16 +84,18 @@ const WebProjects = () => {
       id: 2,
       title: "Streamlyne",
       description:
-        "A cloud research administration platform for universities. Covers the full sponsored-research lifecycle, from pre-award proposals to awards, compliance, and reporting, with newer AI modules for funding discovery and benchmarking.",
+        "A cloud research administration platform for universities. Covers the full sponsored-research lifecycle, from pre-award proposals to awards, compliance, and reporting, with AI modules for funding discovery, benchmarking, and an enterprise assistant.",
       longDescription:
-        "A cloud-based electronic research administration (eRA) platform for research institutions and universities. It manages the full sponsored-research lifecycle: pre-award proposal tracking, award management, compliance monitoring, and reporting and analytics, with newer AI-enhanced modules including the Lyn Pro AI assistant, FundFit AI funding discovery, and the HERD Visualizer for benchmarking.",
+        "A cloud-based electronic research administration (eRA) platform for research institutions and universities. It manages the full sponsored-research lifecycle: pre-award proposal tracking, award management, compliance monitoring, and reporting and analytics. Its AI layer includes Sara AI, a multi-skilled enterprise assistant that handles trainable tasks across a research office, Lyn Pro for secure enterprise AI, FundFit AI for funding discovery across thousands of sources, the HERD Visualizer for benchmarking, and QuickForms. Institutions report saving 60+ hours a month on AI-assisted research administration.",
       role: "Full-stack web",
       engagement: "Full-time",
       tenure: "Joined mid-project",
       highlights: [
         "Full sponsored-research lifecycle: proposals, awards, compliance, and reporting",
+        "Sara AI, a multi-skilled enterprise assistant for the research office",
+        "Lyn Pro enterprise AI, FundFit AI funding discovery, and QuickForms",
+        "HERD Visualizer for cross-institution benchmarking",
         "React front end over Python services with a legacy Kuali Rice (Java) eRA core",
-        "AI modules: Lyn Pro assistant, FundFit funding discovery, and HERD Visualizer benchmarking",
       ],
       image: "/projects/streamlyne.webp",
       imgPos: "object-center",
@@ -105,16 +108,17 @@ const WebProjects = () => {
       id: 3,
       title: "AAS Platform",
       description:
-        "A full-stack marketplace connecting customers, contractors, and admins for home services. Contractor bidding on job requests, staged Stripe payments, tiered memberships, property investment listings, and role-based analytics dashboards.",
+        "A bilingual full-stack marketplace connecting customers, contractors, and admins for home and commercial services. Contractor bidding on job requests, staged Stripe payments, tiered memberships, property investment listings, and role-based analytics dashboards.",
       longDescription:
-        "A full-stack marketplace connecting customers, contractors, and admins for home and commercial services. Customers post job requests, contractors bid, and payments release in stages through Stripe. It also carries tiered memberships, off-market property investment listings, and role-based dashboards with analytics and maps.",
+        "A full-stack marketplace connecting customers, contractors, and admins for home and commercial services in Quebec. Customers post job requests, contractors bid, and payments release in stages through Stripe. It also carries tiered memberships with a 15% saving on annual plans, off-market property investment listings, and role-based dashboards with analytics and maps. The whole interface is localized in English and French.",
       role: "Full-stack web",
       tenure: "Built from scratch",
       highlights: [
         "Job requests with contractor bidding and staged Stripe payments",
-        "Tiered memberships and subscription billing",
+        "Tiered memberships and subscription billing, 15% off annual plans",
         "Off-market property investment listings",
         "Role-based dashboards with Recharts analytics and React Leaflet maps",
+        "Fully bilingual English and French interface",
       ],
       image: "/projects/aas.webp",
       imgPos: "object-center",
@@ -149,14 +153,17 @@ const WebProjects = () => {
       id: 5,
       title: "Evolo AI Web",
       description:
-        "An AI education platform for K-12 and adult learners: swipe-to-apply job matching, employer matching, career exploration, and AI guidance, plus a real-time notification center. Web console backed by an Express and MongoDB API.",
+        "An AI education platform for K-12 and adult learners covering both careers and student well-being: swipe-to-apply job matching, employer matching, career exploration, AI guidance, counseling sessions, incident reporting, and chat.",
       longDescription:
-        "An AI-powered education platform for K-12 and adult learners. Students swipe to apply on simplified job listings, get matched to employers through a few quick questions, explore careers, and receive AI guidance that highlights their strengths, all with a real-time notification center. The web console is a Create React App SPA backed by an Express and MongoDB API, deployed on Vercel behind a Cloudflare CDN, with companion student and instructor apps on iOS and Android.",
+        "An AI-powered education platform for K-12 and adult learners, spanning both career outcomes and student well-being. Students swipe to apply on simplified job listings, get matched to employers through a few quick questions, explore careers, and receive AI guidance that highlights their strengths. Staff schedule and track counseling sessions, log behavioral and bullying incident reports, and message students, employers, and consortium partners through built-in chat, alongside a real-time notification center. The web console is a Create React App SPA backed by an Express and MongoDB API, deployed on Vercel behind a Cloudflare CDN, with companion student and instructor apps on iOS and Android.",
       role: "Full-stack, web and mobile",
       tenure: "From the start",
       highlights: [
         "Swipe-to-apply on simplified job listings with employer matching",
         "Career exploration and AI guidance that highlights student strengths",
+        "Student well-being: counseling session scheduling and tracking",
+        "Behavioral and bullying incident reporting",
+        "Chat across school, consortium, and employer channels",
         "Real-time notification center over FCM and APNs",
         "React SPA over an Express and MongoDB API, JWT auth, AWS S3, Cloudflare CDN",
       ],
@@ -171,13 +178,16 @@ const WebProjects = () => {
       id: 6,
       title: "NWFIT AI",
       description:
-        "A personalized fitness-coaching platform serving AI-generated workout and training plans. Next.js and MUI web app over a hardened Express API, with companion iOS and Android apps sharing the same backend.",
+        "A personalized fitness-coaching platform serving AI-generated, adaptive workout plans for weight loss, muscle gain, and endurance, with progress tracking and move-to-earn rewards. Next.js web app over a hardened Express API, plus iOS and Android apps.",
       longDescription:
-        "A personalized fitness-coaching platform that serves AI-generated workout and training plans. The Next.js and Material UI web app runs on a hardened Express API (helmet and CSP), stores media on DigitalOcean Spaces, and shares its backend with native iOS and Android apps.",
+        "A personalized fitness-coaching platform that serves AI-generated workout and training plans built around each member's goal, schedule, and preferences, across weight loss, muscle gain, and endurance. Plans auto-adjust day to day, progress is tracked over 14-day windows with workout, time, and calorie stats, and a move-to-earn mechanic rewards activity. The Next.js and Material UI web app runs on a hardened Express API (helmet and CSP), stores media on DigitalOcean Spaces, and shares its backend with native iOS and Android apps serving 39,000+ members.",
       role: "Full-stack, web and mobile",
       tenure: "Joined mid-project",
       highlights: [
-        "AI-generated personalized workout and training plans",
+        "AI-generated personalized plans for weight loss, muscle gain, and endurance",
+        "Adaptive plans that auto-adjust to the member's day",
+        "Progress tracking with workout, time-saved, and calorie stats",
+        "Move-to-earn rewards for completed activity",
         "Next.js and MUI web app on a helmet and CSP hardened Express API",
         "Shared backend across web and native iOS and Android apps",
         "Media storage on DigitalOcean Spaces, deployed on Cloudflare",
@@ -193,15 +203,16 @@ const WebProjects = () => {
       id: 7,
       title: "Train GRC",
       description:
-        "A governance, risk, and compliance training platform. Marketing site wired to a serverless AWS signup flow, a hosted course academy for learners, and integrated scheduling for advisory and custom training.",
+        "A cloud-auditing training platform: Teachable-hosted courses, hands-on labs on real AWS accounts, and Calendly-booked advisory sessions, on a React SPA served from S3 and CloudFront with a serverless signup flow.",
       longDescription:
-        "A governance, risk, and compliance training platform. The marketing site wires a signup flow to a serverless AWS backend (Lambda and API Gateway), hosts its course academy on Teachable, and books advisory and custom-training sessions through Calendly. Static assets are served from S3 and CloudFront.",
+        "A GRC and cloud-auditing training platform. It runs an academy of Teachable-hosted courses, hands-on labs where students practise against real AWS accounts with boto3, and advisory and training sessions booked through Calendly. The React SPA is served statically from S3 behind CloudFront, with a serverless signup flow on Lambda and API Gateway.",
       role: "Full-stack web",
       tenure: "Built from scratch",
       highlights: [
-        "Signup flow wired to a serverless AWS backend (Lambda and API Gateway)",
-        "Course academy hosted on Teachable",
+        "Cloud-auditing courses hosted on Teachable",
+        "Hands-on labs practising against real AWS accounts",
         "Advisory and training bookings via Calendly",
+        "Serverless signup flow on Lambda and API Gateway",
         "Static hosting on S3 and CloudFront",
       ],
       image: "/projects/traingrc.webp",
@@ -215,15 +226,18 @@ const WebProjects = () => {
       id: 8,
       title: "House Screw",
       description:
-        "A MERN home-services platform with real-time chat and notifications over Socket.IO, JWT auth, and Cloudinary media uploads, built on a REST API with Redux Toolkit state.",
+        "A LinkedIn-style professional network for the construction and trades industry: a post feed, profiles with engagement analytics, connections, job listings, and real-time chat, built on the MERN stack.",
       longDescription:
-        "A MERN home-services platform with real-time chat and notifications over Socket.IO. It runs on a REST API with Redux Toolkit state, JWT authentication, and Cloudinary or S3 media uploads, styled with Tailwind CSS.",
+        "A LinkedIn-style professional network for the construction and trades industry, built on the MERN stack. Members post photos, videos, events, and articles to a community feed, build out profiles that track profile viewers and post impressions, send connection requests, and browse or publish job listings. Real-time chat and notifications run over Socket.IO, on a REST API with Redux Toolkit state, JWT authentication, and Cloudinary or S3 media uploads.",
       role: "Full-stack web",
       tenure: "Joined mid-project",
       highlights: [
+        "Community feed with photo, video, event, and article posts",
+        "Profiles with profile-viewer and post-impression analytics",
+        "Connection requests and network building",
+        "Job listings and hiring posts",
         "Real-time chat and notifications over Socket.IO",
-        "REST API with JWT auth and Redux Toolkit state",
-        "Cloudinary and S3 media uploads",
+        "REST API with JWT auth, Redux Toolkit state, and Cloudinary or S3 uploads",
       ],
       image: "/projects/housescrew.webp",
       imgPos: "object-center",
