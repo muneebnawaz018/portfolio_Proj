@@ -12,8 +12,24 @@ import {
   Maximize2,
   ChevronLeft,
   ChevronRight,
+  RotateCwSquare,
 } from "lucide-react";
 import { AppleIcon, GooglePlayIcon } from "@/components/brand-icons";
+
+/** True on touch devices. A 16:9 screenshot fills only ~23% of a portrait
+ *  phone, so those users get a rotate control. Pointer-precise devices have
+ *  the room already and do not. */
+const useCoarsePointer = () => {
+  const [coarse, setCoarse] = useState(false);
+  useEffect(() => {
+    const mq = window.matchMedia("(pointer: coarse)");
+    const sync = () => setCoarse(mq.matches);
+    sync();
+    mq.addEventListener("change", sync);
+    return () => mq.removeEventListener("change", sync);
+  }, []);
+  return coarse;
+};
 
 export type ModalLink = {
   label: string;
@@ -100,9 +116,12 @@ const slideVariants = {
   exit: (dir: number) => ({ x: dir > 0 ? "-100%" : "100%", opacity: 0 }),
 };
 
+// bg-origin-border: a gradient defaults to the padding box but paints across
+// the border box and repeats, so the 1px border shows the opposite end of the
+// gradient. Sizing it to the border box leaves nothing to tile.
 const navButton =
   "flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md " +
-  "border border-white/20 transition-all hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 " +
+  "border border-white/20 transition-all bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 " +
   "hover:border-transparent hover:shadow-lg hover:shadow-purple-500/30 disabled:opacity-0";
 
 const Arrow = ({
@@ -264,8 +283,13 @@ const ProjectModal = ({
   const [zoom, setZoom] = useState(false);
   const [index, setIndex] = useState(0);
   const [direction, setDirection] = useState(0);
+  const [rotation, setRotation] = useState(0);
+  const coarse = useCoarsePointer();
 
   useEffect(() => setMounted(true), []);
+
+  // A rotation belongs to the image the user turned, not to the next one.
+  useEffect(() => setRotation(0), [index, zoom]);
 
   const gallery = useMemo(() => {
     if (!project) return [];
@@ -374,7 +398,11 @@ const ProjectModal = ({
                 <button
                   onClick={onClose}
                   aria-label="Close"
-                  className="absolute top-3 right-3 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md hover:bg-black/60 transition-colors"
+                  // The lightbox sits above this on a 90% black scrim, where a
+                  // second X still shows through and reads as a stray control.
+                  className={`absolute top-3 right-3 z-30 flex h-9 w-9 items-center justify-center rounded-full bg-black/40 text-white backdrop-blur-md hover:bg-black/60 transition-colors ${
+                    zoom ? "invisible" : ""
+                  }`}
                 >
                   <X size={18} />
                 </button>
@@ -471,20 +499,31 @@ const ProjectModal = ({
       <AnimatePresence>
         {project && zoom && gallery.length > 0 && (
           <motion.div
-            className="fixed inset-0 z-[110] flex items-center justify-center bg-black/90 p-4 cursor-zoom-out"
+            // A turned image should reach the screen edges, so drop the inset
+            // that keeps the upright one clear of the controls.
+            className={`fixed inset-0 z-[110] flex items-center justify-center bg-black/90 cursor-zoom-out ${
+              rotation % 180 === 0 ? "p-4" : "p-0"
+            }`}
             onClick={() => setZoom(false)}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <button
-              onClick={() => setZoom(false)}
-              aria-label="Close image"
-              className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md hover:bg-white/25 transition-colors"
-            >
-              <X size={20} />
-            </button>
+            {/* No close button: tapping outside the image closes, and Escape
+                closes. A second X on top of the modal's own read as a bug. */}
+            {coarse && (
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  setRotation((r) => (r + 90) % 360);
+                }}
+                aria-label="Rotate image"
+                className="absolute top-4 right-4 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md hover:bg-white/25 transition-colors"
+              >
+                <RotateCwSquare size={20} />
+              </button>
+            )}
 
             {gallery.length > 1 && (
               <>
@@ -494,7 +533,7 @@ const ProjectModal = ({
                     e.stopPropagation();
                     step(-1);
                   }}
-                  className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent"
+                  className="absolute left-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent"
                 >
                   <ChevronLeft size={22} />
                 </button>
@@ -504,7 +543,7 @@ const ProjectModal = ({
                     e.stopPropagation();
                     step(1);
                   }}
-                  className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent"
+                  className="absolute right-4 top-1/2 z-20 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full bg-white/15 text-white backdrop-blur-md border border-white/20 transition-all bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent"
                 >
                   <ChevronRight size={22} />
                 </button>
@@ -518,11 +557,18 @@ const ProjectModal = ({
                 src={gallery[index]}
                 alt={`${project.title} screenshot ${index + 1} of ${gallery.length}`}
                 onClick={(e) => e.stopPropagation()}
-                className="max-h-[92vh] max-w-[95vw] rounded-lg object-contain shadow-2xl cursor-default"
+                // A rotate transform leaves the layout box alone, so on a
+                // quarter turn the box has to be measured against the swapped
+                // axes or the turned image spills off screen.
+                className={`object-contain shadow-2xl cursor-default ${
+                  rotation % 180 === 0
+                    ? "max-h-[92vh] max-w-[95vw] rounded-lg"
+                    : "max-h-[100vw] max-w-[100vh] rounded-none"
+                }`}
                 custom={direction}
-                initial={{ scale: 0.96, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                exit={{ scale: 0.96, opacity: 0 }}
+                initial={{ scale: 0.96, opacity: 0, rotate: rotation }}
+                animate={{ scale: 1, opacity: 1, rotate: rotation }}
+                exit={{ scale: 0.96, opacity: 0, rotate: rotation }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               />
             </AnimatePresence>

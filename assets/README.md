@@ -13,9 +13,9 @@ public/projects/<slug>.webp       served hero, slide 1 of the carousel
 public/projects/<slug>-2.webp     slide 2, and so on
 ```
 
-Masters stay PNG. The served copies are WebP: this is gradient-heavy artwork,
-and PNG stores it roughly 9x larger at quality 82 with no visible difference.
-All 76 served images total about 5.4 MB.
+Masters stay PNG. The served copies are WebP at quality 82: this is
+gradient-heavy artwork, and PNG stores it roughly 7x larger with no visible
+difference. All 73 served images total about 5.4 MB.
 
 ## The 16:9 rule
 
@@ -32,28 +32,40 @@ what its author drew outside the frame, and the guess is wrong often enough that
 it is not worth making. Ship the master at its authored size instead.
 
 If a future render arrives at some other ratio, re-render it at 16:9 rather than
-padding or cropping it. `scripts/build-project-images.py` refuses anything else.
+padding or cropping it.
+
+## Slide order
+
+Slide one is the render whose filename ends in `_hero`. Adalo has none, so its
+platforms shot leads. The rest follow the number in their filename, so
+`gluu_h_02_admin_ui.png` becomes `public/projects/gluu-3.webp`.
+
+Two folders need care. Evolo AI Web has no master folder of its own: it is the
+web surface both native Evolo apps share, so its four slides are the
+`_4_web` and `_5_combo` renders lifted out of the Student and School folders.
+Those four are therefore kept *out* of the Student and School carousels, which
+would otherwise duplicate every slide of the Web card.
 
 ## Rebuilding the served images
 
-```sh
-python3 scripts/build-project-images.py --src ~/Downloads/Muneeb-Portfolio-pictures
+Encoding is a straight PNG to WebP pass, no resizing and no padding:
+
+```python
+from PIL import Image
+Image.open(master).convert("RGB").save(
+    f"public/projects/{slug}.webp", "WEBP", quality=82, method=6
+)
 ```
 
-The script maps each master folder to a slug, picks the `*_hero` render as slide
-one (Adalo has no hero, so its platforms shot leads), orders the rest by the
-number in the filename, and writes `public/projects/<slug>[-N].webp`. Requires
-Pillow.
-
-Evolo AI Web has no folder of its own: it is the web surface both native Evolo
-apps share, so its slides come from the two app folders. See `EXTRA` in the
-script.
+After re-rendering a master, drop it back in the store under the same filename
+and re-encode it. Assert the source is exactly 1920 x 1080 first: anything else
+gets cropped by `object-cover` at display time.
 
 ## Adding a project
 
 1. Add a `<slug>/` folder to the master store with a `*_hero.png` and any
    further slides, all 1920 x 1080. Number the filenames in display order.
-2. Add the folder-to-slug mapping to `FOLDERS` in the script and rerun it.
+2. Encode each to `public/projects/<slug>[-N].webp`.
 3. Mirror the hero to `assets/<slug>/original.png`.
 4. Add `image` and `images` to the project in `components/web-projects.tsx` or
    `components/mobile-projects.tsx`. `image` drives the card thumbnail, `images`

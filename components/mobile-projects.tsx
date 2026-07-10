@@ -653,7 +653,7 @@ const MobileProjects = () => {
                           target="_blank"
                           rel="noopener"
                           onClick={(e) => e.stopPropagation()}
-                          className="flex-1 min-w-[104px] px-3 py-2 rounded-full flex items-center justify-center gap-1.5 text-sm font-medium text-white backdrop-blur-md bg-white/15 border border-white/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105"
+                          className="flex-1 min-w-[104px] px-3 py-2 rounded-full flex items-center justify-center gap-1.5 text-sm font-medium text-white backdrop-blur-md bg-white/15 border border-white/30 bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105"
                         >
                           <AppleIcon size={15} />
                           <span className="truncate">App Store</span>
@@ -666,7 +666,7 @@ const MobileProjects = () => {
                           target="_blank"
                           rel="noopener"
                           onClick={(e) => e.stopPropagation()}
-                          className="flex-1 min-w-[104px] px-3 py-2 rounded-full flex items-center justify-center gap-1.5 text-sm font-medium text-white backdrop-blur-md bg-white/15 border border-white/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105"
+                          className="flex-1 min-w-[104px] px-3 py-2 rounded-full flex items-center justify-center gap-1.5 text-sm font-medium text-white backdrop-blur-md bg-white/15 border border-white/30 bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 transform hover:scale-105"
                         >
                           <GooglePlayIcon size={15} />
                           <span className="truncate">Play Store</span>
@@ -679,7 +679,7 @@ const MobileProjects = () => {
                           target="_blank"
                           rel="noopener"
                           onClick={(e) => e.stopPropagation()}
-                          className="flex-1 min-w-[104px] px-3 py-2 rounded-full flex items-center justify-center gap-1.5 text-sm font-medium text-white backdrop-blur-md bg-white/15 border border-white/30 hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105"
+                          className="flex-1 min-w-[104px] px-3 py-2 rounded-full flex items-center justify-center gap-1.5 text-sm font-medium text-white backdrop-blur-md bg-white/15 border border-white/30 bg-origin-border hover:bg-gradient-to-r hover:from-purple-600 hover:to-blue-500 hover:border-transparent hover:shadow-lg hover:shadow-purple-500/30 transition-all duration-300 transform hover:scale-105"
                         >
                           <ExternalLink size={15} />
                           <span className="truncate">Visit Site</span>
