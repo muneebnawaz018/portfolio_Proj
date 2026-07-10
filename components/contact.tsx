@@ -5,8 +5,12 @@ import type React from "react";
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { Mail, Phone, MapPin, Send, AlertCircle } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
+import { Mail, MapPin, Send, AlertCircle, Share2 } from "lucide-react";
+import {
+  GithubIcon,
+  UpworkIcon,
+  StackOverflowIcon,
+} from "@/components/brand-icons";
 import emailjs from "@emailjs/browser";
 
 // Module-scope so its identity is stable across renders (a component defined
@@ -67,8 +71,9 @@ const Contact = () => {
 
     const formElements = form.current.elements as HTMLFormControlsCollection;
     const val = (n: string) =>
-      (formElements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement)
-        ?.value.trim() ?? "";
+      (
+        formElements.namedItem(n) as HTMLInputElement | HTMLTextAreaElement
+      )?.value.trim() ?? "";
 
     const name = val("user_name");
     const email = val("user_email");
@@ -142,42 +147,58 @@ const Contact = () => {
           console.log("Error sending email:", error.text);
           setSubmitError("Failed to send message. Please try again later.");
           setIsSubmitting(false);
-        }
+        },
       );
     }
   };
 
-  const contactInfo = [
+  const contactInfo: {
+    icon: React.ReactNode;
+    title: string;
+    value: string;
+    link?: string;
+  }[] = [
     {
-      icon: <Mail className="w-6 h-6 text-purple-600 dark:text-purple-400" />,
-      title: "Email",
-      value: "muneeb.fusion@gmail.com",
-      link: "mailto:muneeb.fusion@gmail.com",
-    },
-    {
-      icon: <Phone className="w-6 h-6 text-purple-600 dark:text-purple-400" />,
-      title: "Phone",
-      value: "+92 302 7577308",
-      link: "tel:00923027577308",
-    },
-    {
-      icon: <MapPin className="w-6 h-6 text-purple-600 dark:text-purple-400" />,
+      icon: <MapPin className="w-7 h-7 text-purple-600 dark:text-purple-400" />,
       title: "Location",
-      value: "Punjab, Pakistan",
-      link: "https://maps.google.com/?q=Punjab,Pakistan",
+      // No link: this is a way of working, not a place to open a map on.
+      value: "Remote (Worldwide)",
     },
   ];
 
+  // Three equal rows now, so each card is taller. A frosted surface over the
+  // aurora, with the gradient-border ring appearing on hover; the icon well
+  // carries the purple->blue signature. flex-1 unused: lg:grid rows own height.
+  // min-h so the three cards are equal on mobile too, where there is no form
+  // height for the lg grid rows to borrow from.
+  const cardShell =
+    "flex items-center gap-4 p-5 min-h-[132px] rounded-2xl bg-white/80 dark:bg-gray-800/50 backdrop-blur-md shadow-sm ring-1 ring-gray-200/70 dark:ring-white/10 gradient-border transition-all duration-300 hover:shadow-xl hover:shadow-purple-500/10";
+
+  // Icon well: the purple->blue signature in a soft gradient disc, sized on the
+  // 44px+ touch grid so it doubles as a comfortable tap area.
+  const iconWell =
+    "shrink-0 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-purple-100 to-blue-100 dark:from-purple-900/40 dark:to-blue-900/20 ring-1 ring-purple-200/60 dark:ring-purple-400/15";
+
   const socialLinks = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      name: "Email",
+      link: "mailto:muneeb.fusion@gmail.com",
+    },
     {
       icon: <GithubIcon className="w-6 h-6" />,
       name: "GitHub",
       link: "https://github.com/muneebnawaz018",
     },
     {
-      icon: <LinkedinIcon className="w-6 h-6" />,
-      name: "LinkedIn",
-      link: "https://www.linkedin.com/in/muneeb-nawaz-a6272419b/",
+      icon: <UpworkIcon className="w-6 h-6" />,
+      name: "Upwork",
+      link: "https://www.upwork.com/freelancers/~01113fcaa500ee9108?mp_source=share",
+    },
+    {
+      icon: <StackOverflowIcon className="w-6 h-6" />,
+      name: "Stack Overflow",
+      link: "https://stackoverflow.com/users/14921314/muneeb-nawaz",
     },
   ];
 
@@ -205,108 +226,101 @@ const Contact = () => {
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {/* Every card shares one anatomy: a round icon on the left, a title
+                and its content on the right. On lg the column is a 3-row grid
+                with equal (1fr) rows, so the cards are pixel-identical in height
+                and the column still ends level with the form beside it. */}
             <motion.div
               variants={itemVariants}
-              className="lg:col-span-1 space-y-6"
+              className="lg:col-span-1 flex flex-col gap-6 lg:grid lg:grid-rows-3"
             >
-              {contactInfo.map((info, index) => (
-                <a
-                  key={index}
-                  href={info.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-start gap-4 p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 dark:border-gray-700 gradient-border hover:scale-[1.03]"
-                >
-                  <div className="p-3 bg-purple-100 dark:bg-purple-900/30 rounded-full">
-                    {info.icon}
+              {contactInfo.map((info, index) => {
+                const card = (
+                  <>
+                    <div className={iconWell}>{info.icon}</div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                        {info.title}
+                      </h3>
+                      <p className="text-[15px] text-gray-600 dark:text-gray-400">
+                        {info.value}
+                      </p>
+                    </div>
+                  </>
+                );
+                return info.link ? (
+                  <a
+                    key={index}
+                    href={info.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`${cardShell} hover:-translate-y-0.5`}
+                  >
+                    {card}
+                  </a>
+                ) : (
+                  <div key={index} className={cardShell}>
+                    {card}
                   </div>
-                  <div>
-                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
-                      {info.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400">
-                      {info.value}
-                    </p>
-                  </div>
-                </a>
-              ))}
+                );
+              })}
 
-              <div className="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 gradient-border">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Connect With Me
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  {socialLinks.map((social, index) => (
-                    <a
-                      key={index}
-                      href={social.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors hover:scale-110"
-                      aria-label={social.name}
-                    >
-                      {social.icon}
-                    </a>
-                  ))}
+              <div className={cardShell}>
+                <div className={iconWell}>
+                  <Share2 className="w-7 h-7 text-purple-600 dark:text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2.5">
+                    Connect With Me
+                  </h3>
+                  {/* Named pills, echoing the hero's. The icon alone left people
+                      guessing which service each grey circle was. */}
+                  <div className="flex flex-wrap gap-2">
+                    {socialLinks.map((social, index) => (
+                      <a
+                        key={index}
+                        href={social.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group/pill inline-flex items-center gap-2 rounded-full bg-gray-100 dark:bg-gray-700 py-1.5 pl-1.5 pr-3.5 text-sm font-medium text-gray-700 dark:text-gray-300 transition-colors hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400"
+                      >
+                        <span className="flex h-7 w-7 items-center justify-center rounded-full bg-white dark:bg-gray-600 [&_svg]:w-4 [&_svg]:h-4">
+                          {social.icon}
+                        </span>
+                        {social.name}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </div>
 
-              <div className="p-4 bg-white dark:bg-gray-800 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 gradient-border">
-                <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                  Hire me
-                </h3>
-                <div className="flex flex-wrap gap-3">
-                  <a
-                    href="https://www.linkedin.com/in/muneeb-nawaz-a6272419b/"
-                    target="_blank"
-                    rel="noopener"
-                    className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-600 dark:hover:text-blue-400 transition-colors hover:scale-110"
-                    aria-label="LinkedIn"
-                  >
-                    <LinkedinIcon className="w-6 h-6" />
-                  </a>
-                  <a
-                    href="https://www.fiverr.com/s/xXVE74B"
-                    target="_blank"
-                    rel="noopener"
-                    className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors hover:scale-105"
-                    aria-label="Fiverr"
-                  >
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 48 48"
-                      fill="currentColor"
-                      stroke="currentColor"
-                      strokeWidth="1.5"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M30.7087,4.5H23.2355c-5.4473,0-10.1982,4.2944-9.88,12.0757H7.9886v7.2454h5.7247V43.5H22.211V23.8211h8.8555V43.5h8.9449V16.5758H22.7478V14.6973a2.8052,2.8052,0,0,1,2.8484-2.9518h5.1125Z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://www.upwork.com/freelancers/~01113fcaa500ee9108?mp_source=share"
-                    target="_blank"
-                    rel="noopener"
-                    className="p-3 bg-gray-100 dark:bg-gray-700 rounded-full text-gray-700 dark:text-gray-300 hover:bg-purple-100 dark:hover:bg-purple-900/30 hover:text-purple-600 dark:hover:text-purple-400 transition-colors hover:scale-105"
-                    aria-label="Upwork"
-                  >
-                    <svg
-                      width="24"
-                      height="24"
-                      viewBox="0 0 32 32"
-                      fill="currentColor"
-                    >
-                      <path d="M24.75 17.542c-1.469 0-2.849-0.62-4.099-1.635l0.302-1.432 0.010-0.057c0.276-1.521 1.13-4.078 3.786-4.078 1.99 0 3.604 1.615 3.604 3.604 0 1.984-1.615 3.599-3.604 3.599zM24.75 6.693c-3.385 0-6.016 2.198-7.083 5.818-1.625-2.443-2.865-5.38-3.583-7.854h-3.646v9.484c-0.005 1.875-1.521 3.391-3.396 3.396-1.875-0.005-3.391-1.526-3.396-3.396v-9.484h-3.646v9.484c0 3.885 3.161 7.068 7.042 7.068 3.885 0 7.042-3.182 7.042-7.068v-1.589c0.708 1.474 1.578 2.974 2.635 4.297l-2.234 10.495h3.729l1.62-7.615c1.417 0.906 3.047 1.479 4.917 1.479 4 0 7.25-3.271 7.25-7.266 0-4-3.25-7.25-7.25-7.25z" />
-                    </svg>
-                  </a>
+              <div className={cardShell}>
+                {/* Green well, not the purple signature: this is a live status,
+                    so the colour carries the same meaning as the pulsing dot. */}
+                <div className="shrink-0 flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-green-100 to-emerald-100 dark:from-green-900/40 dark:to-emerald-900/20 ring-1 ring-green-300/60 dark:ring-green-400/20">
+                  <span className="relative flex h-4 w-4 items-center justify-center">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75 motion-reduce:animate-none" />
+                    <span className="relative inline-flex h-3 w-3 rounded-full bg-green-500" />
+                  </span>
+                </div>
+                <div>
+                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
+                    Available for new projects
+                  </h3>
+                  <p className="text-[15px] text-gray-600 dark:text-gray-400">
+                    Usually replies within a day.
+                  </p>
                 </div>
               </div>
             </motion.div>
 
             <div className="lg:col-span-2 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md border border-gray-100 dark:border-gray-700 gradient-border">
-              <form ref={form} onSubmit={handleSubmit} noValidate className="space-y-6">
+              <form
+                ref={form}
+                onSubmit={handleSubmit}
+                noValidate
+                className="space-y-6"
+              >
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
                     <label

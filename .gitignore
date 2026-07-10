@@ -25,5 +25,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-# verification builds (see next.config.mjs distDir)
+
+# alternate build dirs (see next.config.mjs distDir). NEXT_DIST_DIR points a dev
+# server or a verification build here so neither clobbers .next.
 .next-verify/
+.next-dev/

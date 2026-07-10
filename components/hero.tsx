@@ -6,7 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Download, Mail } from "lucide-react";
-import { GithubIcon, LinkedinIcon } from "@/components/brand-icons";
+import { GithubIcon, UpworkIcon } from "@/components/brand-icons";
 import VanillaTilt from "vanilla-tilt";
 import Magnetic from "@/components/magnetic";
 import { getYearsExperience } from "@/lib/experience";
@@ -51,19 +51,19 @@ const Hero = () => {
 
   const socialLinks = [
     {
-      icon: <GithubIcon className="w-5 h-5" />,
+      icon: <Mail className="w-[18px] h-[18px]" />,
+      href: "mailto:muneeb.fusion@gmail.com",
+      label: "Email",
+    },
+    {
+      icon: <GithubIcon className="w-[18px] h-[18px]" />,
       href: "https://github.com/muneebnawaz018",
       label: "GitHub",
     },
     {
-      icon: <LinkedinIcon className="w-5 h-5" />,
-      href: "https://www.linkedin.com/in/muneeb-nawaz-a6272419b/",
-      label: "LinkedIn",
-    },
-    {
-      icon: <Mail className="w-5 h-5" />,
-      href: "mailto:muneeb.fusion@gmail.com",
-      label: "Email",
+      icon: <UpworkIcon className="w-[18px] h-[18px]" />,
+      href: "https://www.upwork.com/freelancers/~01113fcaa500ee9108?mp_source=share",
+      label: "Upwork",
     },
   ];
 
@@ -127,8 +127,8 @@ const Hero = () => {
             >
               I architect and ship secure, scalable systems end to end: web and
               mobile apps, AI features (LLMs, RAG, agents), and the cloud
-              backends that run them. {years}+ years taking complex products from
-              design to production.
+              backends that run them. {years}+ years taking complex products
+              from design to production.
             </motion.p>
 
             <motion.div
@@ -157,25 +157,24 @@ const Hero = () => {
 
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-4"
+              className="flex flex-wrap items-center gap-3"
             >
-              <span className="text-sm text-gray-600 dark:text-gray-400">
-                Follow me:
-              </span>
-              <div className="flex gap-3">
-                {socialLinks.map((link, index) => (
-                  <Link
-                    key={index}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-2 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-full hover:bg-purple-100 dark:hover:bg-gray-700 hover:text-purple-600 dark:hover:text-purple-400 transition-colors"
-                    aria-label={link.label}
-                  >
+              {socialLinks.map((link) => (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group gradient-border inline-flex items-center gap-2.5 rounded-full bg-white/70 dark:bg-gray-800/70 py-1.5 pl-1.5 pr-5 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg hover:shadow-purple-500/20"
+                >
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-100 text-purple-600 transition-colors duration-300 dark:bg-purple-900/40 dark:text-purple-400 group-hover:bg-gradient-to-r group-hover:from-purple-600 group-hover:to-blue-500 group-hover:text-white">
                     {link.icon}
-                  </Link>
-                ))}
-              </div>
+                  </span>
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-200">
+                    {link.label}
+                  </span>
+                </Link>
+              ))}
             </motion.div>
           </motion.div>
 
