@@ -6,11 +6,7 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { Mail, MapPin, Send, AlertCircle, Share2 } from "lucide-react";
-import {
-  GithubIcon,
-  UpworkIcon,
-  StackOverflowIcon,
-} from "@/components/brand-icons";
+import { GithubIcon, UpworkIcon } from "@/components/brand-icons";
 import emailjs from "@emailjs/browser";
 
 // Module-scope so its identity is stable across renders (a component defined
@@ -194,11 +190,6 @@ const Contact = () => {
       icon: <UpworkIcon className="w-6 h-6" />,
       name: "Upwork",
       link: "https://www.upwork.com/freelancers/~01113fcaa500ee9108?mp_source=share",
-    },
-    {
-      icon: <StackOverflowIcon className="w-6 h-6" />,
-      name: "Stack Overflow",
-      link: "https://stackoverflow.com/users/14921314/muneeb-nawaz",
     },
   ];
 
