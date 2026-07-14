@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Mail, ArrowUpRight, ArrowUp } from "lucide-react";
-import { GithubIcon, UpworkIcon } from "@/components/brand-icons";
+import { GithubIcon, UpworkIcon, FiverrIcon } from "@/components/brand-icons";
 import { getYearsExperience } from "@/lib/experience";
 
 const socials = [
@@ -16,6 +16,11 @@ const socials = [
     icon: <GithubIcon size={20} />,
     href: "https://github.com/muneebnawaz018",
     label: "GitHub",
+  },
+  {
+    icon: <FiverrIcon size={20} />,
+    href: "https://www.fiverr.com/s/KerqVVW",
+    label: "Fiverr",
   },
   {
     icon: <UpworkIcon size={20} />,
@@ -182,7 +187,7 @@ const Footer = () => {
               the MERN stack and React Native, and AI systems with LLMs, RAG,
               and intelligent agents.
             </p>
-            <div className="mt-6 flex gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               {socials.map((s) => (
                 <Link
                   key={s.href}

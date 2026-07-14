@@ -6,7 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 import Image from "next/image";
 import Link from "next/link";
 import { ChevronDown, Download, Mail } from "lucide-react";
-import { GithubIcon, UpworkIcon } from "@/components/brand-icons";
+import { GithubIcon, UpworkIcon, FiverrIcon } from "@/components/brand-icons";
 import VanillaTilt from "vanilla-tilt";
 import Magnetic from "@/components/magnetic";
 import { getYearsExperience } from "@/lib/experience";
@@ -59,6 +59,11 @@ const Hero = () => {
       icon: <GithubIcon className="w-[18px] h-[18px]" />,
       href: "https://github.com/muneebnawaz018",
       label: "GitHub",
+    },
+    {
+      icon: <FiverrIcon className="w-[18px] h-[18px]" />,
+      href: "https://www.fiverr.com/s/KerqVVW",
+      label: "Fiverr",
     },
     {
       icon: <UpworkIcon className="w-[18px] h-[18px]" />,
