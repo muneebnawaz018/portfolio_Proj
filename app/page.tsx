@@ -13,35 +13,33 @@ import CursorGlow from "@/components/cursor-glow"
 import AuroraBackground from "@/components/aurora-background"
 import ScrollProgress from "@/components/scroll-progress"
 import SectionConnector from "@/components/section-connector"
-import { Suspense } from "react"
-import Loader from "@/components/loader"
 
+// No boundary wraps these sections: every child renders synchronously, so a
+// fallback could never show. It only shipped a loader chunk nothing awaited.
 export default function Home() {
   return (
     <main className="relative overflow-hidden">
-      <Suspense fallback={<Loader />}>
-        <AuroraBackground />
-        <ParticleBackground />
-        <CursorGlow />
-        <ScrollProgress />
-        <Navbar />
-        <Hero />
-        <SectionConnector />
-        <About />
-        <SectionConnector />
-        <Experience />
-        <SectionConnector />
-        <TechStack />
-        <SectionConnector />
-        <Services />
-        <SectionConnector />
-        <WebProjects />
-        <SectionConnector />
-        <MobileProjects />
-        <SectionConnector />
-        <Contact />
-        <Footer />
-      </Suspense>
+      <AuroraBackground />
+      <ParticleBackground />
+      <CursorGlow />
+      <ScrollProgress />
+      <Navbar />
+      <Hero />
+      <SectionConnector />
+      <About />
+      <SectionConnector />
+      <Experience />
+      <SectionConnector />
+      <TechStack />
+      <SectionConnector />
+      <Services />
+      <SectionConnector />
+      <WebProjects />
+      <SectionConnector />
+      <MobileProjects />
+      <SectionConnector />
+      <Contact />
+      <Footer />
     </main>
   )
 }

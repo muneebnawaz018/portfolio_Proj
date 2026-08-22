@@ -28,6 +28,13 @@
     "tailwindcss-animate": "^1.0.7",
     "vanilla-tilt": "latest"
   },
+  "browserslist": [
+    "chrome >= 93",
+    "edge >= 93",
+    "firefox >= 92",
+    "safari >= 15.4",
+    "ios_saf >= 15.4"
+  ],
   "devDependencies": {
     "@types/node": "^22",
     "@types/react": "^19",

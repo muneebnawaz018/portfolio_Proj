@@ -5,7 +5,7 @@ import { motion, type Variants } from "framer-motion";
 import { TypeAnimation } from "react-type-animation";
 import Image from "next/image";
 import Link from "next/link";
-import { ChevronDown, Download, Mail } from "lucide-react";
+import { ChevronDown, ExternalLink, Mail } from "lucide-react";
 import { GithubIcon, UpworkIcon, FiverrIcon } from "@/components/brand-icons";
 import VanillaTilt from "vanilla-tilt";
 import Magnetic from "@/components/magnetic";
@@ -13,12 +13,10 @@ import { getYearsExperience } from "@/lib/experience";
 
 const Hero = () => {
   const tiltRef = useRef<HTMLDivElement>(null);
-  const [mounted, setMounted] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const years = getYearsExperience();
 
   useEffect(() => {
-    setMounted(true);
     if (tiltRef.current) {
       VanillaTilt.init(tiltRef.current, {
         max: 15,
@@ -34,8 +32,11 @@ const Hero = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.3,
+        // Above-the-fold copy must settle fast: Speed Index measures when
+        // pixels stop changing, and the old 0.3s delay + 0.1s stagger kept the
+        // hero painting for ~1.2s after first paint.
+        staggerChildren: 0.04,
+        delayChildren: 0,
       },
     },
   };
@@ -45,7 +46,7 @@ const Hero = () => {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.35, ease: "easeOut" },
     },
   };
 
@@ -149,14 +150,20 @@ const Hero = () => {
                 </Link>
               </Magnetic>
               <Magnetic className="inline-block">
-                <Link
-                  href="/resume.pdf"
+                {/* The CV lives on its own deployed site now, not as a PDF in
+                    public/, so this is a plain cross-origin anchor. It replaced
+                    a next/link to /resume.pdf, whose router prefetch pulled the
+                    whole 1.8MB file down on every page load (842KB over the
+                    wire) while the hero image was still waiting to paint. */}
+                <a
+                  href="https://muneeb-resume-taupe.vercel.app/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="px-6 py-3 bg-white dark:bg-gray-800 text-gray-900 dark:text-white font-medium rounded-full border border-gray-300 dark:border-gray-700 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all duration-300 flex items-center gap-2"
                 >
-                  <Download size={18} />
-                  <span>Download CV</span>
-                </Link>
+                  <ExternalLink size={18} />
+                  <span>View CV</span>
+                </a>
               </Magnetic>
             </motion.div>
 
@@ -218,16 +225,19 @@ const Hero = () => {
               />
 
               <div className="w-full h-full rounded-full overflow-hidden bg-white dark:bg-gray-800 relative z-10">
-                {mounted && (
-                  <Image
-                    src="https://res.cloudinary.com/dpwy3mjiz/image/upload/v1723016725/Profile_Pic_cafjay.png"
-                    alt="Muneeb Nawaz"
-                    fill
-                    sizes="(min-width: 768px) 320px, 256px"
-                    className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
-                    priority
-                  />
-                )}
+                {/* Rendered server-side (no mount gate) so Next emits the
+                    <link rel="preload" as="image" fetchpriority="high"> for it.
+                    Gating this on hydration cost ~1.7s of LCP resource-load
+                    delay and made `priority` a no-op. */}
+                <Image
+                  src="/profile.webp"
+                  alt="Muneeb Nawaz"
+                  fill
+                  sizes="(min-width: 768px) 320px, 256px"
+                  className="object-cover transition-transform duration-500 ease-out group-hover:scale-110"
+                  priority
+                  fetchPriority="high"
+                />
               </div>
               <div className="absolute -bottom-2 -right-2 w-16 h-16 bg-white dark:bg-gray-800 rounded-full border border-gray-200 dark:border-gray-700 flex items-center justify-center shadow-lg animate-float z-20">
                 <span className="font-mono text-2xl font-extrabold tracking-tighter gradient-text select-none">

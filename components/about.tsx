@@ -91,11 +91,17 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <motion.div variants={itemVariants} className="relative">
               <div className="relative h-[400px] md:h-[580px] rounded-xl overflow-hidden shadow-xl gradient-border">
+                {/* Below the fold, so it must never outrank the hero portrait
+                    on the wire. Widths track the real column: the container
+                    caps at the breakpoint width, minus px-8 and the gap-12
+                    between the two lg columns — 50vw over-asked and pulled a
+                    750px variant for a ~584px slot. */}
                 <Image
-                  src="https://res.cloudinary.com/dpwy3mjiz/image/upload/v1723016725/Profile_Pic_cafjay.png"
+                  src="/profile.webp"
                   alt="Muneeb Nawaz"
                   fill
-                  sizes="(min-width: 1536px) 720px, (min-width: 1024px) 50vw, 100vw"
+                  loading="lazy"
+                  sizes="(min-width: 1536px) 712px, (min-width: 1280px) 584px, (min-width: 1024px) 456px, 100vw"
                   className="object-cover"
                 />
               </div>

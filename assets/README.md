@@ -11,6 +11,9 @@ the repo carries the source of whatever the cards show.
 assets/<slug>/original.png        1920 x 1080 (16:9) lossless hero master
 public/projects/<slug>.webp       served hero, slide 1 of the carousel
 public/projects/<slug>-2.webp     slide 2, and so on
+
+assets/profile/original.png       550 x 500 lossless portrait master
+public/profile.webp               served portrait, hero and about sections
 ```
 
 Masters stay PNG. The served copies are WebP at quality 82: this is
@@ -61,6 +64,32 @@ After re-rendering a master, drop it back in the store under the same filename
 and re-encode it. Assert the source is exactly 1920 x 1080 first: anything else
 gets cropped by `object-cover` at display time.
 
+## The profile portrait
+
+The portrait is the one asset that breaks both rules above, and it needs its own
+encode. It was hosted on Cloudinary until the LCP work: the hero renders it, so
+every cold load waited on Next's image optimizer fetching it cross-origin before
+the largest element could paint. It now ships from `public/` like everything
+else, and `next.config.mjs` no longer sets `remotePatterns` at all.
+
+Two things differ from the project heroes:
+
+- It is a **transparent cutout**, not a filled frame. The `.convert("RGB")` in
+  the recipe above flattens alpha to black, which would fill the hero's circle
+  and break dark mode. Encode it `RGBA`:
+
+  ```python
+  from PIL import Image
+  Image.open("assets/profile/original.png").convert("RGBA").save(
+      "public/profile.webp", "WEBP", quality=82, method=6
+  )
+  ```
+
+- It is **550 x 500**, not 16:9, because that is the largest original that
+  exists. The About frame draws it up to 712 wide, so it upscales by roughly a
+  sixth there. If a higher-resolution portrait ever turns up, drop it in as the
+  master and re-encode. Do not upscale this one to paper over it.
+
 ## Adding a project
 
 1. Add a `<slug>/` folder to the master store with a `*_hero.png` and any
@@ -76,5 +105,4 @@ gets cropped by `object-cover` at display time.
 Served images render with `object-cover`. Because they match the frame ratio
 there is nothing to crop, so `imgPos` is a no-op for them. It still matters for
 the mobile cards, which use fixed heights rather than a ratio, and for the
-Cloudinary-hosted profile art. Fix the asset rather than working around it in
-CSS.
+profile art. Fix the asset rather than working around it in CSS.
